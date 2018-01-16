@@ -1,0 +1,1734 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16LF1829 ]
+[d frameptr 6 ]
+"184 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/i2c2.c
+[e E2993 . `uc
+I2C2_MESSAGE_COMPLETE 0
+I2C2_MESSAGE_FAIL 1
+I2C2_MESSAGE_PENDING 2
+I2C2_STUCK_START 3
+I2C2_MESSAGE_ADDRESS_NO_ACK 4
+I2C2_DATA_NO_ACK 5
+I2C2_LOST_STATE 6
+]
+"186
+[e E3061 . `uc
+S_MASTER_IDLE 0
+S_MASTER_RESTART 1
+S_MASTER_SEND_ADDR 2
+S_MASTER_SEND_DATA 3
+S_MASTER_SEND_STOP 4
+S_MASTER_ACK_ADDR 5
+S_MASTER_RCV_DATA 6
+S_MASTER_RCV_STOP 7
+S_MASTER_ACK_RCV_DATA 8
+S_MASTER_NOACK_STOP 9
+S_MASTER_SEND_ADDR_10BIT_LSB 10
+S_MASTER_10BIT_RESTART 11
+]
+"81 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/adc.c
+[e E2996 . `uc
+channel_Temp 29
+channel_DAC 30
+channel_FVR 31
+]
+"13 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\sensors.c
+[e E3141 . `uc
+channel_Temp 29
+channel_DAC 30
+channel_FVR 31
+]
+"60 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\main.c
+[e E3332 . `uc
+DOOR_OPEN 1
+DOOR_CLOSED 0
+DOOR_ERROR 2
+]
+"51 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\wireless.c
+[e E3332 . `uc
+DOOR_OPEN 1
+DOOR_CLOSED 0
+DOOR_ERROR 2
+]
+"6 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[e E3332 . `uc
+DOOR_OPEN 1
+DOOR_CLOSED 0
+DOOR_ERROR 2
+]
+"6 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\i2c_wrapper.c
+[e E3025 . `uc
+I2C2_MESSAGE_COMPLETE 0
+I2C2_MESSAGE_FAIL 1
+I2C2_MESSAGE_PENDING 2
+I2C2_STUCK_START 3
+I2C2_MESSAGE_ADDRESS_NO_ACK 4
+I2C2_DATA_NO_ACK 5
+I2C2_LOST_STATE 6
+]
+"39 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\bmp280.c
+[v _BMP_init BMP_init `(v  1 e 1 0 ]
+"72
+[v _BMP_readTemperature BMP_readTemperature `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"42 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\atan.c
+[v _atan atan `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\atan2.c
+[v _atan2 atan2 `(d  1 e 3 0 ]
+"32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\evalpoly.c
+[v _eval_poly eval_poly `(d  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fabs.c
+[v _fabs fabs `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"18 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
+"15 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\diagnostics.c
+[v _Diag_setTempSensorHealth Diag_setTempSensorHealth `(v  1 e 1 0 ]
+"20
+[v _Diag_setCompassHealth Diag_setCompassHealth `(v  1 e 1 0 ]
+"25
+[v _Diag_getTempSensorHealth Diag_getTempSensorHealth `(uc  1 e 1 0 ]
+"30
+[v _Diag_getCompassHealth Diag_getCompassHealth `(uc  1 e 1 0 ]
+"35
+[v _Diag_getSensorHealth Diag_getSensorHealth `(uc  1 e 1 0 ]
+"10 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[v _DOOR_init DOOR_init `(v  1 e 1 0 ]
+"16
+[v _DOOR_update DOOR_update `(v  1 e 1 0 ]
+"24
+[v _DOOR_run DOOR_run `(E3332  1 e 1 0 ]
+"65
+[v _DOOR_resetPos DOOR_resetPos `(E3332  1 e 1 0 ]
+"48 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\hmc5883l.c
+[v _HMC5883L_Initialize HMC5883L_Initialize `(v  1 e 1 0 ]
+"88
+[v _HMC5883L_WakeUp HMC5883L_WakeUp `(v  1 e 1 0 ]
+"221
+[v _HMC5883L_SetGain HMC5883L_SetGain `(v  1 e 1 0 ]
+"270
+[v _HMC5883L_SetMode HMC5883L_SetMode `(v  1 e 1 0 ]
+"290
+[v _HMC5883L_GetHeading HMC5883L_GetHeading `(uc  1 e 1 0 ]
+"318
+[v _HMC5883L_GetCompassDirection HMC5883L_GetCompassDirection `(i  1 e 2 0 ]
+"374
+[v _HMC5883L_WriteBits HMC5883L_WriteBits `(uc  1 e 1 0 ]
+"418
+[v _HMC5883L_ReadBits HMC5883L_ReadBits `(uc  1 e 1 0 ]
+"439
+[v _HMC5883L_ReadBit HMC5883L_ReadBit `(uc  1 e 1 0 ]
+"458
+[v _HMC5883L_I2C_ByteWrite HMC5883L_I2C_ByteWrite `(uc  1 e 1 0 ]
+"471
+[v _HMC5883L_I2C_BufferRead HMC5883L_I2C_BufferRead `(uc  1 e 1 0 ]
+"3 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\i2c_wrapper.c
+[v _I2C_ByteWrite I2C_ByteWrite `(uc  1 e 1 0 ]
+"30
+[v _I2C_BufferRead I2C_BufferRead `(uc  1 e 1 0 ]
+"58 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"62 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"80
+[v _ADC_SelectChannel ADC_SelectChannel `(v  1 e 1 0 ]
+"88
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+"95
+[v _ADC_IsConversionDone ADC_IsConversionDone `(uc  1 e 1 0 ]
+"101
+[v _ADC_GetConversionResult ADC_GetConversionResult `(ui  1 e 2 0 ]
+"57 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/fvr.c
+[v _FVR_Initialize FVR_Initialize `(v  1 e 1 0 ]
+"63
+[v _FVR_IsOutputReady FVR_IsOutputReady `(uc  1 e 1 0 ]
+"198 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/i2c2.c
+[v _I2C2_Initialize I2C2_Initialize `(v  1 e 1 0 ]
+"233
+[v _I2C2_ISR I2C2_ISR `(v  1 e 1 0 ]
+"563
+[v _I2C2_FunctionComplete I2C2_FunctionComplete `(v  1 e 1 0 ]
+"581
+[v _I2C2_Stop I2C2_Stop `(v  1 e 1 0 ]
+"598
+[v _I2C2_MasterWrite I2C2_MasterWrite `(v  1 e 1 0 ]
+"619
+[v _I2C2_MasterRead I2C2_MasterRead `(v  1 e 1 0 ]
+"641
+[v _I2C2_MasterTRBInsert I2C2_MasterTRBInsert `(v  1 e 1 0 ]
+"695
+[v _I2C2_MasterReadTRBBuild I2C2_MasterReadTRBBuild `(v  1 e 1 0 ]
+"708
+[v _I2C2_MasterWriteTRBBuild I2C2_MasterWriteTRBBuild `(v  1 e 1 0 ]
+"729
+[v _I2C2_BusCollisionISR I2C2_BusCollisionISR `(v  1 e 1 0 ]
+"51 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"70 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"84
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"94
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"57 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/memory.c
+[v _FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
+"94
+[v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+"155
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+"186
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+"210
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+"54 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"110
+[v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
+"124
+[v _IOCAF2_ISR IOCAF2_ISR `(v  1 e 1 0 ]
+"139
+[v _IOCAF2_SetInterruptHandler IOCAF2_SetInterruptHandler `(v  1 e 1 0 ]
+"146
+[v _IOCAF2_DefaultInterruptHandler IOCAF2_DefaultInterruptHandler `(v  1 e 1 0 ]
+"63 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/spi1.c
+[v _SPI1_Initialize SPI1_Initialize `(v  1 e 1 0 ]
+"77
+[v _SPI1_Exchange8bit SPI1_Exchange8bit `(uc  1 e 1 0 ]
+"63 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"157
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+"171
+[v _TMR1_CallBack TMR1_CallBack `(v  1 e 1 0 ]
+"181
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+"185
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+"61 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+"73 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\MPU6050.c
+[v _MPU6050_GetDeviceID MPU6050_GetDeviceID `(uc  1 e 1 0 ]
+"111
+[v _MPU6050_SetClockSource MPU6050_SetClockSource `(v  1 e 1 0 ]
+"124
+[v _MPU6050_SetFullScaleGyroRange MPU6050_SetFullScaleGyroRange `(v  1 e 1 0 ]
+"183
+[v _MPU6050_SetFullScaleAccelRange MPU6050_SetFullScaleAccelRange `(v  1 e 1 0 ]
+"212
+[v _MPU6050_SetSleepModeStatus MPU6050_SetSleepModeStatus `(v  1 e 1 0 ]
+"265
+[v _MPU6050_WriteBits MPU6050_WriteBits `(v  1 e 1 0 ]
+"284
+[v _MPU6050_WriteByte MPU6050_WriteByte `(v  1 e 1 0 ]
+"295
+[v _MPU6050_WriteBit MPU6050_WriteBit `(v  1 e 1 0 ]
+"311
+[v _MPU6050_ReadBits MPU6050_ReadBits `(v  1 e 1 0 ]
+"333
+[v _MPU6050_ReadBit MPU6050_ReadBit `(v  1 e 1 0 ]
+"354
+[v _MPU6050_I2C_ByteWrite MPU6050_I2C_ByteWrite `(v  1 e 1 0 ]
+"381
+[v _MPU6050_I2C_BufferRead MPU6050_I2C_BufferRead `(v  1 e 1 0 ]
+"26 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\nrf24.c
+[v _SPI_WriteRead SPI_WriteRead `(uc  1 s 1 SPI_WriteRead ]
+"43
+[v _SPI_WriteReadBuffer SPI_WriteReadBuffer `(v  1 s 1 SPI_WriteReadBuffer ]
+"56
+[v _SPI_WriteBuffer SPI_WriteBuffer `(v  1 s 1 SPI_WriteBuffer ]
+"69
+[v _RF_WriteRegister RF_WriteRegister `(v  1 e 1 0 ]
+"82
+[v _RF_ReadRegister RF_ReadRegister `(uc  1 e 1 0 ]
+"99
+[v _RF_ReadRegisterData RF_ReadRegisterData `(v  1 e 1 0 ]
+"113
+[v _RF_WriteRegisterData RF_WriteRegisterData `(v  1 e 1 0 ]
+"126
+[v _RF_WriteRead RF_WriteRead `(uc  1 e 1 0 ]
+"139
+[v _RF_Write RF_Write `(v  1 e 1 0 ]
+"158
+[v _RF_ResetStatusIRQ RF_ResetStatusIRQ `(v  1 e 1 0 ]
+"173
+[v _RF_TxPayload RF_TxPayload `(v  1 e 1 0 ]
+"186
+[v _RF_RxPayload RF_RxPayload `(v  1 e 1 0 ]
+"195
+[v _RF_Init RF_Init `(v  1 e 1 0 ]
+"202
+[v _RF_DataIsReady RF_DataIsReady `(uc  1 e 1 0 ]
+"6 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\sensors.c
+[v _Sensor_getSupplyVoltage Sensor_getSupplyVoltage `(f  1 e 3 0 ]
+"26
+[v _Sensor_peripheralSleep Sensor_peripheralSleep `(v  1 e 1 0 ]
+"32
+[v _Sensor_peripheralWake Sensor_peripheralWake `(v  1 e 1 0 ]
+"8 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\storage.c
+[v _Storage_load Storage_load `(v  1 e 1 0 ]
+"30
+[v _Storage_save Storage_save `(v  1 e 1 0 ]
+"7 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\timeout.c
+[v _Timeout_increment Timeout_increment `(v  1 e 1 0 ]
+"12
+[v _Timeout_setTimeout Timeout_setTimeout `(v  1 e 1 0 ]
+"18
+[v _Timeout_hasExpired Timeout_hasExpired `(uc  1 e 1 0 ]
+"11 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\wireless.c
+[v _Wireless_init Wireless_init `(v  1 e 1 0 ]
+"42
+[v _Wireless_sendData Wireless_sendData `(v  1 e 1 0 ]
+"50
+[v _Wireless_packageData Wireless_packageData `(v  1 e 1 0 ]
+"84
+[v _Wireless_sleep Wireless_sleep `(v  1 e 1 0 ]
+"94
+[v _Wireless_wake Wireless_wake `(v  1 e 1 0 ]
+"104
+[v _Wireless_checkDataReceived Wireless_checkDataReceived `(v  1 e 1 0 ]
+"10 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\bmp280.c
+[v _b1 b1 `[24]uc  1 e 24 0 ]
+"11
+[v _data data `[8]uc  1 e 8 0 ]
+"15
+[v _dig_T1 dig_T1 `ui  1 e 2 0 ]
+"16
+[v _dig_T2 dig_T2 `i  1 e 2 0 ]
+"17
+[v _dig_T3 dig_T3 `i  1 e 2 0 ]
+"31
+[v _adc_t adc_t `l  1 e 4 0 ]
+"32
+[v _var1 var1 `d  1 e 3 0 ]
+"33
+[v _var2 var2 `d  1 e 3 0 ]
+"34
+[v _t_fine t_fine `d  1 e 3 0 ]
+"35
+[v _cTemp cTemp `d  1 e 3 0 ]
+[s S185 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"372 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1829.h
+[s S194 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S199 . 1 `S185 1 . 1 0 `S194 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES199  1 e 1 @11 ]
+[s S1284 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"533
+[u S1293 . 1 `S1284 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES1293  1 e 1 @14 ]
+[s S270 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"595
+[u S279 . 1 `S270 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES279  1 e 1 @17 ]
+[s S373 . 1 `uc 1 SSP2IF 1 0 :1:0 
+`uc 1 BCL2IF 1 0 :1:1 
+]
+"742
+[u S376 . 1 `S373 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES376  1 e 1 @20 ]
+"784
+[v _TMR1L TMR1L `VEuc  1 e 1 @22 ]
+"804
+[v _TMR1H TMR1H `VEuc  1 e 1 @23 ]
+"824
+[v _T1CON T1CON `VEuc  1 e 1 @24 ]
+[s S486 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+"846
+[s S495 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[u S499 . 1 `S486 1 . 1 0 `S495 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES499  1 e 1 @24 ]
+"896
+[v _T1GCON T1GCON `VEuc  1 e 1 @25 ]
+[s S516 . 1 `uc 1 T1GSS0 1 0 :1:0 
+`uc 1 T1GSS1 1 0 :1:1 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 TMR1GE 1 0 :1:7 
+]
+"916
+[s S525 . 1 `uc 1 T1GSS 1 0 :2:0 
+]
+[u S527 . 1 `S516 1 . 1 0 `S525 1 . 1 0 ]
+[v _T1GCONbits T1GCONbits `VES527  1 e 1 @25 ]
+"966
+[v _TMR2 TMR2 `VEuc  1 e 1 @26 ]
+"986
+[v _PR2 PR2 `VEuc  1 e 1 @27 ]
+"1006
+[v _T2CON T2CON `VEuc  1 e 1 @28 ]
+[s S292 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 T2OUTPS0 1 0 :1:3 
+`uc 1 T2OUTPS1 1 0 :1:4 
+`uc 1 T2OUTPS2 1 0 :1:5 
+`uc 1 T2OUTPS3 1 0 :1:6 
+]
+"1027
+[s S300 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 T2OUTPS 1 0 :4:3 
+]
+[u S304 . 1 `S292 1 . 1 0 `S300 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES304  1 e 1 @28 ]
+"1183
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1233
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1272
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S390 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1351
+[u S399 . 1 `S390 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES399  1 e 1 @145 ]
+[s S364 . 1 `uc 1 SSP2IE 1 0 :1:0 
+`uc 1 BCL2IE 1 0 :1:1 
+]
+"1498
+[u S367 . 1 `S364 1 . 1 0 ]
+[v _PIE4bits PIE4bits `VES367  1 e 1 @148 ]
+[s S75 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1536
+[s S84 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S89 . 1 `S75 1 . 1 0 `S84 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES89  1 e 1 @149 ]
+"1647
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"1706
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"1764
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1905
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1925
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"1945
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+[s S839 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+"1970
+[s S847 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADGO 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S851 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[u S854 . 1 `S839 1 . 1 0 `S847 1 . 1 0 `S851 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES854  1 e 1 @157 ]
+"2025
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+"2097
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2142
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2181
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+[s S1244 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"2198
+[u S1253 . 1 `S1244 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1253  1 e 1 @270 ]
+"2515
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"2542
+[v _FVRCON FVRCON `VEuc  1 e 1 @279 ]
+[s S900 . 1 `uc 1 ADFVR0 1 0 :1:0 
+`uc 1 ADFVR1 1 0 :1:1 
+`uc 1 CDAFVR0 1 0 :1:2 
+`uc 1 CDAFVR1 1 0 :1:3 
+`uc 1 TSRNG 1 0 :1:4 
+`uc 1 TSEN 1 0 :1:5 
+`uc 1 FVRRDY 1 0 :1:6 
+`uc 1 FVREN 1 0 :1:7 
+]
+"2563
+[s S909 . 1 `uc 1 ADFVR 1 0 :2:0 
+`uc 1 CDAFVR 1 0 :2:2 
+]
+[u S912 . 1 `S900 1 . 1 0 `S909 1 . 1 0 ]
+[v _FVRCONbits FVRCONbits `VES912  1 e 1 @279 ]
+"2864
+[v _APFCON0 APFCON0 `VEuc  1 e 1 @285 ]
+"2898
+[v _APFCON1 APFCON1 `VEuc  1 e 1 @286 ]
+"2948
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"2995
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3031
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"3097
+[v _EEADRL EEADRL `VEuc  1 e 1 @401 ]
+"3117
+[v _EEADRH EEADRH `VEuc  1 e 1 @402 ]
+"3144
+[v _EEDATL EEDATL `VEuc  1 e 1 @403 ]
+"3182
+[v _EEDATH EEDATH `VEuc  1 e 1 @404 ]
+[s S1021 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"3219
+[u S1030 . 1 `S1021 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES1030  1 e 1 @405 ]
+"3264
+[v _EECON2 EECON2 `VEuc  1 e 1 @406 ]
+"3599
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"3657
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"3705
+[v _WPUC WPUC `VEuc  1 e 1 @526 ]
+[s S1199 . 1 `uc 1 WPUC0 1 0 :1:0 
+`uc 1 WPUC1 1 0 :1:1 
+`uc 1 WPUC2 1 0 :1:2 
+`uc 1 WPUC3 1 0 :1:3 
+`uc 1 WPUC4 1 0 :1:4 
+`uc 1 WPUC5 1 0 :1:5 
+`uc 1 WPUC6 1 0 :1:6 
+`uc 1 WPUC7 1 0 :1:7 
+]
+"3725
+[s S1208 . 1 `uc 1 WPUC 1 0 :8:0 
+]
+[u S1210 . 1 `S1199 1 . 1 0 `S1208 1 . 1 0 ]
+[v _WPUCbits WPUCbits `VES1210  1 e 1 @526 ]
+"3775
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+"3813
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
+"3889
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @532 ]
+[s S1127 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"3911
+[u S1136 . 1 `S1127 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES1136  1 e 1 @532 ]
+"4011
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+[s S645 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"4040
+[s S654 . 1 `uc 1 SSPM 1 0 :4:0 
+]
+[u S656 . 1 `S645 1 . 1 0 `S654 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES656  1 e 1 @533 ]
+"4459
+[v _SSP2BUF SSP2BUF `VEuc  1 e 1 @537 ]
+"4479
+[v _SSP2ADD SSP2ADD `VEuc  1 e 1 @538 ]
+"4519
+[v _SSP2STAT SSP2STAT `VEuc  1 e 1 @540 ]
+"4581
+[v _SSP2CON1 SSP2CON1 `VEuc  1 e 1 @541 ]
+"4601
+[v _SSP2CON1bits SSP2CON1bits `VES656  1 e 1 @541 ]
+[s S671 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"4668
+[u S680 . 1 `S671 1 . 1 0 ]
+[v _SSP2CON2bits SSP2CON2bits `VES680  1 e 1 @542 ]
+"4713
+[v _SSP2CON3 SSP2CON3 `VEuc  1 e 1 @543 ]
+[s S153 . 1 `uc 1 IOCAP0 1 0 :1:0 
+`uc 1 IOCAP1 1 0 :1:1 
+`uc 1 IOCAP2 1 0 :1:2 
+`uc 1 IOCAP3 1 0 :1:3 
+`uc 1 IOCAP4 1 0 :1:4 
+`uc 1 IOCAP5 1 0 :1:5 
+]
+"6009
+[s S160 . 1 `uc 1 IOCAP 1 0 :6:0 
+]
+[u S162 . 1 `S153 1 . 1 0 `S160 1 . 1 0 ]
+[v _IOCAPbits IOCAPbits `VES162  1 e 1 @913 ]
+[s S131 . 1 `uc 1 IOCAN0 1 0 :1:0 
+`uc 1 IOCAN1 1 0 :1:1 
+`uc 1 IOCAN2 1 0 :1:2 
+`uc 1 IOCAN3 1 0 :1:3 
+`uc 1 IOCAN4 1 0 :1:4 
+`uc 1 IOCAN5 1 0 :1:5 
+]
+"6067
+[s S138 . 1 `uc 1 IOCAN 1 0 :6:0 
+]
+[u S140 . 1 `S131 1 . 1 0 `S138 1 . 1 0 ]
+[v _IOCANbits IOCANbits `VES140  1 e 1 @914 ]
+[s S109 . 1 `uc 1 IOCAF0 1 0 :1:0 
+`uc 1 IOCAF1 1 0 :1:1 
+`uc 1 IOCAF2 1 0 :1:2 
+`uc 1 IOCAF3 1 0 :1:3 
+`uc 1 IOCAF4 1 0 :1:4 
+`uc 1 IOCAF5 1 0 :1:5 
+]
+"6125
+[s S116 . 1 `uc 1 IOCAF 1 0 :6:0 
+]
+[u S118 . 1 `S109 1 . 1 0 `S116 1 . 1 0 ]
+[v _IOCAFbits IOCAFbits `VES118  1 e 1 @915 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\errno.c
+[v _errno errno `i  1 e 2 0 ]
+[s S1938 . 2 `uc 1 tempSensorHealth 1 0 `uc 1 compassHealth 1 1 ]
+"13 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\diagnostics.c
+[v _sensorHealth sensorHealth `S1938  1 e 2 0 ]
+"4 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[v _doorOpenAngle doorOpenAngle `uc  1 e 1 0 ]
+"5
+[v _doorClosedAngle doorClosedAngle `uc  1 e 1 0 ]
+"6
+[v _doorState doorState `E3332  1 e 1 0 ]
+"7
+[v _initialised initialised `uc  1 e 1 0 ]
+"8
+[v _referenceDirection referenceDirection `i  1 e 2 0 ]
+"33 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\hmc5883l.c
+[v _HMC5883Lmode HMC5883Lmode `uc  1 e 1 0 ]
+[s S1511 . 8 `ui 1 heading_direction 2 0 `[6]uc 1 rawData 6 2 ]
+"34
+[v _heading heading `S1511  1 e 8 0 ]
+"56 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\main.c
+[v _sensorUpdatePeriod sensorUpdatePeriod `l  1 e 4 0 ]
+[s S587 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"184 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/i2c2.c
+[s S599 . 4 `uc 1 count 1 0 `*.5S587 1 ptrb_list 1 1 `*.39E2993 1 pTrFlag 2 2 ]
+[v _i2c2_tr_queue i2c2_tr_queue `[1]S599  1 s 4 i2c2_tr_queue ]
+"185
+[s S603 . 1 `uc 1 full 1 0 :1:0 
+`uc 1 empty 1 0 :1:1 
+`uc 1 reserved 1 0 :6:2 
+]
+[u S607 . 1 `S603 1 s 1 0 `uc 1 status 1 0 ]
+[s S610 . 5 `*.5S599 1 pTrTail 1 0 `*.5S599 1 pTrHead 1 1 `S607 1 trStatus 1 2 `uc 1 i2cDoneFlag 1 3 `uc 1 i2cErrors 1 4 ]
+[v _i2c2_object i2c2_object `S610  1 s 5 i2c2_object ]
+"186
+[v _i2c2_state i2c2_state `E3061  1 s 1 i2c2_state ]
+"187
+[v _i2c2_trb_count i2c2_trb_count `uc  1 s 1 i2c2_trb_count ]
+"189
+[v _p_i2c2_trb_current p_i2c2_trb_current `*.5S587  1 s 1 p_i2c2_trb_current ]
+"190
+[v _p_i2c2_current p_i2c2_current `*.5S599  1 s 1 p_i2c2_current ]
+"51 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/pin_manager.c
+[v _IOCAF2_InterruptHandler IOCAF2_InterruptHandler `*.37(v  1 e 2 0 ]
+"56 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEui  1 e 2 0 ]
+"57
+[v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
+"11 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\nrf24.c
+[v _addressSize addressSize `uc  1 e 1 0 ]
+"3 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\timeout.c
+[v _globalCounter globalCounter `VEul  1 e 4 0 ]
+"4
+[v _curr curr `ul  1 e 4 0 ]
+"5
+[v _timeOut timeOut `us  1 e 2 0 ]
+"58 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"62
+[v main@doorOpenTime doorOpenTime `ul  1 a 4 5 ]
+"61
+[v main@doorClosedUpdateCounter doorClosedUpdateCounter `ul  1 a 4 0 ]
+"60
+[v main@doorStatus doorStatus `E3332  1 a 1 9 ]
+[v main@prevDoorStatus prevDoorStatus `E3332  1 a 1 4 ]
+"155
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 10 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 14 ]
+"6
+[v ___lldiv@divisor divisor `ul  1 p 4 1 ]
+[v ___lldiv@dividend dividend `ul  1 p 4 5 ]
+"31
+} 0
+"94 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\wireless.c
+[v _Wireless_wake Wireless_wake `(v  1 e 1 0 ]
+{
+"96
+[v Wireless_wake@reg reg `uc  1 a 1 16 ]
+"102
+} 0
+"84
+[v _Wireless_sleep Wireless_sleep `(v  1 e 1 0 ]
+{
+"86
+[v Wireless_sleep@reg reg `uc  1 a 1 16 ]
+"92
+} 0
+"50
+[v _Wireless_packageData Wireless_packageData `(v  1 e 1 0 ]
+{
+[v Wireless_packageData@status status `E3332  1 a 1 wreg ]
+"63
+[v Wireless_packageData@data data `[5]uc  1 a 5 32 ]
+"60
+[v Wireless_packageData@t1 t1 `i  1 a 2 41 ]
+"61
+[v Wireless_packageData@t2 t2 `i  1 a 2 39 ]
+"62
+[v Wireless_packageData@var var `uc  1 a 1 37 ]
+"50
+[v Wireless_packageData@status status `E3332  1 a 1 wreg ]
+[v Wireless_packageData@openTime openTime `uc  1 p 1 26 ]
+[v Wireless_packageData@tempC tempC `f  1 p 3 27 ]
+"60
+[v Wireless_packageData@status status `E3332  1 a 1 38 ]
+"81
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 3 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 1 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 4 ]
+"51
+} 0
+"42 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\wireless.c
+[v _Wireless_sendData Wireless_sendData `(v  1 e 1 0 ]
+{
+[v Wireless_sendData@payload payload `*.4uc  1 a 1 wreg ]
+[v Wireless_sendData@payload payload `*.4uc  1 a 1 wreg ]
+"45
+[v Wireless_sendData@payload payload `*.4uc  1 a 1 18 ]
+"47
+} 0
+"173 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\nrf24.c
+[v _RF_TxPayload RF_TxPayload `(v  1 e 1 0 ]
+{
+[v RF_TxPayload@payload payload `*.4uc  1 a 1 wreg ]
+[v RF_TxPayload@payload payload `*.4uc  1 a 1 wreg ]
+[v RF_TxPayload@payloadSize payloadSize `uc  1 p 1 14 ]
+[v RF_TxPayload@payload payload `*.4uc  1 a 1 16 ]
+"179
+} 0
+"139
+[v _RF_Write RF_Write `(v  1 e 1 0 ]
+{
+[v RF_Write@val val `uc  1 a 1 wreg ]
+[v RF_Write@val val `uc  1 a 1 wreg ]
+[v RF_Write@val val `uc  1 a 1 3 ]
+"144
+} 0
+"104 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\wireless.c
+[v _Wireless_checkDataReceived Wireless_checkDataReceived `(v  1 e 1 0 ]
+{
+"112
+[v Wireless_checkDataReceived@data data `[4]uc  1 a 4 23 ]
+"111
+[v Wireless_checkDataReceived@channel channel `uc  1 a 1 27 ]
+"142
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 9 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 1 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 5 ]
+"129
+} 0
+"186 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\nrf24.c
+[v _RF_RxPayload RF_RxPayload `(v  1 e 1 0 ]
+{
+[v RF_RxPayload@payload payload `*.4uc  1 a 1 wreg ]
+[v RF_RxPayload@payload payload `*.4uc  1 a 1 wreg ]
+[v RF_RxPayload@payloadSize payloadSize `uc  1 p 1 15 ]
+[v RF_RxPayload@payload payload `*.4uc  1 a 1 18 ]
+"190
+} 0
+"99
+[v _RF_ReadRegisterData RF_ReadRegisterData `(v  1 e 1 0 ]
+{
+[v RF_ReadRegisterData@reg reg `uc  1 a 1 wreg ]
+[v RF_ReadRegisterData@reg reg `uc  1 a 1 wreg ]
+[v RF_ReadRegisterData@buf buf `*.4uc  1 p 1 10 ]
+[v RF_ReadRegisterData@bufSize bufSize `uc  1 p 1 11 ]
+[v RF_ReadRegisterData@reg reg `uc  1 a 1 14 ]
+"105
+} 0
+"43
+[v _SPI_WriteReadBuffer SPI_WriteReadBuffer `(v  1 s 1 SPI_WriteReadBuffer ]
+{
+[v SPI_WriteReadBuffer@bufOut bufOut `*.4uc  1 a 1 wreg ]
+"44
+[v SPI_WriteReadBuffer@i i `uc  1 a 1 9 ]
+"43
+[v SPI_WriteReadBuffer@bufOut bufOut `*.4uc  1 a 1 wreg ]
+[v SPI_WriteReadBuffer@bufIn bufIn `*.4uc  1 p 1 3 ]
+[v SPI_WriteReadBuffer@bufSize bufSize `uc  1 p 1 4 ]
+"46
+[v SPI_WriteReadBuffer@bufOut bufOut `*.4uc  1 a 1 8 ]
+"49
+} 0
+"202
+[v _RF_DataIsReady RF_DataIsReady `(uc  1 e 1 0 ]
+{
+[v RF_DataIsReady@channel channel `*.4uc  1 a 1 wreg ]
+"204
+[v RF_DataIsReady@status status `uc  1 a 1 8 ]
+"202
+[v RF_DataIsReady@channel channel `*.4uc  1 a 1 wreg ]
+"205
+[v RF_DataIsReady@channel channel `*.4uc  1 a 1 7 ]
+"212
+} 0
+"82
+[v _RF_ReadRegister RF_ReadRegister `(uc  1 e 1 0 ]
+{
+[v RF_ReadRegister@reg reg `uc  1 a 1 wreg ]
+"83
+[v RF_ReadRegister@val val `uc  1 a 1 5 ]
+"82
+[v RF_ReadRegister@reg reg `uc  1 a 1 wreg ]
+"85
+[v RF_ReadRegister@reg reg `uc  1 a 1 4 ]
+"91
+} 0
+"16 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[v _DOOR_update DOOR_update `(v  1 e 1 0 ]
+{
+[v DOOR_update@openAngle openAngle `uc  1 a 1 wreg ]
+[v DOOR_update@openAngle openAngle `uc  1 a 1 wreg ]
+[v DOOR_update@closedAngle closedAngle `uc  1 p 1 7 ]
+"18
+[v DOOR_update@openAngle openAngle `uc  1 a 1 9 ]
+"21
+} 0
+"30 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\storage.c
+[v _Storage_save Storage_save `(v  1 e 1 0 ]
+{
+[v Storage_save@openAngle openAngle `uc  1 a 1 wreg ]
+[v Storage_save@openAngle openAngle `uc  1 a 1 wreg ]
+[v Storage_save@closeAngle closeAngle `uc  1 p 1 4 ]
+"32
+[v Storage_save@openAngle openAngle `uc  1 a 1 6 ]
+"35
+} 0
+"65 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[v _DOOR_resetPos DOOR_resetPos `(E3332  1 e 1 0 ]
+{
+"69
+} 0
+"6 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\sensors.c
+[v _Sensor_getSupplyVoltage Sensor_getSupplyVoltage `(f  1 e 3 0 ]
+{
+"9
+[v Sensor_getSupplyVoltage@voltage voltage `f  1 a 3 36 ]
+"8
+[v Sensor_getSupplyVoltage@res res `us  1 a 2 39 ]
+"24
+} 0
+"32
+[v _Sensor_peripheralWake Sensor_peripheralWake `(v  1 e 1 0 ]
+{
+"36
+} 0
+"26
+[v _Sensor_peripheralSleep Sensor_peripheralSleep `(v  1 e 1 0 ]
+{
+"30
+} 0
+"63 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/fvr.c
+[v _FVR_IsOutputReady FVR_IsOutputReady `(uc  1 e 1 0 ]
+{
+"66
+} 0
+"88 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/adc.c
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+"92
+} 0
+"80
+[v _ADC_SelectChannel ADC_SelectChannel `(v  1 e 1 0 ]
+{
+[v ADC_SelectChannel@channel channel `E2996  1 a 1 wreg ]
+[v ADC_SelectChannel@channel channel `E2996  1 a 1 wreg ]
+"83
+[v ADC_SelectChannel@channel channel `E2996  1 a 1 2 ]
+"86
+} 0
+"95
+[v _ADC_IsConversionDone ADC_IsConversionDone `(uc  1 e 1 0 ]
+{
+"99
+} 0
+"101
+[v _ADC_GetConversionResult ADC_GetConversionResult `(ui  1 e 2 0 ]
+{
+"105
+} 0
+"35 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\diagnostics.c
+[v _Diag_getSensorHealth Diag_getSensorHealth `(uc  1 e 1 0 ]
+{
+"38
+[v Diag_getSensorHealth@var var `uc  1 a 1 2 ]
+"45
+} 0
+"11 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\wireless.c
+[v _Wireless_init Wireless_init `(v  1 e 1 0 ]
+{
+"13
+[v Wireless_init@TADDR TADDR `DC[5]uc  1 s 5 TADDR ]
+"40
+} 0
+"113 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\nrf24.c
+[v _RF_WriteRegisterData RF_WriteRegisterData `(v  1 e 1 0 ]
+{
+[v RF_WriteRegisterData@reg reg `uc  1 a 1 wreg ]
+[v RF_WriteRegisterData@reg reg `uc  1 a 1 wreg ]
+[v RF_WriteRegisterData@buf buf `*.26uc  1 p 2 9 ]
+[v RF_WriteRegisterData@bufSize bufSize `uc  1 p 1 11 ]
+[v RF_WriteRegisterData@reg reg `uc  1 a 1 13 ]
+"119
+} 0
+"56
+[v _SPI_WriteBuffer SPI_WriteBuffer `(v  1 s 1 SPI_WriteBuffer ]
+{
+"57
+[v SPI_WriteBuffer@i i `uc  1 a 1 8 ]
+"56
+[v SPI_WriteBuffer@bufOut bufOut `*.26uc  1 p 2 3 ]
+[v SPI_WriteBuffer@bufSize bufSize `uc  1 p 1 5 ]
+"62
+} 0
+"158
+[v _RF_ResetStatusIRQ RF_ResetStatusIRQ `(v  1 e 1 0 ]
+{
+[v RF_ResetStatusIRQ@flags flags `uc  1 a 1 wreg ]
+[v RF_ResetStatusIRQ@flags flags `uc  1 a 1 wreg ]
+[v RF_ResetStatusIRQ@flags flags `uc  1 a 1 6 ]
+"166
+} 0
+"69
+[v _RF_WriteRegister RF_WriteRegister `(v  1 e 1 0 ]
+{
+[v RF_WriteRegister@reg reg `uc  1 a 1 wreg ]
+[v RF_WriteRegister@reg reg `uc  1 a 1 wreg ]
+[v RF_WriteRegister@val val `uc  1 p 1 3 ]
+[v RF_WriteRegister@reg reg `uc  1 a 1 4 ]
+"75
+} 0
+"26
+[v _SPI_WriteRead SPI_WriteRead `(uc  1 s 1 SPI_WriteRead ]
+{
+[v SPI_WriteRead@val val `uc  1 a 1 wreg ]
+[v SPI_WriteRead@val val `uc  1 a 1 wreg ]
+"34
+[v SPI_WriteRead@val val `uc  1 a 1 2 ]
+"35
+} 0
+"77 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/spi1.c
+[v _SPI1_Exchange8bit SPI1_Exchange8bit `(uc  1 e 1 0 ]
+{
+[v SPI1_Exchange8bit@data data `uc  1 a 1 wreg ]
+[v SPI1_Exchange8bit@data data `uc  1 a 1 wreg ]
+"80
+[v SPI1_Exchange8bit@data data `uc  1 a 1 1 ]
+"89
+} 0
+"195 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\nrf24.c
+[v _RF_Init RF_Init `(v  1 e 1 0 ]
+{
+"198
+} 0
+"70 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"82
+} 0
+"94
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"98
+} 0
+"61 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+{
+"76
+} 0
+"63 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"90
+} 0
+"181
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 1 ]
+"183
+} 0
+"63 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/spi1.c
+[v _SPI1_Initialize SPI1_Initialize `(v  1 e 1 0 ]
+{
+"75
+} 0
+"54 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"108
+} 0
+"139
+[v _IOCAF2_SetInterruptHandler IOCAF2_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v IOCAF2_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 1 ]
+"141
+} 0
+"84 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"92
+} 0
+"198 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/i2c2.c
+[v _I2C2_Initialize I2C2_Initialize `(v  1 e 1 0 ]
+{
+"222
+} 0
+"57 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/fvr.c
+[v _FVR_Initialize FVR_Initialize `(v  1 e 1 0 ]
+{
+"61
+} 0
+"62 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"78
+} 0
+"24 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[v _DOOR_run DOOR_run `(E3332  1 e 1 0 ]
+{
+"27
+[v DOOR_run@dir dir `i  1 a 2 54 ]
+"63
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 1 ]
+"9
+} 0
+"48 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\hmc5883l.c
+[v _HMC5883L_Initialize HMC5883L_Initialize `(v  1 e 1 0 ]
+{
+"52
+[v HMC5883L_Initialize@tmp tmp `uc  1 a 1 35 ]
+"62
+} 0
+"270
+[v _HMC5883L_SetMode HMC5883L_SetMode `(v  1 e 1 0 ]
+{
+[v HMC5883L_SetMode@newMode newMode `uc  1 a 1 wreg ]
+"274
+[v HMC5883L_SetMode@tmp tmp `uc  1 a 1 33 ]
+"270
+[v HMC5883L_SetMode@newMode newMode `uc  1 a 1 wreg ]
+"274
+[v HMC5883L_SetMode@newMode newMode `uc  1 a 1 32 ]
+"277
+} 0
+"221
+[v _HMC5883L_SetGain HMC5883L_SetGain `(v  1 e 1 0 ]
+{
+[v HMC5883L_SetGain@gain gain `uc  1 a 1 wreg ]
+"225
+[v HMC5883L_SetGain@tmp tmp `uc  1 a 1 33 ]
+"221
+[v HMC5883L_SetGain@gain gain `uc  1 a 1 wreg ]
+"225
+[v HMC5883L_SetGain@gain gain `uc  1 a 1 32 ]
+"227
+} 0
+"318
+[v _HMC5883L_GetCompassDirection HMC5883L_GetCompassDirection `(i  1 e 2 0 ]
+{
+"320
+[v HMC5883L_GetCompassDirection@rawSamples rawSamples `[3]i  1 a 6 42 ]
+"321
+[v HMC5883L_GetCompassDirection@h h `f  1 a 3 48 ]
+"329
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\atan2.c
+[v _atan2 atan2 `(d  1 e 3 0 ]
+{
+"10
+[v atan2@v v `d  1 a 3 37 ]
+"8
+[v atan2@y y `d  1 p 3 19 ]
+[v atan2@x x `d  1 p 3 22 ]
+"47
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\atan.c
+[v _atan atan `(d  1 e 3 0 ]
+{
+"28
+[v atan@val val `d  1 a 3 16 ]
+[v atan@val_squared val_squared `d  1 a 3 13 ]
+[v atan@x x `d  1 a 3 9 ]
+[v atan@y y `d  1 a 3 6 ]
+"27
+[v atan@recip recip `uc  1 a 1 12 ]
+"8
+[v atan@f f `d  1 p 3 3 ]
+"10
+[v atan@coeff_a coeff_a `DC[6]d  1 s 18 coeff_a ]
+"19
+[v atan@coeff_b coeff_b `DC[5]d  1 s 15 coeff_b ]
+"41
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fabs.c
+[v _fabs fabs `(d  1 e 3 0 ]
+{
+[v fabs@d d `d  1 p 3 36 ]
+"9
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftge.c
+[v ___ftge __ftge `(b  1 e 0 0 ]
+{
+[v ___ftge@ff1 ff1 `f  1 p 3 1 ]
+[v ___ftge@ff2 ff2 `f  1 p 3 4 ]
+"13
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\evalpoly.c
+[v _eval_poly eval_poly `(d  1 e 3 0 ]
+{
+"6
+[v eval_poly@res res `d  1 a 3 0 ]
+"4
+[v eval_poly@x x `d  1 p 3 70 ]
+[v eval_poly@d d `*.25DCd  1 p 2 73 ]
+[v eval_poly@n n `i  1 p 2 75 ]
+"12
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 5 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 1 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 3 ]
+"53
+} 0
+"18 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+{
+[v ___ftsub@f2 f2 `f  1 p 3 70 ]
+[v ___ftsub@f1 f1 `f  1 p 3 73 ]
+"27
+} 0
+"290 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\hmc5883l.c
+[v _HMC5883L_GetHeading HMC5883L_GetHeading `(uc  1 e 1 0 ]
+{
+[v HMC5883L_GetHeading@Mag Mag `*.4i  1 a 1 wreg ]
+"310
+[v HMC5883L_GetHeading@i i `i  1 a 2 52 ]
+"292
+[v HMC5883L_GetHeading@tmp tmp `uc  1 a 1 51 ]
+"293
+[v HMC5883L_GetHeading@status status `uc  1 a 1 50 ]
+"290
+[v HMC5883L_GetHeading@Mag Mag `*.4i  1 a 1 wreg ]
+"294
+[v HMC5883L_GetHeading@Mag Mag `*.4i  1 a 1 49 ]
+"316
+} 0
+"88
+[v _HMC5883L_WakeUp HMC5883L_WakeUp `(v  1 e 1 0 ]
+{
+"91
+} 0
+"374
+[v _HMC5883L_WriteBits HMC5883L_WriteBits `(uc  1 e 1 0 ]
+{
+[v HMC5883L_WriteBits@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+"379
+[v HMC5883L_WriteBits@mask mask `uc  1 a 1 43 ]
+"376
+[v HMC5883L_WriteBits@tmp tmp `uc  1 a 1 44 ]
+"374
+[v HMC5883L_WriteBits@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v HMC5883L_WriteBits@regAddr regAddr `uc  1 p 1 35 ]
+[v HMC5883L_WriteBits@bitStart bitStart `uc  1 p 1 36 ]
+[v HMC5883L_WriteBits@length length `uc  1 p 1 37 ]
+[v HMC5883L_WriteBits@data data `uc  1 p 1 38 ]
+"377
+[v HMC5883L_WriteBits@slaveAddr slaveAddr `uc  1 a 1 42 ]
+"389
+} 0
+"458
+[v _HMC5883L_I2C_ByteWrite HMC5883L_I2C_ByteWrite `(uc  1 e 1 0 ]
+{
+[v HMC5883L_I2C_ByteWrite@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v HMC5883L_I2C_ByteWrite@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v HMC5883L_I2C_ByteWrite@pBuffer pBuffer `*.4uc  1 p 1 25 ]
+[v HMC5883L_I2C_ByteWrite@WriteAddr WriteAddr `uc  1 p 1 26 ]
+"460
+[v HMC5883L_I2C_ByteWrite@slaveAddr slaveAddr `uc  1 a 1 29 ]
+"461
+} 0
+"20 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\diagnostics.c
+[v _Diag_setCompassHealth Diag_setCompassHealth `(v  1 e 1 0 ]
+{
+[v Diag_setCompassHealth@health health `uc  1 a 1 wreg ]
+[v Diag_setCompassHealth@health health `uc  1 a 1 wreg ]
+"22
+[v Diag_setCompassHealth@health health `uc  1 a 1 2 ]
+"23
+} 0
+"30
+[v _Diag_getCompassHealth Diag_getCompassHealth `(uc  1 e 1 0 ]
+{
+"33
+} 0
+"10 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\doorlogic.c
+[v _DOOR_init DOOR_init `(v  1 e 1 0 ]
+{
+"14
+} 0
+"8 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\storage.c
+[v _Storage_load Storage_load `(v  1 e 1 0 ]
+{
+[v Storage_load@openAngle openAngle `*.4uc  1 a 1 wreg ]
+"10
+[v Storage_load@byte byte `uc  1 a 1 6 ]
+"8
+[v Storage_load@openAngle openAngle `*.4uc  1 a 1 wreg ]
+[v Storage_load@closeAngle closeAngle `*.4uc  1 p 1 4 ]
+"12
+[v Storage_load@openAngle openAngle `*.4uc  1 a 1 7 ]
+"27
+} 0
+"186 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/memory.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+"188
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 3 ]
+"186
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 1 ]
+"188
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 2 ]
+"208
+} 0
+"210
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+{
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+"212
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 1 ]
+"220
+} 0
+"72 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\bmp280.c
+[v _BMP_readTemperature BMP_readTemperature `(f  1 e 3 0 ]
+{
+"74
+[v BMP_readTemperature@tmp tmp `uc  1 a 1 25 ]
+"75
+[v BMP_readTemperature@status status `uc  1 a 1 24 ]
+"125
+} 0
+"28 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+{
+[v ___lwtoft@c c `ui  1 p 2 9 ]
+"31
+} 0
+"44 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 1 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 5 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 0 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 70 ]
+"73
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+{
+[v ___ftneg@f1 f1 `f  1 p 3 33 ]
+"20
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 52 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 56 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 55 ]
+[v ___ftmul@exp exp `uc  1 a 1 51 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 41 ]
+[v ___ftmul@f2 f2 `f  1 p 3 44 ]
+"157
+} 0
+"56 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+{
+"60
+[v ___ftdiv@f3 f3 `f  1 a 3 28 ]
+"59
+[v ___ftdiv@sign sign `uc  1 a 1 32 ]
+[v ___ftdiv@exp exp `uc  1 a 1 31 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 27 ]
+"56
+[v ___ftdiv@f2 f2 `f  1 p 3 17 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 20 ]
+"86
+} 0
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+{
+"88
+[v ___ftadd@exp1 exp1 `uc  1 a 1 69 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 68 ]
+[v ___ftadd@sign sign `uc  1 a 1 67 ]
+"86
+[v ___ftadd@f1 f1 `f  1 p 3 57 ]
+[v ___ftadd@f2 f2 `f  1 p 3 60 ]
+"148
+} 0
+"32 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awtoft.c
+[v ___awtoft __awtoft `(f  1 e 3 0 ]
+{
+"34
+[v ___awtoft@sign sign `uc  1 a 1 14 ]
+"32
+[v ___awtoft@c c `i  1 p 2 9 ]
+"42
+} 0
+"42 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\altoft.c
+[v ___altoft __altoft `(f  1 e 3 0 ]
+{
+"44
+[v ___altoft@sign sign `uc  1 a 1 16 ]
+[v ___altoft@exp exp `uc  1 a 1 15 ]
+"42
+[v ___altoft@c c `l  1 p 4 9 ]
+"57
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 1 ]
+[v ___ftpack@exp exp `uc  1 p 1 4 ]
+[v ___ftpack@sign sign `uc  1 p 1 5 ]
+"86
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+{
+"11
+[v ___aldiv@quotient quotient `l  1 a 4 12 ]
+"12
+[v ___aldiv@sign sign `uc  1 a 1 11 ]
+[v ___aldiv@counter counter `uc  1 a 1 10 ]
+"6
+[v ___aldiv@divisor divisor `l  1 p 4 1 ]
+[v ___aldiv@dividend dividend `l  1 p 4 5 ]
+"42
+} 0
+"418 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\hmc5883l.c
+[v _HMC5883L_ReadBits HMC5883L_ReadBits `(uc  1 e 1 0 ]
+{
+[v HMC5883L_ReadBits@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+"424
+[v HMC5883L_ReadBits@mask mask `uc  1 a 1 43 ]
+"420
+[v HMC5883L_ReadBits@tmp tmp `uc  1 a 1 44 ]
+"418
+[v HMC5883L_ReadBits@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v HMC5883L_ReadBits@regAddr regAddr `uc  1 p 1 35 ]
+[v HMC5883L_ReadBits@bitStart bitStart `uc  1 p 1 36 ]
+[v HMC5883L_ReadBits@length length `uc  1 p 1 37 ]
+[v HMC5883L_ReadBits@data data `*.4uc  1 p 1 38 ]
+"422
+[v HMC5883L_ReadBits@slaveAddr slaveAddr `uc  1 a 1 42 ]
+"430
+} 0
+"471
+[v _HMC5883L_I2C_BufferRead HMC5883L_I2C_BufferRead `(uc  1 e 1 0 ]
+{
+[v HMC5883L_I2C_BufferRead@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v HMC5883L_I2C_BufferRead@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v HMC5883L_I2C_BufferRead@pBuffer pBuffer `*.39uc  1 p 2 28 ]
+[v HMC5883L_I2C_BufferRead@ReadAddr ReadAddr `uc  1 p 1 30 ]
+[v HMC5883L_I2C_BufferRead@NumByteToRead NumByteToRead `us  1 p 2 31 ]
+"473
+[v HMC5883L_I2C_BufferRead@slaveAddr slaveAddr `uc  1 a 1 34 ]
+"474
+} 0
+"25 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\diagnostics.c
+[v _Diag_getTempSensorHealth Diag_getTempSensorHealth `(uc  1 e 1 0 ]
+{
+"28
+} 0
+"39 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\bmp280.c
+[v _BMP_init BMP_init `(v  1 e 1 0 ]
+{
+"41
+[v BMP_init@t t `uc  1 a 1 31 ]
+"70
+} 0
+"3 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\i2c_wrapper.c
+[v _I2C_ByteWrite I2C_ByteWrite `(uc  1 e 1 0 ]
+{
+[v I2C_ByteWrite@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+"5
+[v I2C_ByteWrite@data data `[2]uc  1 a 2 22 ]
+"6
+[v I2C_ByteWrite@status status `E3025  1 a 1 24 ]
+"3
+[v I2C_ByteWrite@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v I2C_ByteWrite@pBuffer pBuffer `*.4uc  1 p 1 15 ]
+[v I2C_ByteWrite@WriteAddr WriteAddr `uc  1 p 1 16 ]
+"6
+[v I2C_ByteWrite@slaveAddr slaveAddr `uc  1 a 1 21 ]
+"26
+} 0
+"30
+[v _I2C_BufferRead I2C_BufferRead `(uc  1 e 1 0 ]
+{
+[v I2C_BufferRead@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+"32
+[v I2C_BufferRead@status status `E3025  1 a 1 27 ]
+"30
+[v I2C_BufferRead@slaveAddr slaveAddr `uc  1 a 1 wreg ]
+[v I2C_BufferRead@pBuffer pBuffer `*.39uc  1 p 2 17 ]
+[v I2C_BufferRead@ReadAddr ReadAddr `uc  1 p 1 19 ]
+[v I2C_BufferRead@NumByteToRead NumByteToRead `us  1 p 2 20 ]
+"32
+[v I2C_BufferRead@slaveAddr slaveAddr `uc  1 a 1 26 ]
+"56
+} 0
+"12 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\timeout.c
+[v _Timeout_setTimeout Timeout_setTimeout `(v  1 e 1 0 ]
+{
+[v Timeout_setTimeout@val val `us  1 p 2 1 ]
+"16
+} 0
+"18
+[v _Timeout_hasExpired Timeout_hasExpired `(uc  1 e 1 0 ]
+{
+"25
+} 0
+"598 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/i2c2.c
+[v _I2C2_MasterWrite I2C2_MasterWrite `(v  1 e 1 0 ]
+{
+"599
+[v I2C2_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
+[v I2C2_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
+"600
+[v I2C2_MasterWrite@length length `uc  1 p 1 8 ]
+"601
+[v I2C2_MasterWrite@address address `ui  1 p 2 9 ]
+"602
+[v I2C2_MasterWrite@pflag pflag `*.4E2993  1 p 1 11 ]
+[s S587 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"604
+[v I2C2_MasterWrite@trBlock trBlock `S587  1 s 5 trBlock ]
+"607
+[v I2C2_MasterWrite@pdata pdata `*.4uc  1 a 1 14 ]
+"617
+} 0
+"708
+[v _I2C2_MasterWriteTRBBuild I2C2_MasterWriteTRBBuild `(v  1 e 1 0 ]
+{
+[s S587 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"709
+[v I2C2_MasterWriteTRBBuild@ptrb ptrb `*.5S587  1 a 1 wreg ]
+[v I2C2_MasterWriteTRBBuild@ptrb ptrb `*.5S587  1 a 1 wreg ]
+"710
+[v I2C2_MasterWriteTRBBuild@pdata pdata `*.4uc  1 p 1 1 ]
+"711
+[v I2C2_MasterWriteTRBBuild@length length `uc  1 p 1 2 ]
+"712
+[v I2C2_MasterWriteTRBBuild@address address `ui  1 p 2 3 ]
+"714
+"709
+[v I2C2_MasterWriteTRBBuild@ptrb ptrb `*.5S587  1 a 1 7 ]
+"717
+} 0
+"619
+[v _I2C2_MasterRead I2C2_MasterRead `(v  1 e 1 0 ]
+{
+"620
+[v I2C2_MasterRead@pdata pdata `*.39uc  1 p 2 9 ]
+"621
+[v I2C2_MasterRead@length length `uc  1 p 1 11 ]
+"622
+[v I2C2_MasterRead@address address `ui  1 p 2 12 ]
+"623
+[v I2C2_MasterRead@pflag pflag `*.4E2993  1 p 1 14 ]
+[s S587 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"625
+[v I2C2_MasterRead@trBlock trBlock `S587  1 s 5 trBlock ]
+"639
+} 0
+"641
+[v _I2C2_MasterTRBInsert I2C2_MasterTRBInsert `(v  1 e 1 0 ]
+{
+"642
+[v I2C2_MasterTRBInsert@count count `uc  1 a 1 wreg ]
+[v I2C2_MasterTRBInsert@count count `uc  1 a 1 wreg ]
+[s S587 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"643
+[v I2C2_MasterTRBInsert@ptrb_list ptrb_list `*.5S587  1 p 1 1 ]
+"644
+[v I2C2_MasterTRBInsert@pflag pflag `*.4E2993  1 p 1 2 ]
+"648
+[v I2C2_MasterTRBInsert@count count `uc  1 a 1 4 ]
+"693
+} 0
+"695
+[v _I2C2_MasterReadTRBBuild I2C2_MasterReadTRBBuild `(v  1 e 1 0 ]
+{
+[s S587 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"696
+[v I2C2_MasterReadTRBBuild@ptrb ptrb `*.5S587  1 a 1 wreg ]
+[v I2C2_MasterReadTRBBuild@ptrb ptrb `*.5S587  1 a 1 wreg ]
+"697
+[v I2C2_MasterReadTRBBuild@pdata pdata `*.39uc  1 p 2 1 ]
+"698
+[v I2C2_MasterReadTRBBuild@length length `uc  1 p 1 3 ]
+"699
+[v I2C2_MasterReadTRBBuild@address address `ui  1 p 2 4 ]
+"701
+"696
+[v I2C2_MasterReadTRBBuild@ptrb ptrb `*.5S587  1 a 1 8 ]
+"706
+} 0
+"15 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\diagnostics.c
+[v _Diag_setTempSensorHealth Diag_setTempSensorHealth `(v  1 e 1 0 ]
+{
+[v Diag_setTempSensorHealth@health health `uc  1 a 1 wreg ]
+[v Diag_setTempSensorHealth@health health `uc  1 a 1 wreg ]
+"17
+[v Diag_setTempSensorHealth@health health `uc  1 a 1 2 ]
+"18
+} 0
+"51 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"74
+} 0
+"157 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr1.c
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+{
+"169
+} 0
+"171
+[v _TMR1_CallBack TMR1_CallBack `(v  1 e 1 0 ]
+{
+"179
+} 0
+"7 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\timeout.c
+[v _Timeout_increment Timeout_increment `(v  1 e 1 0 ]
+{
+"10
+} 0
+"185 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/tmr1.c
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"188
+} 0
+"110 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_IOC PIN_MANAGER_IOC `(v  1 e 1 0 ]
+{
+"119
+} 0
+"124
+[v _IOCAF2_ISR IOCAF2_ISR `(v  1 e 1 0 ]
+{
+"134
+} 0
+"146
+[v _IOCAF2_DefaultInterruptHandler IOCAF2_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"149
+} 0
+"233 C:\Users\Yayra Adugu\MPLABXProjects\DoorSensorV2.X\mcc_generated_files/i2c2.c
+[v _I2C2_ISR I2C2_ISR `(v  1 e 1 0 ]
+{
+"236
+[v I2C2_ISR@pi2c_buf_ptr pi2c_buf_ptr `*.39uc  1 s 2 pi2c_buf_ptr ]
+"237
+[v I2C2_ISR@i2c_address i2c_address `ui  1 s 2 i2c_address ]
+"238
+[v I2C2_ISR@i2c_bytes_left i2c_bytes_left `uc  1 s 1 i2c_bytes_left ]
+"239
+[v I2C2_ISR@i2c_10bit_address_restart i2c_10bit_address_restart `uc  1 s 1 i2c_10bit_address_restart ]
+"561
+} 0
+"581
+[v _I2C2_Stop I2C2_Stop `(v  1 e 1 0 ]
+{
+[v I2C2_Stop@completion_code completion_code `E2993  1 a 1 wreg ]
+[v I2C2_Stop@completion_code completion_code `E2993  1 a 1 wreg ]
+"584
+[v I2C2_Stop@completion_code completion_code `E2993  1 a 1 2 ]
+"596
+} 0
+"563
+[v _I2C2_FunctionComplete I2C2_FunctionComplete `(v  1 e 1 0 ]
+{
+"579
+} 0
+"729
+[v _I2C2_BusCollisionISR I2C2_BusCollisionISR `(v  1 e 1 0 ]
+{
+"732
+} 0
