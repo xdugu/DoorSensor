@@ -46,7 +46,7 @@ void Wireless_init(void)
 
 void Wireless_determineTransmitPower()
 {
-    
+    int i;
 }
 void Wireless_sendData(char* payload)
 {
