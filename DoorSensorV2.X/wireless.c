@@ -44,6 +44,10 @@ void Wireless_init(void)
   NRF_CE_SetLow();    /* Will pulse this later to send data */ 
 }
 
+void Wireless_determineTransmitPower()
+{
+    
+}
 void Wireless_sendData(char* payload)
 {
    /* clear interrupt flags */
