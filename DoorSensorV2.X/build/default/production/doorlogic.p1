@@ -2,20 +2,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "6 doorlogic.c
 [c E3332 1 0 2 .. ]
 [n E3332 . DOOR_OPEN DOOR_CLOSED DOOR_ERROR  ]
-"93 common.h
-[v _Storage_load `(v ~T0 @X0 0 ef2`*uc`*uc ]
-"94
+"99 common.h
 [v _Storage_save `(v ~T0 @X0 0 ef2`uc`uc ]
-"18 diagnostics.h
-[v _Diag_getCompassHealth `(uc ~T0 @X0 0 ef ]
-"121 hmc5883l.h
-[v _HMC5883L_Initialize `(v ~T0 @X0 0 ef ]
-"142
-[v _HMC5883L_GetCompassDirection `(i ~T0 @X0 0 ef ]
-"16 diagnostics.h
-[v _Diag_setCompassHealth `(v ~T0 @X0 0 ef1`uc ]
-"92 C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h
-[v _abs `(i ~T0 @X0 0 ef1`i ]
+"433 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1829.h
+[s S29 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S29 . RA0 RA1 RA2 RA3 RA4 RA5 ]
+"432
+[u S28 `S29 1 ]
+[n S28 . . ]
+"442
+[v _PORTAbits `VS28 ~T0 @X0 0 e@12 ]
+"93 common.h
+[v _Timeout_getGlobalCounter `(ul ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3162,38 +3160,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sensors.h: 15: float Sensor_getSupplyVoltage();
 [; ;sensors.h: 16: void Sensor_peripheralSleep(void);
 [; ;sensors.h: 17: void Sensor_peripheralWake(void);
-[; ;common.h: 52: typedef enum
-[; ;common.h: 53: {
-[; ;common.h: 54: DOOR_OPEN=1,
-[; ;common.h: 55: DOOR_CLOSED=0,
-[; ;common.h: 56: DOOR_ERROR=2
-[; ;common.h: 57: }DOOR;
-[; ;common.h: 61: typedef unsigned char uint8_t;
-[; ;common.h: 62: typedef unsigned char bool;
-[; ;common.h: 63: typedef unsigned char u8;
-[; ;common.h: 64: typedef signed char s8;
-[; ;common.h: 65: typedef unsigned int u16;
-[; ;common.h: 66: typedef signed int s16;
-[; ;common.h: 67: typedef signed long s32;
-[; ;common.h: 68: typedef unsigned long u32;
-[; ;common.h: 73: void DOOR_init();
-[; ;common.h: 74: void DOOR_update(char openAngle, char closedAngle);
-[; ;common.h: 75: DOOR DOOR_run();
-[; ;common.h: 76: DOOR DOOR_resetPos();
-[; ;common.h: 77: DOOR DOOR_getState();
-[; ;common.h: 79: void Wireless_init(void);
-[; ;common.h: 80: void Wireless_sendData(char* payload);
-[; ;common.h: 81: void Wireless_sleep();
-[; ;common.h: 82: void Wireless_wake();
-[; ;common.h: 83: void Wireless_packageData(DOOR status,char openTime, float tempC);
-[; ;common.h: 84: void Wireless_checkDataReceived(void);
-[; ;common.h: 86: void Timeout_increment();
-[; ;common.h: 87: void Timeout_setTimeout(u16 val);
-[; ;common.h: 88: bool Timeout_hasExpired();
-[; ;common.h: 90: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
-[; ;common.h: 91: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
-[; ;common.h: 93: void Storage_load(u8 *openAngle,u8 *closeAngle);
-[; ;common.h: 94: void Storage_save(u8 openAngle,u8 closeAngle);
+[; ;common.h: 55: typedef enum
+[; ;common.h: 56: {
+[; ;common.h: 57: DOOR_OPEN=1,
+[; ;common.h: 58: DOOR_CLOSED=0,
+[; ;common.h: 59: DOOR_ERROR=2
+[; ;common.h: 60: }DOOR;
+[; ;common.h: 64: typedef unsigned char uint8_t;
+[; ;common.h: 65: typedef unsigned char bool;
+[; ;common.h: 66: typedef unsigned char u8;
+[; ;common.h: 67: typedef signed char s8;
+[; ;common.h: 68: typedef unsigned int u16;
+[; ;common.h: 69: typedef signed int s16;
+[; ;common.h: 70: typedef signed long s32;
+[; ;common.h: 71: typedef unsigned long u32;
+[; ;common.h: 76: void DOOR_init();
+[; ;common.h: 77: void DOOR_update(char openAngle, char closedAngle);
+[; ;common.h: 78: DOOR DOOR_run();
+[; ;common.h: 79: DOOR DOOR_resetPos();
+[; ;common.h: 80: DOOR DOOR_getState();
+[; ;common.h: 82: void Wireless_init(void);
+[; ;common.h: 83: void Wireless_sendData(char* payload);
+[; ;common.h: 84: void Wireless_sleep();
+[; ;common.h: 85: void Wireless_wake();
+[; ;common.h: 86: void Wireless_packageData(DOOR status,char openTime, float tempC);
+[; ;common.h: 87: void Wireless_checkDataReceived(void);
+[; ;common.h: 89: void Timeout_increment();
+[; ;common.h: 90: void Timeout_setTimeout(u16 val);
+[; ;common.h: 91: bool Timeout_hasExpired();
+[; ;common.h: 92: void Timeout_updateCurrentTime(void);
+[; ;common.h: 93: unsigned long Timeout_getGlobalCounter();
+[; ;common.h: 95: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
+[; ;common.h: 96: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
+[; ;common.h: 98: void Storage_load(u8 *openAngle,u8 *closeAngle);
+[; ;common.h: 99: void Storage_save(u8 openAngle,u8 closeAngle);
+[; ;common.h: 101: void setSleepTime(u16 timeSec);
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -3273,9 +3274,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;doorlogic.c: 11: {
 [e :U _DOOR_init ]
 [f ]
-[; ;doorlogic.c: 13: Storage_load(&doorOpenAngle, &doorClosedAngle);
-"13
-[e ( _Storage_load (2 , &U _doorOpenAngle &U _doorClosedAngle ]
 [; ;doorlogic.c: 14: }
 "14
 [e :UE 380 ]
@@ -3305,150 +3303,130 @@ Version 3.2 HI-TECH Software Intermediate Code
 "21
 [e :UE 381 ]
 }
-"24
+"23
 [v _DOOR_run `(E3332 ~T0 @X0 1 ef ]
-"25
 {
-[; ;doorlogic.c: 24: DOOR DOOR_run()
-[; ;doorlogic.c: 25: {
+[; ;doorlogic.c: 23: DOOR DOOR_run(){
 [e :U _DOOR_run ]
 [f ]
+"24
+[v F3509 `E3332 ~T0 @X0 1 s previousDoorState ]
+[i F3509
+. `E3332 1
+]
+"25
+[v F3510 `ul ~T0 @X0 1 s doorStateDuration ]
+[i F3510
+-> -> -> 0 `i `l `ul
+]
+[; ;doorlogic.c: 24: static DOOR previousDoorState = DOOR_CLOSED;
+[; ;doorlogic.c: 25: static unsigned long doorStateDuration = 0;
+[; ;doorlogic.c: 27: if(PORTAbits.RA2){
 "27
-[v _dir `i ~T0 @X0 1 a ]
-[; ;doorlogic.c: 27: int dir;
-[; ;doorlogic.c: 29: if(Diag_getCompassHealth()==0)
-"29
-[e $ ! == -> ( _Diag_getCompassHealth ..  `i -> 0 `i 383  ]
-[; ;doorlogic.c: 30: {
-"30
+[e $ ! != -> . . _PORTAbits 0 2 `i -> -> -> 0 `i `Vuc `i 383  ]
 {
-[; ;doorlogic.c: 31: HMC5883L_Initialize();
+[; ;doorlogic.c: 29: if(previousDoorState == DOOR_CLOSED){
+"29
+[e $ ! == -> F3509 `i -> . `E3332 1 `i 384  ]
+{
+[; ;doorlogic.c: 30: doorStateDuration = Timeout_getGlobalCounter();
+"30
+[e = F3510 ( _Timeout_getGlobalCounter ..  ]
+[; ;doorlogic.c: 31: previousDoorState=DOOR_OPEN;
 "31
-[e ( _HMC5883L_Initialize ..  ]
+[e = F3509 . `E3332 0 ]
 "32
 }
-[e :U 383 ]
-[; ;doorlogic.c: 32: }
-[; ;doorlogic.c: 33: dir=HMC5883L_GetCompassDirection();
-"33
-[e = _dir ( _HMC5883L_GetCompassDirection ..  ]
-[; ;doorlogic.c: 35: if(dir<0)
-"35
-[e $ ! < _dir -> 0 `i 384  ]
-[; ;doorlogic.c: 36: {
-"36
-{
-[; ;doorlogic.c: 37: Diag_setCompassHealth(0);
-"37
-[e ( _Diag_setCompassHealth (1 -> -> 0 `i `uc ]
-[; ;doorlogic.c: 38: return DOOR_ERROR;
-"38
-[e ) . `E3332 2 ]
-[e $UE 382  ]
-"39
-}
-[; ;doorlogic.c: 39: }
-[e $U 385  ]
-"40
 [e :U 384 ]
-[; ;doorlogic.c: 40: else
-[; ;doorlogic.c: 41: Diag_setCompassHealth(1);
-"41
-[e ( _Diag_setCompassHealth (1 -> -> 1 `i `uc ]
-[e :U 385 ]
-[; ;doorlogic.c: 43: if(initialised==0)
-"43
-[e $ ! == -> _initialised `i -> 0 `i 386  ]
-[; ;doorlogic.c: 44: {
-"44
+[; ;doorlogic.c: 32: }
+[; ;doorlogic.c: 33: if(Timeout_getGlobalCounter() - doorStateDuration>=0){
+"33
+[e $ ! >= - ( _Timeout_getGlobalCounter ..  F3510 -> -> -> 0 `i `l `ul 385  ]
 {
-[; ;doorlogic.c: 45: referenceDirection=dir;
-"45
-[e = _referenceDirection _dir ]
-[; ;doorlogic.c: 46: doorState=DOOR_CLOSED;
-"46
+[; ;doorlogic.c: 34: doorState = DOOR_OPEN;
+"34
+[e = _doorState . `E3332 0 ]
+"36
+}
+[e :U 385 ]
+"37
+}
+[; ;doorlogic.c: 36: }
+[; ;doorlogic.c: 37: }
+[e $U 386  ]
+"38
+[e :U 383 ]
+[; ;doorlogic.c: 38: else {
+{
+[; ;doorlogic.c: 39: if(previousDoorState== DOOR_OPEN){
+"39
+[e $ ! == -> F3509 `i -> . `E3332 0 `i 387  ]
+{
+[; ;doorlogic.c: 40: doorStateDuration = Timeout_getGlobalCounter();
+"40
+[e = F3510 ( _Timeout_getGlobalCounter ..  ]
+[; ;doorlogic.c: 41: previousDoorState=DOOR_CLOSED;
+"41
+[e = F3509 . `E3332 1 ]
+"42
+}
+[e :U 387 ]
+[; ;doorlogic.c: 42: }
+[; ;doorlogic.c: 43: if(Timeout_getGlobalCounter() - doorStateDuration>=20000){
+"43
+[e $ ! >= - ( _Timeout_getGlobalCounter ..  F3510 -> -> -> 20000 `i `l `ul 388  ]
+{
+[; ;doorlogic.c: 44: doorState= DOOR_CLOSED;
+"44
 [e = _doorState . `E3332 1 ]
-[; ;doorlogic.c: 47: initialised=1;
-"47
-[e = _initialised -> -> 1 `i `uc ]
+"46
+}
+[e :U 388 ]
 "48
 }
-[; ;doorlogic.c: 48: }
-[e $U 387  ]
-"50
 [e :U 386 ]
-[; ;doorlogic.c: 50: else if(doorState==DOOR_CLOSED && abs(referenceDirection-dir)>doorOpenAngle)
-[e $ ! && == -> _doorState `i -> . `E3332 1 `i > ( _abs (1 - _referenceDirection _dir -> _doorOpenAngle `i 388  ]
-[; ;doorlogic.c: 51: {
+[; ;doorlogic.c: 46: }
+[; ;doorlogic.c: 48: }
+[; ;doorlogic.c: 50: return(doorState);
+"50
+[e ) _doorState ]
+[e $UE 382  ]
+[; ;doorlogic.c: 51: }
 "51
-{
-[; ;doorlogic.c: 52: doorState=DOOR_OPEN;
-"52
-[e = _doorState . `E3332 0 ]
-"53
-}
-[; ;doorlogic.c: 53: }
-[e $U 389  ]
-"55
-[e :U 388 ]
-[; ;doorlogic.c: 55: else if(doorState==DOOR_OPEN && abs(referenceDirection-dir)<doorClosedAngle)
-[e $ ! && == -> _doorState `i -> . `E3332 0 `i < ( _abs (1 - _referenceDirection _dir -> _doorClosedAngle `i 390  ]
-[; ;doorlogic.c: 56: {
-"56
-{
-[; ;doorlogic.c: 57: doorState=DOOR_CLOSED;
-"57
-[e = _doorState . `E3332 1 ]
-[; ;doorlogic.c: 58: return(doorState);
-"58
-[e ) _doorState ]
-[e $UE 382  ]
-"59
-}
-[e :U 390 ]
-"62
-[e :U 389 ]
-[e :U 387 ]
-[; ;doorlogic.c: 59: }
-[; ;doorlogic.c: 62: return(doorState);
-[e ) _doorState ]
-[e $UE 382  ]
-[; ;doorlogic.c: 63: }
-"63
 [e :UE 382 ]
 }
-"65
+"94
 [v _DOOR_resetPos `(E3332 ~T0 @X0 1 ef ]
-"66
+"95
 {
-[; ;doorlogic.c: 65: DOOR DOOR_resetPos()
-[; ;doorlogic.c: 66: {
+[; ;doorlogic.c: 94: DOOR DOOR_resetPos()
+[; ;doorlogic.c: 95: {
 [e :U _DOOR_resetPos ]
 [f ]
-[; ;doorlogic.c: 67: initialised=0;
-"67
+[; ;doorlogic.c: 96: initialised=0;
+"96
 [e = _initialised -> -> 0 `i `uc ]
-[; ;doorlogic.c: 68: return(DOOR_CLOSED);
-"68
+[; ;doorlogic.c: 97: return(DOOR_CLOSED);
+"97
 [e ) . `E3332 1 ]
-[e $UE 391  ]
-[; ;doorlogic.c: 69: }
-"69
-[e :UE 391 ]
+[e $UE 389  ]
+[; ;doorlogic.c: 98: }
+"98
+[e :UE 389 ]
 }
-"71
+"100
 [v _DOOR_getState `(E3332 ~T0 @X0 1 ef ]
-"72
+"101
 {
-[; ;doorlogic.c: 71: DOOR DOOR_getState()
-[; ;doorlogic.c: 72: {
+[; ;doorlogic.c: 100: DOOR DOOR_getState()
+[; ;doorlogic.c: 101: {
 [e :U _DOOR_getState ]
 [f ]
-[; ;doorlogic.c: 73: return(doorState);
-"73
+[; ;doorlogic.c: 102: return(doorState);
+"102
 [e ) _doorState ]
-[e $UE 392  ]
-[; ;doorlogic.c: 74: }
-"74
-[e :UE 392 ]
+[e $UE 390  ]
+[; ;doorlogic.c: 103: }
+"103
+[e :UE 390 ]
 }

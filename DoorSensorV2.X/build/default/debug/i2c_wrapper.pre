@@ -4431,7 +4431,7 @@ float Sensor_getSupplyVoltage();
 void Sensor_peripheralSleep(void);
 void Sensor_peripheralWake(void);
 
-# 52 "common.h"
+# 55 "common.h"
 typedef enum
 {
 DOOR_OPEN=1,
@@ -4469,12 +4469,16 @@ void Wireless_checkDataReceived(void);
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
 bool Timeout_hasExpired();
+void Timeout_updateCurrentTime(void);
+unsigned long Timeout_getGlobalCounter();
 
 char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
 char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
 
 void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
+
+void setSleepTime(u16 timeSec);
 
 # 3 "i2c_wrapper.c"
 char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr)

@@ -4489,7 +4489,7 @@ void TMR1_Initialize(void)
 T1GCON = 0x00;
 
 
-TMR1H = 0xF8;
+TMR1H = 0x60;
 
 
 TMR1L = 0x00;

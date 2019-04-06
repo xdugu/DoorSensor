@@ -59,22 +59,22 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
-// get/set ACCEL_INT aliases
-#define ACCEL_INT_TRIS               TRISAbits.TRISA2
-#define ACCEL_INT_LAT                LATAbits.LATA2
-#define ACCEL_INT_PORT               PORTAbits.RA2
-#define ACCEL_INT_WPU                WPUAbits.WPUA2
-#define ACCEL_INT_ANS                ANSELAbits.ANSA2
-#define ACCEL_INT_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
-#define ACCEL_INT_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
-#define ACCEL_INT_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
-#define ACCEL_INT_GetValue()           PORTAbits.RA2
-#define ACCEL_INT_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
-#define ACCEL_INT_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
-#define ACCEL_INT_SetPullup()      do { WPUAbits.WPUA2 = 1; } while(0)
-#define ACCEL_INT_ResetPullup()    do { WPUAbits.WPUA2 = 0; } while(0)
-#define ACCEL_INT_SetAnalogMode()  do { ANSELAbits.ANSA2 = 1; } while(0)
-#define ACCEL_INT_SetDigitalMode() do { ANSELAbits.ANSA2 = 0; } while(0)
+// get/set DOOR_INT aliases
+#define DOOR_INT_TRIS               TRISAbits.TRISA2
+#define DOOR_INT_LAT                LATAbits.LATA2
+#define DOOR_INT_PORT               PORTAbits.RA2
+#define DOOR_INT_WPU                WPUAbits.WPUA2
+#define DOOR_INT_ANS                ANSELAbits.ANSA2
+#define DOOR_INT_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
+#define DOOR_INT_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
+#define DOOR_INT_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
+#define DOOR_INT_GetValue()           PORTAbits.RA2
+#define DOOR_INT_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
+#define DOOR_INT_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
+#define DOOR_INT_SetPullup()      do { WPUAbits.WPUA2 = 1; } while(0)
+#define DOOR_INT_ResetPullup()    do { WPUAbits.WPUA2 = 0; } while(0)
+#define DOOR_INT_SetAnalogMode()  do { ANSELAbits.ANSA2 = 1; } while(0)
+#define DOOR_INT_SetDigitalMode() do { ANSELAbits.ANSA2 = 0; } while(0)
 
 // get/set RA4 procedures
 #define RA4_SetHigh()    do { LATAbits.LATA4 = 1; } while(0)

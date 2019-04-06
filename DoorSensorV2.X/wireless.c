@@ -11,10 +11,10 @@ extern long sensorUpdatePeriod;
 void Wireless_init(void)
 {
 #ifdef DOOR_SENSOR
-    static const uint8_t TADDR[5] = "10001"; /* device address for door sensor */
+    static const uint8_t TADDR[5] = "20001"; /* device address for door sensor */
 #endif
 #ifdef OUT_TEMP_SENSOR
-    static const uint8_t TADDR[5] = "20001"; /* device address for outside sensor*/
+    static const uint8_t TADDR[5] = "10001"; /* device address for outside sensor*/
 #endif
    
     
@@ -66,8 +66,10 @@ void Wireless_packageData(DOOR status,char openTime, float tempC)
      * Byte 4 - Supply voltage * 10
      
      */
-    int t1=tempC;//Will attempt to convert to int to send
-    int t2= (float)tempC * 10;
+    tempC+=50;//Will attempt to convert to int to send
+    tempC*=10;
+    
+    unsigned int t1 = tempC;
     char var;
     char data[PAYLOAD_SIZE];
     
@@ -75,15 +77,13 @@ void Wireless_packageData(DOOR status,char openTime, float tempC)
     var=Diag_getSensorHealth();
     status|=var;
     
+    
     data[0]=status;
     data[1]=openTime;
-    data[2]=t1;
-    t1=abs(t1);
-    t2=abs(t2);
-    data[3]=t2 - t1*10; 
-    t1=(float)Sensor_getSupplyVoltage()*10;
+    data[2]=t1>>8;
+    data[3]= t1 & 0xFF; 
+    t1=(float)(Sensor_getSupplyVoltage()-1)*100;
     data[4]=t1;
-    
     Wireless_sendData(data);
     while(NRF_IRQ_GetValue());//wait until data is sent - Active Low
     Wireless_checkDataReceived();

@@ -3250,9 +3250,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr1.c: 68: T1GCON = 0x00;
 "68
 [e = _T1GCON -> -> 0 `i `uc ]
-[; ;tmr1.c: 71: TMR1H = 0xF8;
+[; ;tmr1.c: 71: TMR1H = 0x60;
 "71
-[e = _TMR1H -> -> 248 `i `uc ]
+[e = _TMR1H -> -> 96 `i `uc ]
 [; ;tmr1.c: 74: TMR1L = 0x00;
 "74
 [e = _TMR1L -> -> 0 `i `uc ]

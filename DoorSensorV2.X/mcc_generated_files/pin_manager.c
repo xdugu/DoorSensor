@@ -78,7 +78,7 @@ void PIN_MANAGER_Initialize(void)
     WPUx registers
     */ 
     WPUB = 0x10;
-    WPUA = 0x3B;
+    WPUA = 0x3F;
     WPUC = 0xD1;
     OPTION_REGbits.nWPUEN = 0;
 
@@ -95,7 +95,7 @@ void PIN_MANAGER_Initialize(void)
     // interrupt on change for group IOCAF - flag
     IOCAFbits.IOCAF2 = 0;
     // interrupt on change for group IOCAN - negative
-    IOCANbits.IOCAN2 = 0;
+    IOCANbits.IOCAN2 = 1;
     // interrupt on change for group IOCAP - positive
     IOCAPbits.IOCAP2 = 1;
 

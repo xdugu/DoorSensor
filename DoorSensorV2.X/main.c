@@ -49,7 +49,7 @@
                          Main application
  */
 
-extern volatile uint16_t timer1ReloadVal;
+
 //void packageData(char* data,DOOR status,char,float tmp);
 void setSleepTime(u16 timeSec);
 
@@ -60,6 +60,7 @@ void main(void)
     DOOR doorStatus=DOOR_CLOSED,prevDoorStatus=DOOR_CLOSED;
     unsigned long doorClosedUpdateCounter=0;
     unsigned long doorOpenTime=0;
+    unsigned int dur=0;
    
     // initialize the device
     SYSTEM_Initialize();
@@ -84,11 +85,12 @@ void main(void)
    Wireless_init();
    BMP_init();
 #ifdef DOOR_SENSOR
-   HMC5883L_Initialize();
+   //HMC5883L_Initialize
 #endif
 #ifdef OUT_TEMP_SENSOR 
    setSleepTime(WAKE_UP_PERIOD_MS/1000);   
 #endif
+   setSleepTime(WAKE_UP_PERIOD_MS/1000); 
    DOOR_init();
    LED_SetHigh();
    __delay_ms(500);
@@ -99,53 +101,67 @@ void main(void)
    
     while (1)
     {
+        Timeout_updateCurrentTime();
         if(BUTTON_GetValue()==0)//i.e. reset button pressed
         {
-            doorStatus=DOOR_resetPos();
+            //doorStatus=DOOR_resetPos();
             LED_SetHigh();
             __delay_ms(500);
             LED_SetLow();
             Wireless_wake();
-            Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());           
+            dur = Timeout_getGlobalCounter() - doorOpenTime;
+            Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());           
             Wireless_sleep();
         }
         else
            doorStatus=DOOR_run();
         
         
-        if((doorStatus!=prevDoorStatus && doorStatus!=DOOR_ERROR) || doorClosedUpdateCounter>=sensorUpdatePeriod)
+        if((doorStatus!=prevDoorStatus && doorStatus!=DOOR_ERROR))
         {
             Wireless_wake();
-            Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());           
-            Wireless_sleep();
-            doorClosedUpdateCounter=0;
-            doorOpenTime=0;//Reset open time
-            if(doorStatus==DOOR_OPEN && prevDoorStatus==DOOR_CLOSED)
+            if(doorStatus==DOOR_OPEN)
             {
-               LED_SetHigh();
-               __delay_ms(50);
-               LED_SetLow(); 
-            }
-        }
-        
-        if(doorStatus==DOOR_OPEN)
-        {
-            if(doorOpenTime>=60000)//in case the open time is more than 60 seconds, send update
-            {
-                 Wireless_wake();
-                 Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());           
-                 Wireless_sleep();///Reset open time
-                 doorClosedUpdateCounter=0;
-                 doorOpenTime=0;
+               Wireless_packageData(doorStatus,0,BMP_readTemperature()); 
+               doorOpenTime= Timeout_getGlobalCounter();
+              // LED_SetHigh();
+              // __delay_ms(50);
+             //  LED_SetLow(); 
             }
             else
-                doorOpenTime+=WAKE_UP_PERIOD_MS;
+            {
+                dur = Timeout_getGlobalCounter() - doorOpenTime;
+                Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature()); 
+                doorOpenTime = Timeout_getGlobalCounter();
+            }
+            Wireless_sleep();
+            doorClosedUpdateCounter=0;
+        }
+        else if(doorStatus==DOOR_OPEN)
+        {
+            dur = Timeout_getGlobalCounter()-doorOpenTime;
+            if(dur>=60000)//in case the open time is more than 60 seconds, send update
+            {
+                 Wireless_wake();
+                 Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());           
+                 Wireless_sleep();///Reset open time
+                 doorClosedUpdateCounter=0;
+                 doorOpenTime=Timeout_getGlobalCounter();
+            }
             //LED_SetHigh();
+        }
+         else if(doorClosedUpdateCounter>=sensorUpdatePeriod)
+        {
+            Wireless_wake();
+            Wireless_packageData(doorStatus,0,BMP_readTemperature()); 
+            Wireless_sleep();
+            doorClosedUpdateCounter=0;
+            doorOpenTime = Timeout_getGlobalCounter();
         }
         else
         {
            // LED_SetLow();
-            doorOpenTime=0;
+             doorOpenTime=Timeout_getGlobalCounter();
         }
               
         prevDoorStatus=doorStatus;
@@ -157,10 +173,7 @@ void main(void)
  End of File
 */
 
-void setSleepTime(u16 timeSec)
-{
-    timer1ReloadVal=65536-(4096*timeSec);
-}
+
 
 
 void doSleep(void)

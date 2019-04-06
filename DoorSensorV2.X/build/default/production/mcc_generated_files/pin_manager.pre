@@ -4019,7 +4019,7 @@ ANSELA = 0x03;
 
 # 80
 WPUB = 0x10;
-WPUA = 0x3B;
+WPUA = 0x3F;
 WPUC = 0xD1;
 OPTION_REGbits.nWPUEN = 0;
 
@@ -4030,7 +4030,7 @@ APFCON0 = 0x00;
 # 96
 IOCAFbits.IOCAF2 = 0;
 
-IOCANbits.IOCAN2 = 0;
+IOCANbits.IOCAN2 = 1;
 
 IOCAPbits.IOCAP2 = 1;
 

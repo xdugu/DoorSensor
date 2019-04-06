@@ -10,7 +10,7 @@ int referenceDirection;
 void DOOR_init()
 {
     //Storage_save(8,3);
-    Storage_load(&doorOpenAngle, &doorClosedAngle);
+    //Storage_load(&doorOpenAngle, &doorClosedAngle);
 }
 
 void DOOR_update(char openAngle, char closedAngle)
@@ -20,8 +20,37 @@ void DOOR_update(char openAngle, char closedAngle)
     Storage_save(openAngle,closedAngle);
 }
 
+DOOR DOOR_run(){
+    static DOOR previousDoorState = DOOR_CLOSED;
+    static unsigned long doorStateDuration = 0;
+#ifdef DOOR_SENSOR
+    if(DOOR_INT_GetValue()){//door is open
+       // doorState= DOOR_OPEN;
+        if(previousDoorState == DOOR_CLOSED){
+            doorStateDuration = Timeout_getGlobalCounter();
+            previousDoorState=DOOR_OPEN;
+        }
+        if(Timeout_getGlobalCounter() - doorStateDuration>=DOOR_OPEN_DEBOUNCE){
+            doorState = DOOR_OPEN;  
+            //setSleepTime(5);
+        }
+    }
+    else {//door closed
+        if(previousDoorState== DOOR_OPEN){
+            doorStateDuration = Timeout_getGlobalCounter();
+            previousDoorState=DOOR_CLOSED;
+        }
+        if(Timeout_getGlobalCounter() - doorStateDuration>=DOOR_CLOSED_DEBOUNCE){
+            doorState= DOOR_CLOSED;
+            //setSleepTime(10);
+        }
+           
+    }
+#endif   
+    return(doorState);
+}
 
-DOOR DOOR_run()
+/*DOOR DOOR_run()
 {
 #ifdef DOOR_SENSOR
     int dir;
@@ -60,7 +89,7 @@ DOOR DOOR_run()
     
 #endif
     return(doorState);  
-}
+}*/
 
 DOOR DOOR_resetPos()
 {

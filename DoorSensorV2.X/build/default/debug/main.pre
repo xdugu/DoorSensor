@@ -4431,7 +4431,7 @@ float Sensor_getSupplyVoltage();
 void Sensor_peripheralSleep(void);
 void Sensor_peripheralWake(void);
 
-# 52 "common.h"
+# 55 "common.h"
 typedef enum
 {
 DOOR_OPEN=1,
@@ -4469,6 +4469,8 @@ void Wireless_checkDataReceived(void);
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
 bool Timeout_hasExpired();
+void Timeout_updateCurrentTime(void);
+unsigned long Timeout_getGlobalCounter();
 
 char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
 char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
@@ -4476,104 +4478,118 @@ char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
 void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
 
-# 52 "main.c"
-extern volatile uint16_t timer1ReloadVal;
-
 void setSleepTime(u16 timeSec);
 
-long sensorUpdatePeriod = 5000;
+# 54 "main.c"
+void setSleepTime(u16 timeSec);
+
+long sensorUpdatePeriod = 600000;
 
 void main(void)
 {
 DOOR doorStatus=DOOR_CLOSED,prevDoorStatus=DOOR_CLOSED;
 unsigned long doorClosedUpdateCounter=0;
 unsigned long doorOpenTime=0;
+unsigned int dur=0;
 
 
 SYSTEM_Initialize();
 
-# 71
+# 72
 (INTCONbits.GIE = 1);
 
 
 (INTCONbits.PEIE = 1);
 
-# 81
+# 82
 do { WPUCbits.WPUC5 = 1; } while(0);
 _delay((unsigned long)((1000)*(8000000/4000.0)));
 Sensor_peripheralSleep();
 Wireless_init();
 BMP_init();
 
-# 90
-setSleepTime(5000/1000);
-
+# 93
+setSleepTime(10000/1000);
 DOOR_init();
 do { LATCbits.LATC6 = 1; } while(0);
 _delay((unsigned long)((500)*(8000000/4000.0)));
 do { LATCbits.LATC6 = 0; } while(0);
+Wireless_wake();
+Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());
+Wireless_sleep();
 
 while (1)
 {
+Timeout_updateCurrentTime();
 if(PORTCbits.RC5==0)
 {
-doorStatus=DOOR_resetPos();
+
 do { LATCbits.LATC6 = 1; } while(0);
 _delay((unsigned long)((500)*(8000000/4000.0)));
 do { LATCbits.LATC6 = 0; } while(0);
+Wireless_wake();
+dur = Timeout_getGlobalCounter() - doorOpenTime;
+Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
+Wireless_sleep();
 }
 else
 doorStatus=DOOR_run();
 
 
-if((doorStatus!=prevDoorStatus && doorStatus!=DOOR_ERROR) || doorClosedUpdateCounter>=sensorUpdatePeriod)
+if((doorStatus!=prevDoorStatus && doorStatus!=DOOR_ERROR))
 {
 Wireless_wake();
-Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());
-Wireless_sleep();
-doorClosedUpdateCounter=0;
-doorOpenTime=0;
-if(doorStatus==DOOR_OPEN && prevDoorStatus==DOOR_CLOSED)
-{
-do { LATCbits.LATC6 = 1; } while(0);
-_delay((unsigned long)((50)*(8000000/4000.0)));
-do { LATCbits.LATC6 = 0; } while(0);
-}
-}
-
 if(doorStatus==DOOR_OPEN)
 {
-if(doorOpenTime>=60000)
+Wireless_packageData(doorStatus,0,BMP_readTemperature());
+doorOpenTime= Timeout_getGlobalCounter();
+
+
+
+}
+else
 {
-Wireless_wake();
-Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());
+dur = Timeout_getGlobalCounter() - doorOpenTime;
+Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
+doorOpenTime = Timeout_getGlobalCounter();
+}
 Wireless_sleep();
 doorClosedUpdateCounter=0;
-doorOpenTime=0;
 }
-else
-doorOpenTime+=5000;
+else if(doorStatus==DOOR_OPEN)
+{
+dur = Timeout_getGlobalCounter()-doorOpenTime;
+if(dur>=60000)
+{
+Wireless_wake();
+Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
+Wireless_sleep();
+doorClosedUpdateCounter=0;
+doorOpenTime=Timeout_getGlobalCounter();
+}
 
+}
+else if(doorClosedUpdateCounter>=sensorUpdatePeriod)
+{
+Wireless_wake();
+Wireless_packageData(doorStatus,0,BMP_readTemperature());
+Wireless_sleep();
+doorClosedUpdateCounter=0;
+doorOpenTime = Timeout_getGlobalCounter();
 }
 else
 {
 
-doorOpenTime=0;
+doorOpenTime=Timeout_getGlobalCounter();
 }
 
 prevDoorStatus=doorStatus;
-doorClosedUpdateCounter+=5000;
+doorClosedUpdateCounter+=10000;
 asm("sleep");
 }
 }
 
-# 154
-void setSleepTime(u16 timeSec)
-{
-timer1ReloadVal=65536-(4096*timeSec);
-}
-
-
+# 179
 void doSleep(void)
 {
 

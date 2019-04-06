@@ -34,13 +34,16 @@ extern "C" {
 #define DOOR_SENSOR
     
 #ifdef DOOR_SENSOR
-#define WAKE_UP_PERIOD_MS 500 
-#define TEMPERATURE_UPDATE_RATE 120000
+#define WAKE_UP_PERIOD_MS 10000
+#define TEMPERATURE_UPDATE_RATE 600000
+
+#define DOOR_OPEN_DEBOUNCE 0
+#define DOOR_CLOSED_DEBOUNCE 20000
 #endif
     
 #ifdef OUT_TEMP_SENSOR  
-#define WAKE_UP_PERIOD_MS       10000  //max is 16000
-#define TEMPERATURE_UPDATE_RATE 300000//five minutes
+#define WAKE_UP_PERIOD_MS       10000 //max is 16000
+#define TEMPERATURE_UPDATE_RATE 600000//five minutes
 #endif   
     
 #define DOOR_OPEN_ANGLE  15
@@ -86,12 +89,16 @@ void Wireless_checkDataReceived(void);
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
 bool Timeout_hasExpired();
+void Timeout_updateCurrentTime(void);
+unsigned long Timeout_getGlobalCounter();
 
 char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
 char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
 
 void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
+
+void setSleepTime(u16 timeSec);
 
 #ifdef	__cplusplus
 }

@@ -1,4 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"5 common.c
+[v _timer1ReloadVal `Vui ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3115,38 +3117,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sensors.h: 15: float Sensor_getSupplyVoltage();
 [; ;sensors.h: 16: void Sensor_peripheralSleep(void);
 [; ;sensors.h: 17: void Sensor_peripheralWake(void);
-[; ;common.h: 52: typedef enum
-[; ;common.h: 53: {
-[; ;common.h: 54: DOOR_OPEN=1,
-[; ;common.h: 55: DOOR_CLOSED=0,
-[; ;common.h: 56: DOOR_ERROR=2
-[; ;common.h: 57: }DOOR;
-[; ;common.h: 61: typedef unsigned char uint8_t;
-[; ;common.h: 62: typedef unsigned char bool;
-[; ;common.h: 63: typedef unsigned char u8;
-[; ;common.h: 64: typedef signed char s8;
-[; ;common.h: 65: typedef unsigned int u16;
-[; ;common.h: 66: typedef signed int s16;
-[; ;common.h: 67: typedef signed long s32;
-[; ;common.h: 68: typedef unsigned long u32;
-[; ;common.h: 73: void DOOR_init();
-[; ;common.h: 74: void DOOR_update(char openAngle, char closedAngle);
-[; ;common.h: 75: DOOR DOOR_run();
-[; ;common.h: 76: DOOR DOOR_resetPos();
-[; ;common.h: 77: DOOR DOOR_getState();
-[; ;common.h: 79: void Wireless_init(void);
-[; ;common.h: 80: void Wireless_sendData(char* payload);
-[; ;common.h: 81: void Wireless_sleep();
-[; ;common.h: 82: void Wireless_wake();
-[; ;common.h: 83: void Wireless_packageData(DOOR status,char openTime, float tempC);
-[; ;common.h: 84: void Wireless_checkDataReceived(void);
-[; ;common.h: 86: void Timeout_increment();
-[; ;common.h: 87: void Timeout_setTimeout(u16 val);
-[; ;common.h: 88: bool Timeout_hasExpired();
-[; ;common.h: 90: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
-[; ;common.h: 91: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
-[; ;common.h: 93: void Storage_load(u8 *openAngle,u8 *closeAngle);
-[; ;common.h: 94: void Storage_save(u8 openAngle,u8 closeAngle);
+[; ;common.h: 55: typedef enum
+[; ;common.h: 56: {
+[; ;common.h: 57: DOOR_OPEN=1,
+[; ;common.h: 58: DOOR_CLOSED=0,
+[; ;common.h: 59: DOOR_ERROR=2
+[; ;common.h: 60: }DOOR;
+[; ;common.h: 64: typedef unsigned char uint8_t;
+[; ;common.h: 65: typedef unsigned char bool;
+[; ;common.h: 66: typedef unsigned char u8;
+[; ;common.h: 67: typedef signed char s8;
+[; ;common.h: 68: typedef unsigned int u16;
+[; ;common.h: 69: typedef signed int s16;
+[; ;common.h: 70: typedef signed long s32;
+[; ;common.h: 71: typedef unsigned long u32;
+[; ;common.h: 76: void DOOR_init();
+[; ;common.h: 77: void DOOR_update(char openAngle, char closedAngle);
+[; ;common.h: 78: DOOR DOOR_run();
+[; ;common.h: 79: DOOR DOOR_resetPos();
+[; ;common.h: 80: DOOR DOOR_getState();
+[; ;common.h: 82: void Wireless_init(void);
+[; ;common.h: 83: void Wireless_sendData(char* payload);
+[; ;common.h: 84: void Wireless_sleep();
+[; ;common.h: 85: void Wireless_wake();
+[; ;common.h: 86: void Wireless_packageData(DOOR status,char openTime, float tempC);
+[; ;common.h: 87: void Wireless_checkDataReceived(void);
+[; ;common.h: 89: void Timeout_increment();
+[; ;common.h: 90: void Timeout_setTimeout(u16 val);
+[; ;common.h: 91: bool Timeout_hasExpired();
+[; ;common.h: 92: void Timeout_updateCurrentTime(void);
+[; ;common.h: 93: unsigned long Timeout_getGlobalCounter();
+[; ;common.h: 95: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
+[; ;common.h: 96: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
+[; ;common.h: 98: void Storage_load(u8 *openAngle,u8 *closeAngle);
+[; ;common.h: 99: void Storage_save(u8 openAngle,u8 closeAngle);
+[; ;common.h: 101: void setSleepTime(u16 timeSec);
 [; ;hmc5883l.h: 49: typedef struct
 [; ;hmc5883l.h: 50: {
 [; ;hmc5883l.h: 51: unsigned int heading_direction;
@@ -3177,3 +3182,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;hmc5883l.h: 155: void HMC5883L_I2C_Init();
 [; ;hmc5883l.h: 156: bool HMC5883L_I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
 [; ;hmc5883l.h: 157: bool HMC5883L_I2C_BufferRead(u8 slaveAddr,u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
+[; ;common.c: 5: extern volatile uint16_t timer1ReloadVal;
+"7 common.c
+[v _setSleepTime `(v ~T0 @X0 1 ef1`us ]
+"8
+{
+[; ;common.c: 7: void setSleepTime(u16 timeSec)
+[; ;common.c: 8: {
+[e :U _setSleepTime ]
+"7
+[v _timeSec `us ~T0 @X0 1 r1 ]
+"8
+[f ]
+[; ;common.c: 9: timer1ReloadVal=0x6000;
+"9
+[e = _timer1ReloadVal -> -> 24576 `i `ui ]
+[; ;common.c: 10: }
+"10
+[e :UE 376 ]
+}

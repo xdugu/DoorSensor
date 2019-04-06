@@ -3067,9 +3067,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 80: WPUB = 0x10;
 "80
 [e = _WPUB -> -> 16 `i `uc ]
-[; ;pin_manager.c: 81: WPUA = 0x3B;
+[; ;pin_manager.c: 81: WPUA = 0x3F;
 "81
-[e = _WPUA -> -> 59 `i `uc ]
+[e = _WPUA -> -> 63 `i `uc ]
 [; ;pin_manager.c: 82: WPUC = 0xD1;
 "82
 [e = _WPUC -> -> 209 `i `uc ]
@@ -3085,9 +3085,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.c: 96: IOCAFbits.IOCAF2 = 0;
 "96
 [e = . . _IOCAFbits 0 2 -> -> 0 `i `uc ]
-[; ;pin_manager.c: 98: IOCANbits.IOCAN2 = 0;
+[; ;pin_manager.c: 98: IOCANbits.IOCAN2 = 1;
 "98
-[e = . . _IOCANbits 0 2 -> -> 0 `i `uc ]
+[e = . . _IOCANbits 0 2 -> -> 1 `i `uc ]
 [; ;pin_manager.c: 100: IOCAPbits.IOCAP2 = 1;
 "100
 [e = . . _IOCAPbits 0 2 -> -> 1 `i `uc ]

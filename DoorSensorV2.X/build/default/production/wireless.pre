@@ -4431,7 +4431,7 @@ float Sensor_getSupplyVoltage();
 void Sensor_peripheralSleep(void);
 void Sensor_peripheralWake(void);
 
-# 52 "common.h"
+# 55 "common.h"
 typedef enum
 {
 DOOR_OPEN=1,
@@ -4469,12 +4469,16 @@ void Wireless_checkDataReceived(void);
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
 bool Timeout_hasExpired();
+void Timeout_updateCurrentTime(void);
+unsigned long Timeout_getGlobalCounter();
 
 char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
 char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
 
 void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
+
+void setSleepTime(u16 timeSec);
 
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h"
 typedef unsigned short wchar_t;
@@ -4552,9 +4556,10 @@ extern long sensorUpdatePeriod;
 
 void Wireless_init(void)
 {
-static const uint8_t TADDR[5] = "10001";
 
+static const uint8_t TADDR[5] = "20001";
 
+# 21
 _delay((unsigned long)((100)*(8000000/4000.0)));
 
 RF_Init();
@@ -4581,6 +4586,10 @@ RF_WriteRegister(0x1C, (1<<0));
 do { LATCbits.LATC2 = 0; } while(0);
 }
 
+void Wireless_determineTransmitPower()
+{
+int i;
+}
 void Wireless_sendData(char* payload)
 {
 
@@ -4592,9 +4601,11 @@ RF_TxPayload(payload, 5);
 void Wireless_packageData(DOOR status,char openTime, float tempC)
 {
 
-# 60
-int t1=tempC;
-int t2= (float)tempC * 10;
+# 69
+tempC+=50;
+tempC*=10;
+
+unsigned int t1 = tempC;
 char var;
 char data[5];
 
@@ -4602,15 +4613,13 @@ status<<=4;
 var=Diag_getSensorHealth();
 status|=var;
 
+
 data[0]=status;
 data[1]=openTime;
-data[2]=t1;
-t1=abs(t1);
-t2=abs(t2);
-data[3]=t2 - t1*10;
-t1=(float)Sensor_getSupplyVoltage()*10;
+data[2]=t1>>8;
+data[3]= t1 & 0xFF;
+t1=(float)(Sensor_getSupplyVoltage()-1)*100;
 data[4]=t1;
-
 Wireless_sendData(data);
 while(PORTCbits.RC3);
 Wireless_checkDataReceived();
@@ -4640,7 +4649,7 @@ _delay((unsigned long)((2)*(8000000/4000.0)));
 void Wireless_checkDataReceived(void)
 {
 
-# 111
+# 120
 char channel;
 char data[4];
 do
