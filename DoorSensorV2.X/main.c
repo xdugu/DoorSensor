@@ -96,6 +96,7 @@ void main(void)
    __delay_ms(500);
    LED_SetLow();
     Wireless_wake();
+    Wireless_determineTransmitPower(true);
     Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());           
     Wireless_sleep();
    

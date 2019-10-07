@@ -31,7 +31,8 @@ extern "C" {
 #define DISABLED 0
     
 //#define OUT_TEMP_SENSOR   
-#define DOOR_SENSOR
+//#define DOOR_SENSOR
+#define INDOOR_TEMP_SENSOR
     
 #ifdef DOOR_SENSOR
 #define WAKE_UP_PERIOD_MS 10000
@@ -45,6 +46,11 @@ extern "C" {
 #define WAKE_UP_PERIOD_MS       10000 //max is 16000
 #define TEMPERATURE_UPDATE_RATE 600000//five minutes
 #endif   
+    
+#ifdef INDOOR_TEMP_SENSOR
+#define WAKE_UP_PERIOD_MS 10000
+#define TEMPERATURE_UPDATE_RATE 600000
+#endif
     
 #define DOOR_OPEN_ANGLE  15
 #define DOOR_CLOSE_ANGLE 5
@@ -80,11 +86,12 @@ typedef enum
   DOOR DOOR_getState();
 
 void Wireless_init(void);
-void Wireless_sendData(char* payload);
+void Wireless_sendData(char* payload, char);
 void Wireless_sleep();
 void Wireless_wake();
 void Wireless_packageData(DOOR status,char openTime, float tempC);
 void Wireless_checkDataReceived(void);
+char Wireless_determineTransmitPower(char initialise);
 
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
@@ -99,6 +106,8 @@ void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
 
 void setSleepTime(u16 timeSec);
+
+int limit(int val, int min, int max);
 
 #ifdef	__cplusplus
 }

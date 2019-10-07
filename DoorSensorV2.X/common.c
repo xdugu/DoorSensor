@@ -8,3 +8,11 @@ void setSleepTime(u16 timeSec)
 {
     timer1ReloadVal=0x6000;//65536-(4096*timeSec);
 }
+
+int limit(int val, int min, int max){
+    if(val<min)
+        return min;
+    if(val>max)
+        return max;
+      return val;
+}

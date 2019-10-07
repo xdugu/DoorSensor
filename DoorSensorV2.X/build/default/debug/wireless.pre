@@ -4431,7 +4431,7 @@ float Sensor_getSupplyVoltage();
 void Sensor_peripheralSleep(void);
 void Sensor_peripheralWake(void);
 
-# 55 "common.h"
+# 61 "common.h"
 typedef enum
 {
 DOOR_OPEN=1,
@@ -4460,11 +4460,12 @@ DOOR DOOR_resetPos();
 DOOR DOOR_getState();
 
 void Wireless_init(void);
-void Wireless_sendData(char* payload);
+void Wireless_sendData(char* payload, char);
 void Wireless_sleep();
 void Wireless_wake();
 void Wireless_packageData(DOOR status,char openTime, float tempC);
 void Wireless_checkDataReceived(void);
+char Wireless_determineTransmitPower(char initialise);
 
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
@@ -4479,6 +4480,8 @@ void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
 
 void setSleepTime(u16 timeSec);
+
+int limit(int val, int min, int max);
 
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdlib.h"
 typedef unsigned short wchar_t;
@@ -4554,18 +4557,26 @@ extern char doorOpenAngle;
 extern char doorClosedAngle;
 extern long sensorUpdatePeriod;
 
+char currentTransmitPower = 0;
+
+
+void Wireless_changeTransmitPower(char power);
+char Wireless_isDataTransmitSuccessful();
+
+
 void Wireless_init(void)
 {
 
-static const uint8_t TADDR[5] = "20001";
+# 24
+static const uint8_t TADDR[5] = "10001";
 
-# 21
+# 32
 _delay((unsigned long)((100)*(8000000/4000.0)));
 
 RF_Init();
 
 RF_WriteRegister(0x06, 0x06|0x20);
-RF_WriteRegister(0x11, 5);
+RF_WriteRegister(0x11, 6);
 RF_WriteRegister(0x05, 2);
 
 
@@ -4586,28 +4597,94 @@ RF_WriteRegister(0x1C, (1<<0));
 do { LATCbits.LATC2 = 0; } while(0);
 }
 
-void Wireless_determineTransmitPower()
+
+
+char Wireless_determineTransmitPower(char initialise)
 {
-int i;
+char testPayload = 0xFF;
+char latestResult;
+static char numOfTransmits =0;
+static char numOfSuccessfulTransmits = 0;
+
+if(initialise){
+currentTransmitPower = 0;
+
+
+for(;currentTransmitPower <= 3; currentTransmitPower++){
+Wireless_changeTransmitPower(currentTransmitPower);
+Wireless_sendData(&testPayload, 1);
+while(PORTCbits.RC3);
+
+if(Wireless_isDataTransmitSuccessful())
+break;
 }
-void Wireless_sendData(char* payload)
+currentTransmitPower = limit( currentTransmitPower, 0, 3);
+}else{
+
+latestResult = Wireless_isDataTransmitSuccessful();
+
+if(numOfTransmits>=5){
+if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4){
+Wireless_changeTransmitPower(--currentTransmitPower);
+}
+
+numOfTransmits = 0;
+numOfSuccessfulTransmits = 0;
+if(!latestResult && currentTransmitPower<3){
+
+
+Wireless_changeTransmitPower(++currentTransmitPower);
+return 1;
+} else
+return 0;
+
+}else{
+
+if(latestResult){
+numOfTransmits++;
+numOfSuccessfulTransmits++;
+}else if(currentTransmitPower<3){
+Wireless_changeTransmitPower(++currentTransmitPower);
+return 1;
+} else
+return 0;
+
+}
+}
+
+
+return !latestResult;
+}
+void Wireless_changeTransmitPower(char power){
+
+# 119
+u8 val;
+
+RF_ReadRegisterData(0x06, &val, 1);
+val &= 0b11111001;
+val |= (power <<1);
+RF_WriteRegister(0x06, val);
+}
+void Wireless_sendData(char* payload, char length)
 {
+char status;
 
 RF_ResetStatusIRQ(0x40|0x20|0x10);
-RF_TxPayload(payload, 5);
+status = RF_GetStatus();
+RF_TxPayload(payload, length);
 }
 
 
 void Wireless_packageData(DOOR status,char openTime, float tempC)
 {
 
-# 69
+# 146
 tempC+=50;
 tempC*=10;
 
 unsigned int t1 = tempC;
 char var;
-char data[5];
+char data[6];
 
 status<<=4;
 var=Diag_getSensorHealth();
@@ -4620,8 +4697,12 @@ data[2]=t1>>8;
 data[3]= t1 & 0xFF;
 t1=(float)(Sensor_getSupplyVoltage()-1)*100;
 data[4]=t1;
-Wireless_sendData(data);
+data[5] = currentTransmitPower;
+do{
+Wireless_sendData(data, 6);
 while(PORTCbits.RC3);
+}
+while(Wireless_determineTransmitPower(0));
 Wireless_checkDataReceived();
 }
 
@@ -4646,10 +4727,19 @@ RF_WriteRegister(0x00,reg);
 _delay((unsigned long)((2)*(8000000/4000.0)));
 }
 
+
+char Wireless_isDataTransmitSuccessful(){
+char status = RF_GetStatus();
+if(status & 0x20)
+return 1;
+else
+return 0;
+}
+
 void Wireless_checkDataReceived(void)
 {
 
-# 120
+# 210
 char channel;
 char data[4];
 do

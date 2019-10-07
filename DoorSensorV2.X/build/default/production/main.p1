@@ -33,13 +33,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "16 sensors.h
 [v _Sensor_peripheralSleep `(v ~T0 @X0 0 ef ]
-"82 common.h
+"88 common.h
 [v _Wireless_init `(v ~T0 @X0 0 ef ]
 "17 bmp280.h
 [v _BMP_init `(v ~T0 @X0 0 ef ]
-"101 common.h
+"108 common.h
 [v _setSleepTime `(v ~T0 @X0 0 ef1`us ]
-"76
+"82
 [v _DOOR_init `(v ~T0 @X0 0 ef ]
 "2187 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1829.h
 [s S113 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -49,15 +49,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S112 . . ]
 "2198
 [v _LATCbits `VS112 ~T0 @X0 0 e@270 ]
-"85 common.h
+"91 common.h
 [v _Wireless_wake `(v ~T0 @X0 0 ef ]
-"86
+"94
+[v _Wireless_determineTransmitPower `(uc ~T0 @X0 0 ef1`uc ]
+"92
 [v _Wireless_packageData `(v ~T0 @X0 0 ef3`E3332`uc`f ]
 "18 bmp280.h
 [v _BMP_readTemperature `(f ~T0 @X0 0 ef ]
-"84 common.h
+"90 common.h
 [v _Wireless_sleep `(v ~T0 @X0 0 ef ]
-"92
+"99
 [v _Timeout_updateCurrentTime `(v ~T0 @X0 0 ef ]
 "522 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1829.h
 [s S33 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -67,9 +69,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S32 . . ]
 "533
 [v _PORTCbits `VS32 ~T0 @X0 0 e@14 ]
-"93 common.h
+"100 common.h
 [v _Timeout_getGlobalCounter `(ul ~T0 @X0 0 ef ]
-"78
+"84
 [v _DOOR_run `(E3332 ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -3217,41 +3219,43 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sensors.h: 15: float Sensor_getSupplyVoltage();
 [; ;sensors.h: 16: void Sensor_peripheralSleep(void);
 [; ;sensors.h: 17: void Sensor_peripheralWake(void);
-[; ;common.h: 55: typedef enum
-[; ;common.h: 56: {
-[; ;common.h: 57: DOOR_OPEN=1,
-[; ;common.h: 58: DOOR_CLOSED=0,
-[; ;common.h: 59: DOOR_ERROR=2
-[; ;common.h: 60: }DOOR;
-[; ;common.h: 64: typedef unsigned char uint8_t;
-[; ;common.h: 65: typedef unsigned char bool;
-[; ;common.h: 66: typedef unsigned char u8;
-[; ;common.h: 67: typedef signed char s8;
-[; ;common.h: 68: typedef unsigned int u16;
-[; ;common.h: 69: typedef signed int s16;
-[; ;common.h: 70: typedef signed long s32;
-[; ;common.h: 71: typedef unsigned long u32;
-[; ;common.h: 76: void DOOR_init();
-[; ;common.h: 77: void DOOR_update(char openAngle, char closedAngle);
-[; ;common.h: 78: DOOR DOOR_run();
-[; ;common.h: 79: DOOR DOOR_resetPos();
-[; ;common.h: 80: DOOR DOOR_getState();
-[; ;common.h: 82: void Wireless_init(void);
-[; ;common.h: 83: void Wireless_sendData(char* payload);
-[; ;common.h: 84: void Wireless_sleep();
-[; ;common.h: 85: void Wireless_wake();
-[; ;common.h: 86: void Wireless_packageData(DOOR status,char openTime, float tempC);
-[; ;common.h: 87: void Wireless_checkDataReceived(void);
-[; ;common.h: 89: void Timeout_increment();
-[; ;common.h: 90: void Timeout_setTimeout(u16 val);
-[; ;common.h: 91: bool Timeout_hasExpired();
-[; ;common.h: 92: void Timeout_updateCurrentTime(void);
-[; ;common.h: 93: unsigned long Timeout_getGlobalCounter();
-[; ;common.h: 95: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
-[; ;common.h: 96: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
-[; ;common.h: 98: void Storage_load(u8 *openAngle,u8 *closeAngle);
-[; ;common.h: 99: void Storage_save(u8 openAngle,u8 closeAngle);
-[; ;common.h: 101: void setSleepTime(u16 timeSec);
+[; ;common.h: 61: typedef enum
+[; ;common.h: 62: {
+[; ;common.h: 63: DOOR_OPEN=1,
+[; ;common.h: 64: DOOR_CLOSED=0,
+[; ;common.h: 65: DOOR_ERROR=2
+[; ;common.h: 66: }DOOR;
+[; ;common.h: 70: typedef unsigned char uint8_t;
+[; ;common.h: 71: typedef unsigned char bool;
+[; ;common.h: 72: typedef unsigned char u8;
+[; ;common.h: 73: typedef signed char s8;
+[; ;common.h: 74: typedef unsigned int u16;
+[; ;common.h: 75: typedef signed int s16;
+[; ;common.h: 76: typedef signed long s32;
+[; ;common.h: 77: typedef unsigned long u32;
+[; ;common.h: 82: void DOOR_init();
+[; ;common.h: 83: void DOOR_update(char openAngle, char closedAngle);
+[; ;common.h: 84: DOOR DOOR_run();
+[; ;common.h: 85: DOOR DOOR_resetPos();
+[; ;common.h: 86: DOOR DOOR_getState();
+[; ;common.h: 88: void Wireless_init(void);
+[; ;common.h: 89: void Wireless_sendData(char* payload, char);
+[; ;common.h: 90: void Wireless_sleep();
+[; ;common.h: 91: void Wireless_wake();
+[; ;common.h: 92: void Wireless_packageData(DOOR status,char openTime, float tempC);
+[; ;common.h: 93: void Wireless_checkDataReceived(void);
+[; ;common.h: 94: char Wireless_determineTransmitPower(char initialise);
+[; ;common.h: 96: void Timeout_increment();
+[; ;common.h: 97: void Timeout_setTimeout(u16 val);
+[; ;common.h: 98: bool Timeout_hasExpired();
+[; ;common.h: 99: void Timeout_updateCurrentTime(void);
+[; ;common.h: 100: unsigned long Timeout_getGlobalCounter();
+[; ;common.h: 102: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
+[; ;common.h: 103: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
+[; ;common.h: 105: void Storage_load(u8 *openAngle,u8 *closeAngle);
+[; ;common.h: 106: void Storage_save(u8 openAngle,u8 closeAngle);
+[; ;common.h: 108: void setSleepTime(u16 timeSec);
+[; ;common.h: 110: int limit(int val, int min, int max);
 [; ;main.c: 54: void setSleepTime(u16 timeSec);
 "56 main.c
 [v _sensorUpdatePeriod `l ~T0 @X0 1 e ]
@@ -3340,233 +3344,236 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 98: Wireless_wake();
 "98
 [e ( _Wireless_wake ..  ]
-[; ;main.c: 99: Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());
+[; ;main.c: 99: Wireless_determineTransmitPower(1);
 "99
-[e ( _Wireless_packageData (3 , , _doorStatus -> / _doorOpenTime -> -> -> 1000 `i `l `ul `uc ( _BMP_readTemperature ..  ]
-[; ;main.c: 100: Wireless_sleep();
+[e ( _Wireless_determineTransmitPower (1 -> -> 1 `i `uc ]
+[; ;main.c: 100: Wireless_packageData(doorStatus,doorOpenTime/1000,BMP_readTemperature());
 "100
+[e ( _Wireless_packageData (3 , , _doorStatus -> / _doorOpenTime -> -> -> 1000 `i `l `ul `uc ( _BMP_readTemperature ..  ]
+[; ;main.c: 101: Wireless_sleep();
+"101
 [e ( _Wireless_sleep ..  ]
-[; ;main.c: 102: while (1)
-"102
-[e :U 387 ]
-[; ;main.c: 103: {
+[; ;main.c: 103: while (1)
 "103
-{
-[; ;main.c: 104: Timeout_updateCurrentTime();
+[e :U 387 ]
+[; ;main.c: 104: {
 "104
-[e ( _Timeout_updateCurrentTime ..  ]
-[; ;main.c: 105: if(PORTCbits.RC5==0)
-"105
-[e $ ! == -> . . _PORTCbits 0 5 `i -> 0 `i 389  ]
-[; ;main.c: 106: {
-"106
 {
-[; ;main.c: 108: do { LATCbits.LATC6 = 1; } while(0);
-"108
+[; ;main.c: 105: Timeout_updateCurrentTime();
+"105
+[e ( _Timeout_updateCurrentTime ..  ]
+[; ;main.c: 106: if(PORTCbits.RC5==0)
+"106
+[e $ ! == -> . . _PORTCbits 0 5 `i -> 0 `i 389  ]
+[; ;main.c: 107: {
+"107
+{
+[; ;main.c: 109: do { LATCbits.LATC6 = 1; } while(0);
+"109
 [e :U 392 ]
 {
 [e = . . _LATCbits 0 6 -> -> 1 `i `uc ]
 }
 [e :U 391 ]
-[; ;main.c: 109: _delay((unsigned long)((500)*(8000000/4000.0)));
-"109
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 110: do { LATCbits.LATC6 = 0; } while(0);
+[; ;main.c: 110: _delay((unsigned long)((500)*(8000000/4000.0)));
 "110
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;main.c: 111: do { LATCbits.LATC6 = 0; } while(0);
+"111
 [e :U 395 ]
 {
 [e = . . _LATCbits 0 6 -> -> 0 `i `uc ]
 }
 [e :U 394 ]
-[; ;main.c: 111: Wireless_wake();
-"111
-[e ( _Wireless_wake ..  ]
-[; ;main.c: 112: dur = Timeout_getGlobalCounter() - doorOpenTime;
+[; ;main.c: 112: Wireless_wake();
 "112
-[e = _dur -> - ( _Timeout_getGlobalCounter ..  _doorOpenTime `ui ]
-[; ;main.c: 113: Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
+[e ( _Wireless_wake ..  ]
+[; ;main.c: 113: dur = Timeout_getGlobalCounter() - doorOpenTime;
 "113
-[e ( _Wireless_packageData (3 , , _doorStatus -> / _dur -> -> 1000 `i `ui `uc ( _BMP_readTemperature ..  ]
-[; ;main.c: 114: Wireless_sleep();
+[e = _dur -> - ( _Timeout_getGlobalCounter ..  _doorOpenTime `ui ]
+[; ;main.c: 114: Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
 "114
-[e ( _Wireless_sleep ..  ]
+[e ( _Wireless_packageData (3 , , _doorStatus -> / _dur -> -> 1000 `i `ui `uc ( _BMP_readTemperature ..  ]
+[; ;main.c: 115: Wireless_sleep();
 "115
-}
-[; ;main.c: 115: }
-[e $U 396  ]
+[e ( _Wireless_sleep ..  ]
 "116
-[e :U 389 ]
-[; ;main.c: 116: else
-[; ;main.c: 117: doorStatus=DOOR_run();
+}
+[; ;main.c: 116: }
+[e $U 396  ]
 "117
+[e :U 389 ]
+[; ;main.c: 117: else
+[; ;main.c: 118: doorStatus=DOOR_run();
+"118
 [e = _doorStatus ( _DOOR_run ..  ]
 [e :U 396 ]
-[; ;main.c: 120: if((doorStatus!=prevDoorStatus && doorStatus!=DOOR_ERROR))
-"120
-[e $ ! && != -> _doorStatus `i -> _prevDoorStatus `i != -> _doorStatus `i -> . `E3332 2 `i 397  ]
-[; ;main.c: 121: {
+[; ;main.c: 121: if((doorStatus!=prevDoorStatus && doorStatus!=DOOR_ERROR))
 "121
-{
-[; ;main.c: 122: Wireless_wake();
+[e $ ! && != -> _doorStatus `i -> _prevDoorStatus `i != -> _doorStatus `i -> . `E3332 2 `i 397  ]
+[; ;main.c: 122: {
 "122
-[e ( _Wireless_wake ..  ]
-[; ;main.c: 123: if(doorStatus==DOOR_OPEN)
+{
+[; ;main.c: 123: Wireless_wake();
 "123
-[e $ ! == -> _doorStatus `i -> . `E3332 0 `i 398  ]
-[; ;main.c: 124: {
+[e ( _Wireless_wake ..  ]
+[; ;main.c: 124: if(doorStatus==DOOR_OPEN)
 "124
-{
-[; ;main.c: 125: Wireless_packageData(doorStatus,0,BMP_readTemperature());
+[e $ ! == -> _doorStatus `i -> . `E3332 0 `i 398  ]
+[; ;main.c: 125: {
 "125
-[e ( _Wireless_packageData (3 , , _doorStatus -> -> 0 `i `uc ( _BMP_readTemperature ..  ]
-[; ;main.c: 126: doorOpenTime= Timeout_getGlobalCounter();
-"126
-[e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
-"130
-}
-[; ;main.c: 130: }
-[e $U 399  ]
-"131
-[e :U 398 ]
-[; ;main.c: 131: else
-[; ;main.c: 132: {
-"132
 {
-[; ;main.c: 133: dur = Timeout_getGlobalCounter() - doorOpenTime;
-"133
-[e = _dur -> - ( _Timeout_getGlobalCounter ..  _doorOpenTime `ui ]
-[; ;main.c: 134: Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
-"134
-[e ( _Wireless_packageData (3 , , _doorStatus -> / _dur -> -> 1000 `i `ui `uc ( _BMP_readTemperature ..  ]
-[; ;main.c: 135: doorOpenTime = Timeout_getGlobalCounter();
-"135
+[; ;main.c: 126: Wireless_packageData(doorStatus,0,BMP_readTemperature());
+"126
+[e ( _Wireless_packageData (3 , , _doorStatus -> -> 0 `i `uc ( _BMP_readTemperature ..  ]
+[; ;main.c: 127: doorOpenTime= Timeout_getGlobalCounter();
+"127
 [e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
+"131
+}
+[; ;main.c: 131: }
+[e $U 399  ]
+"132
+[e :U 398 ]
+[; ;main.c: 132: else
+[; ;main.c: 133: {
+"133
+{
+[; ;main.c: 134: dur = Timeout_getGlobalCounter() - doorOpenTime;
+"134
+[e = _dur -> - ( _Timeout_getGlobalCounter ..  _doorOpenTime `ui ]
+[; ;main.c: 135: Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
+"135
+[e ( _Wireless_packageData (3 , , _doorStatus -> / _dur -> -> 1000 `i `ui `uc ( _BMP_readTemperature ..  ]
+[; ;main.c: 136: doorOpenTime = Timeout_getGlobalCounter();
 "136
+[e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
+"137
 }
 [e :U 399 ]
-[; ;main.c: 136: }
-[; ;main.c: 137: Wireless_sleep();
-"137
-[e ( _Wireless_sleep ..  ]
-[; ;main.c: 138: doorClosedUpdateCounter=0;
+[; ;main.c: 137: }
+[; ;main.c: 138: Wireless_sleep();
 "138
-[e = _doorClosedUpdateCounter -> -> -> 0 `i `l `ul ]
-"139
-}
-[; ;main.c: 139: }
-[e $U 400  ]
-"140
-[e :U 397 ]
-[; ;main.c: 140: else if(doorStatus==DOOR_OPEN)
-[e $ ! == -> _doorStatus `i -> . `E3332 0 `i 401  ]
-[; ;main.c: 141: {
-"141
-{
-[; ;main.c: 142: dur = Timeout_getGlobalCounter()-doorOpenTime;
-"142
-[e = _dur -> - ( _Timeout_getGlobalCounter ..  _doorOpenTime `ui ]
-[; ;main.c: 143: if(dur>=60000)
-"143
-[e $ ! >= -> _dur `l -> 60000 `l 402  ]
-[; ;main.c: 144: {
-"144
-{
-[; ;main.c: 145: Wireless_wake();
-"145
-[e ( _Wireless_wake ..  ]
-[; ;main.c: 146: Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
-"146
-[e ( _Wireless_packageData (3 , , _doorStatus -> / _dur -> -> 1000 `i `ui `uc ( _BMP_readTemperature ..  ]
-[; ;main.c: 147: Wireless_sleep();
-"147
 [e ( _Wireless_sleep ..  ]
-[; ;main.c: 148: doorClosedUpdateCounter=0;
-"148
+[; ;main.c: 139: doorClosedUpdateCounter=0;
+"139
 [e = _doorClosedUpdateCounter -> -> -> 0 `i `l `ul ]
-[; ;main.c: 149: doorOpenTime=Timeout_getGlobalCounter();
+"140
+}
+[; ;main.c: 140: }
+[e $U 400  ]
+"141
+[e :U 397 ]
+[; ;main.c: 141: else if(doorStatus==DOOR_OPEN)
+[e $ ! == -> _doorStatus `i -> . `E3332 0 `i 401  ]
+[; ;main.c: 142: {
+"142
+{
+[; ;main.c: 143: dur = Timeout_getGlobalCounter()-doorOpenTime;
+"143
+[e = _dur -> - ( _Timeout_getGlobalCounter ..  _doorOpenTime `ui ]
+[; ;main.c: 144: if(dur>=60000)
+"144
+[e $ ! >= -> _dur `l -> 60000 `l 402  ]
+[; ;main.c: 145: {
+"145
+{
+[; ;main.c: 146: Wireless_wake();
+"146
+[e ( _Wireless_wake ..  ]
+[; ;main.c: 147: Wireless_packageData(doorStatus,dur/1000,BMP_readTemperature());
+"147
+[e ( _Wireless_packageData (3 , , _doorStatus -> / _dur -> -> 1000 `i `ui `uc ( _BMP_readTemperature ..  ]
+[; ;main.c: 148: Wireless_sleep();
+"148
+[e ( _Wireless_sleep ..  ]
+[; ;main.c: 149: doorClosedUpdateCounter=0;
 "149
-[e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
+[e = _doorClosedUpdateCounter -> -> -> 0 `i `l `ul ]
+[; ;main.c: 150: doorOpenTime=Timeout_getGlobalCounter();
 "150
+[e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
+"151
 }
 [e :U 402 ]
-"152
-}
-[; ;main.c: 150: }
-[; ;main.c: 152: }
-[e $U 403  ]
 "153
-[e :U 401 ]
-[; ;main.c: 153: else if(doorClosedUpdateCounter>=sensorUpdatePeriod)
-[e $ ! >= _doorClosedUpdateCounter -> _sensorUpdatePeriod `ul 404  ]
-[; ;main.c: 154: {
-"154
-{
-[; ;main.c: 155: Wireless_wake();
-"155
-[e ( _Wireless_wake ..  ]
-[; ;main.c: 156: Wireless_packageData(doorStatus,0,BMP_readTemperature());
-"156
-[e ( _Wireless_packageData (3 , , _doorStatus -> -> 0 `i `uc ( _BMP_readTemperature ..  ]
-[; ;main.c: 157: Wireless_sleep();
-"157
-[e ( _Wireless_sleep ..  ]
-[; ;main.c: 158: doorClosedUpdateCounter=0;
-"158
-[e = _doorClosedUpdateCounter -> -> -> 0 `i `l `ul ]
-[; ;main.c: 159: doorOpenTime = Timeout_getGlobalCounter();
-"159
-[e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
-"160
 }
-[; ;main.c: 160: }
-[e $U 405  ]
-"161
-[e :U 404 ]
-[; ;main.c: 161: else
-[; ;main.c: 162: {
-"162
+[; ;main.c: 151: }
+[; ;main.c: 153: }
+[e $U 403  ]
+"154
+[e :U 401 ]
+[; ;main.c: 154: else if(doorClosedUpdateCounter>=sensorUpdatePeriod)
+[e $ ! >= _doorClosedUpdateCounter -> _sensorUpdatePeriod `ul 404  ]
+[; ;main.c: 155: {
+"155
 {
-[; ;main.c: 164: doorOpenTime=Timeout_getGlobalCounter();
-"164
+[; ;main.c: 156: Wireless_wake();
+"156
+[e ( _Wireless_wake ..  ]
+[; ;main.c: 157: Wireless_packageData(doorStatus,0,BMP_readTemperature());
+"157
+[e ( _Wireless_packageData (3 , , _doorStatus -> -> 0 `i `uc ( _BMP_readTemperature ..  ]
+[; ;main.c: 158: Wireless_sleep();
+"158
+[e ( _Wireless_sleep ..  ]
+[; ;main.c: 159: doorClosedUpdateCounter=0;
+"159
+[e = _doorClosedUpdateCounter -> -> -> 0 `i `l `ul ]
+[; ;main.c: 160: doorOpenTime = Timeout_getGlobalCounter();
+"160
 [e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
+"161
+}
+[; ;main.c: 161: }
+[e $U 405  ]
+"162
+[e :U 404 ]
+[; ;main.c: 162: else
+[; ;main.c: 163: {
+"163
+{
+[; ;main.c: 165: doorOpenTime=Timeout_getGlobalCounter();
 "165
+[e = _doorOpenTime ( _Timeout_getGlobalCounter ..  ]
+"166
 }
 [e :U 405 ]
 [e :U 403 ]
 [e :U 400 ]
-[; ;main.c: 165: }
-[; ;main.c: 167: prevDoorStatus=doorStatus;
-"167
-[e = _prevDoorStatus _doorStatus ]
-[; ;main.c: 168: doorClosedUpdateCounter+=10000;
+[; ;main.c: 166: }
+[; ;main.c: 168: prevDoorStatus=doorStatus;
 "168
-[e =+ _doorClosedUpdateCounter -> -> -> 10000 `i `l `ul ]
-[; ;main.c: 169: asm("sleep");
+[e = _prevDoorStatus _doorStatus ]
+[; ;main.c: 169: doorClosedUpdateCounter+=10000;
 "169
-[; <" sleep ;# ">
+[e =+ _doorClosedUpdateCounter -> -> -> 10000 `i `l `ul ]
+[; ;main.c: 170: asm("sleep");
 "170
+[; <" sleep ;# ">
+"171
 }
 [e :U 386 ]
-"102
+"103
 [e $U 387  ]
 [e :U 388 ]
-[; ;main.c: 170: }
 [; ;main.c: 171: }
-"171
+[; ;main.c: 172: }
+"172
 [e :UE 376 ]
 }
-"179
-[v _doSleep `(v ~T0 @X0 1 ef ]
 "180
+[v _doSleep `(v ~T0 @X0 1 ef ]
+"181
 {
-[; ;main.c: 179: void doSleep(void)
-[; ;main.c: 180: {
+[; ;main.c: 180: void doSleep(void)
+[; ;main.c: 181: {
 [e :U _doSleep ]
 [f ]
-[; ;main.c: 182: asm("sleep");
-"182
+[; ;main.c: 183: asm("sleep");
+"183
 [; <" sleep ;# ">
-[; ;main.c: 184: }
-"184
+[; ;main.c: 185: }
+"185
 [e :UE 406 ]
 }

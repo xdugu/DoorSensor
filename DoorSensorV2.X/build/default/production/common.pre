@@ -4385,7 +4385,7 @@ float Sensor_getSupplyVoltage();
 void Sensor_peripheralSleep(void);
 void Sensor_peripheralWake(void);
 
-# 55 "common.h"
+# 61 "common.h"
 typedef enum
 {
 DOOR_OPEN=1,
@@ -4414,11 +4414,12 @@ DOOR DOOR_resetPos();
 DOOR DOOR_getState();
 
 void Wireless_init(void);
-void Wireless_sendData(char* payload);
+void Wireless_sendData(char* payload, char);
 void Wireless_sleep();
 void Wireless_wake();
 void Wireless_packageData(DOOR status,char openTime, float tempC);
 void Wireless_checkDataReceived(void);
+char Wireless_determineTransmitPower(char initialise);
 
 void Timeout_increment();
 void Timeout_setTimeout(u16 val);
@@ -4433,6 +4434,8 @@ void Storage_load(u8 *openAngle,u8 *closeAngle);
 void Storage_save(u8 openAngle,u8 closeAngle);
 
 void setSleepTime(u16 timeSec);
+
+int limit(int val, int min, int max);
 
 # 49 "hmc5883l.h"
 typedef struct
@@ -4486,4 +4489,12 @@ extern volatile uint16_t timer1ReloadVal;
 void setSleepTime(u16 timeSec)
 {
 timer1ReloadVal=0x6000;
+}
+
+int limit(int val, int min, int max){
+if(val<min)
+return min;
+if(val>max)
+return max;
+return val;
 }

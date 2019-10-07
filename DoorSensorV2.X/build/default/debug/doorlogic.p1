@@ -2,18 +2,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "6 doorlogic.c
 [c E3332 1 0 2 .. ]
 [n E3332 . DOOR_OPEN DOOR_CLOSED DOOR_ERROR  ]
-"99 common.h
+"106 common.h
 [v _Storage_save `(v ~T0 @X0 0 ef2`uc`uc ]
-"433 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16lf1829.h
-[s S29 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S29 . RA0 RA1 RA2 RA3 RA4 RA5 ]
-"432
-[u S28 `S29 1 ]
-[n S28 . . ]
-"442
-[v _PORTAbits `VS28 ~T0 @X0 0 e@12 ]
-"93 common.h
-[v _Timeout_getGlobalCounter `(ul ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3160,41 +3150,43 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sensors.h: 15: float Sensor_getSupplyVoltage();
 [; ;sensors.h: 16: void Sensor_peripheralSleep(void);
 [; ;sensors.h: 17: void Sensor_peripheralWake(void);
-[; ;common.h: 55: typedef enum
-[; ;common.h: 56: {
-[; ;common.h: 57: DOOR_OPEN=1,
-[; ;common.h: 58: DOOR_CLOSED=0,
-[; ;common.h: 59: DOOR_ERROR=2
-[; ;common.h: 60: }DOOR;
-[; ;common.h: 64: typedef unsigned char uint8_t;
-[; ;common.h: 65: typedef unsigned char bool;
-[; ;common.h: 66: typedef unsigned char u8;
-[; ;common.h: 67: typedef signed char s8;
-[; ;common.h: 68: typedef unsigned int u16;
-[; ;common.h: 69: typedef signed int s16;
-[; ;common.h: 70: typedef signed long s32;
-[; ;common.h: 71: typedef unsigned long u32;
-[; ;common.h: 76: void DOOR_init();
-[; ;common.h: 77: void DOOR_update(char openAngle, char closedAngle);
-[; ;common.h: 78: DOOR DOOR_run();
-[; ;common.h: 79: DOOR DOOR_resetPos();
-[; ;common.h: 80: DOOR DOOR_getState();
-[; ;common.h: 82: void Wireless_init(void);
-[; ;common.h: 83: void Wireless_sendData(char* payload);
-[; ;common.h: 84: void Wireless_sleep();
-[; ;common.h: 85: void Wireless_wake();
-[; ;common.h: 86: void Wireless_packageData(DOOR status,char openTime, float tempC);
-[; ;common.h: 87: void Wireless_checkDataReceived(void);
-[; ;common.h: 89: void Timeout_increment();
-[; ;common.h: 90: void Timeout_setTimeout(u16 val);
-[; ;common.h: 91: bool Timeout_hasExpired();
-[; ;common.h: 92: void Timeout_updateCurrentTime(void);
-[; ;common.h: 93: unsigned long Timeout_getGlobalCounter();
-[; ;common.h: 95: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
-[; ;common.h: 96: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
-[; ;common.h: 98: void Storage_load(u8 *openAngle,u8 *closeAngle);
-[; ;common.h: 99: void Storage_save(u8 openAngle,u8 closeAngle);
-[; ;common.h: 101: void setSleepTime(u16 timeSec);
+[; ;common.h: 61: typedef enum
+[; ;common.h: 62: {
+[; ;common.h: 63: DOOR_OPEN=1,
+[; ;common.h: 64: DOOR_CLOSED=0,
+[; ;common.h: 65: DOOR_ERROR=2
+[; ;common.h: 66: }DOOR;
+[; ;common.h: 70: typedef unsigned char uint8_t;
+[; ;common.h: 71: typedef unsigned char bool;
+[; ;common.h: 72: typedef unsigned char u8;
+[; ;common.h: 73: typedef signed char s8;
+[; ;common.h: 74: typedef unsigned int u16;
+[; ;common.h: 75: typedef signed int s16;
+[; ;common.h: 76: typedef signed long s32;
+[; ;common.h: 77: typedef unsigned long u32;
+[; ;common.h: 82: void DOOR_init();
+[; ;common.h: 83: void DOOR_update(char openAngle, char closedAngle);
+[; ;common.h: 84: DOOR DOOR_run();
+[; ;common.h: 85: DOOR DOOR_resetPos();
+[; ;common.h: 86: DOOR DOOR_getState();
+[; ;common.h: 88: void Wireless_init(void);
+[; ;common.h: 89: void Wireless_sendData(char* payload, char);
+[; ;common.h: 90: void Wireless_sleep();
+[; ;common.h: 91: void Wireless_wake();
+[; ;common.h: 92: void Wireless_packageData(DOOR status,char openTime, float tempC);
+[; ;common.h: 93: void Wireless_checkDataReceived(void);
+[; ;common.h: 94: char Wireless_determineTransmitPower(char initialise);
+[; ;common.h: 96: void Timeout_increment();
+[; ;common.h: 97: void Timeout_setTimeout(u16 val);
+[; ;common.h: 98: bool Timeout_hasExpired();
+[; ;common.h: 99: void Timeout_updateCurrentTime(void);
+[; ;common.h: 100: unsigned long Timeout_getGlobalCounter();
+[; ;common.h: 102: char I2C_ByteWrite(u8 slaveAddr, u8* pBuffer, u8 WriteAddr);
+[; ;common.h: 103: char I2C_BufferRead(u8 slaveAddr, u8* pBuffer, u8 ReadAddr, u16 NumByteToRead);
+[; ;common.h: 105: void Storage_load(u8 *openAngle,u8 *closeAngle);
+[; ;common.h: 106: void Storage_save(u8 openAngle,u8 closeAngle);
+[; ;common.h: 108: void setSleepTime(u16 timeSec);
+[; ;common.h: 110: int limit(int val, int min, int max);
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -3310,83 +3302,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _DOOR_run ]
 [f ]
 "24
-[v F3509 `E3332 ~T0 @X0 1 s previousDoorState ]
-[i F3509
+[v F3516 `E3332 ~T0 @X0 1 s previousDoorState ]
+[i F3516
 . `E3332 1
 ]
 "25
-[v F3510 `ul ~T0 @X0 1 s doorStateDuration ]
-[i F3510
+[v F3517 `ul ~T0 @X0 1 s doorStateDuration ]
+[i F3517
 -> -> -> 0 `i `l `ul
 ]
 [; ;doorlogic.c: 24: static DOOR previousDoorState = DOOR_CLOSED;
 [; ;doorlogic.c: 25: static unsigned long doorStateDuration = 0;
-[; ;doorlogic.c: 27: if(PORTAbits.RA2){
-"27
-[e $ ! != -> . . _PORTAbits 0 2 `i -> -> -> 0 `i `Vuc `i 383  ]
-{
-[; ;doorlogic.c: 29: if(previousDoorState == DOOR_CLOSED){
-"29
-[e $ ! == -> F3509 `i -> . `E3332 1 `i 384  ]
-{
-[; ;doorlogic.c: 30: doorStateDuration = Timeout_getGlobalCounter();
-"30
-[e = F3510 ( _Timeout_getGlobalCounter ..  ]
-[; ;doorlogic.c: 31: previousDoorState=DOOR_OPEN;
-"31
-[e = F3509 . `E3332 0 ]
-"32
-}
-[e :U 384 ]
-[; ;doorlogic.c: 32: }
-[; ;doorlogic.c: 33: if(Timeout_getGlobalCounter() - doorStateDuration>=0){
-"33
-[e $ ! >= - ( _Timeout_getGlobalCounter ..  F3510 -> -> -> 0 `i `l `ul 385  ]
-{
-[; ;doorlogic.c: 34: doorState = DOOR_OPEN;
-"34
-[e = _doorState . `E3332 0 ]
-"36
-}
-[e :U 385 ]
-"37
-}
-[; ;doorlogic.c: 36: }
-[; ;doorlogic.c: 37: }
-[e $U 386  ]
-"38
-[e :U 383 ]
-[; ;doorlogic.c: 38: else {
-{
-[; ;doorlogic.c: 39: if(previousDoorState== DOOR_OPEN){
-"39
-[e $ ! == -> F3509 `i -> . `E3332 0 `i 387  ]
-{
-[; ;doorlogic.c: 40: doorStateDuration = Timeout_getGlobalCounter();
-"40
-[e = F3510 ( _Timeout_getGlobalCounter ..  ]
-[; ;doorlogic.c: 41: previousDoorState=DOOR_CLOSED;
-"41
-[e = F3509 . `E3332 1 ]
-"42
-}
-[e :U 387 ]
-[; ;doorlogic.c: 42: }
-[; ;doorlogic.c: 43: if(Timeout_getGlobalCounter() - doorStateDuration>=20000){
-"43
-[e $ ! >= - ( _Timeout_getGlobalCounter ..  F3510 -> -> -> 20000 `i `l `ul 388  ]
-{
-[; ;doorlogic.c: 44: doorState= DOOR_CLOSED;
-"44
-[e = _doorState . `E3332 1 ]
-"46
-}
-[e :U 388 ]
-"48
-}
-[e :U 386 ]
-[; ;doorlogic.c: 46: }
-[; ;doorlogic.c: 48: }
 [; ;doorlogic.c: 50: return(doorState);
 "50
 [e ) _doorState ]
@@ -3409,10 +3335,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;doorlogic.c: 97: return(DOOR_CLOSED);
 "97
 [e ) . `E3332 1 ]
-[e $UE 389  ]
+[e $UE 383  ]
 [; ;doorlogic.c: 98: }
 "98
-[e :UE 389 ]
+[e :UE 383 ]
 }
 "100
 [v _DOOR_getState `(E3332 ~T0 @X0 1 ef ]
@@ -3425,8 +3351,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;doorlogic.c: 102: return(doorState);
 "102
 [e ) _doorState ]
-[e $UE 390  ]
+[e $UE 384  ]
 [; ;doorlogic.c: 103: }
 "103
-[e :UE 390 ]
+[e :UE 384 ]
 }

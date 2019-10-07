@@ -1,12 +1,19 @@
 #include "common.h"
 #include <stdlib.h>
 
-#define PAYLOAD_SIZE 5
+#define PAYLOAD_SIZE 6
 #define CHANNEL_NO 2
 
 extern char doorOpenAngle;
 extern char doorClosedAngle;
 extern long sensorUpdatePeriod;
+
+char currentTransmitPower = 0;
+
+    
+void Wireless_changeTransmitPower(char power);
+char Wireless_isDataTransmitSuccessful();
+
 
 void Wireless_init(void)
 {
@@ -15,6 +22,10 @@ void Wireless_init(void)
 #endif
 #ifdef OUT_TEMP_SENSOR
     static const uint8_t TADDR[5] = "10001"; /* device address for outside sensor*/
+#endif
+
+#ifdef INDOOR_TEMP_SENSOR
+    static const uint8_t TADDR[5] = "20001"; /* device address for inside sensor with no door logic*/
 #endif
    
     
@@ -44,15 +55,81 @@ void Wireless_init(void)
   NRF_CE_SetLow();    /* Will pulse this later to send data */ 
 }
 
-void Wireless_determineTransmitPower()
+// called in main function. Return whether data should be retransmitted or not
+//Adjust the data transmission power based on the level required to successfully send a message
+char Wireless_determineTransmitPower(char initialise)
 {
-    int i;
+    char testPayload = 0xFF;
+    char latestResult;
+    static char numOfTransmits =0;
+    static char numOfSuccessfulTransmits = 0;
+    
+    if(initialise){
+        currentTransmitPower = 0;
+        //We will loop and send data at increasing power level to check the optimum
+        //transmit power
+        for(;currentTransmitPower <= 3; currentTransmitPower++){
+            Wireless_changeTransmitPower(currentTransmitPower);           
+            Wireless_sendData(&testPayload, 1);
+            while(NRF_IRQ_GetValue()); //wait to get results
+            //if successfully sent, keep at appropriate power level
+            if(Wireless_isDataTransmitSuccessful())
+                break;
+        }  
+        currentTransmitPower = limit( currentTransmitPower, 0, 3);
+    }else{
+        // Get data from the previous data transmit
+        latestResult = Wireless_isDataTransmitSuccessful();
+        //check if at current power level, we have a good successful transmission rate
+        if(numOfTransmits>=5){
+            if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4){
+             Wireless_changeTransmitPower(--currentTransmitPower);
+            }
+            //reset transmission quality parameters
+             numOfTransmits = 0;
+             numOfSuccessfulTransmits = 0;
+             if(!latestResult && currentTransmitPower<3){
+                 //if transmission was not successful increase power level and 
+                 //try again
+               Wireless_changeTransmitPower(++currentTransmitPower);
+               return true;
+             } else
+                 return false;
+            
+        }else{
+            //if data is sent successfully but count not reached
+            if(latestResult){
+               numOfTransmits++;
+               numOfSuccessfulTransmits++;
+            }else if(currentTransmitPower<3){
+                Wireless_changeTransmitPower(++currentTransmitPower);
+                return true;//it is required to resend data
+            } else 
+                return false;//we transmitted at max power level so its not
+            //required to retransmit the data;
+        }
+    }
+    
+    
+    return !latestResult;
 }
-void Wireless_sendData(char* payload)
+void Wireless_changeTransmitPower(char power){
+    /*Wireless_changeTransmitPower changes the transmit power on the nrf device
+     choose power level between 0 and 3 - 3 is the highest power level*/
+    u8 val;
+    
+    RF_ReadRegisterData(RF24_RF_SETUP, &val, 1);
+    val &= 0b11111001;
+    val |= (power <<1);
+    RF_WriteRegister(RF24_RF_SETUP, val);
+}
+void Wireless_sendData(char* payload, char length)
 {
+    char status;
    /* clear interrupt flags */
     RF_ResetStatusIRQ(RF24_STATUS_RX_DR|RF24_STATUS_TX_DS|RF24_STATUS_MAX_RT);
-    RF_TxPayload(payload, PAYLOAD_SIZE); 
+    status =  RF_GetStatus();
+    RF_TxPayload(payload, length); 
 }
 
 
@@ -84,8 +161,12 @@ void Wireless_packageData(DOOR status,char openTime, float tempC)
     data[3]= t1 & 0xFF; 
     t1=(float)(Sensor_getSupplyVoltage()-1)*100;
     data[4]=t1;
-    Wireless_sendData(data);
-    while(NRF_IRQ_GetValue());//wait until data is sent - Active Low
+    data[5] = currentTransmitPower;
+    do{
+        Wireless_sendData(data, PAYLOAD_SIZE);
+        while(NRF_IRQ_GetValue());//wait until data is sent - Active Low
+    }
+    while(Wireless_determineTransmitPower(false));
     Wireless_checkDataReceived();
 }
 
@@ -108,6 +189,15 @@ void Wireless_wake()
      reg|=0b00000010;
      RF_WriteRegister(RF24_CONFIG,reg);
      __delay_ms(2); //start up takes 1.5 ms
+}
+
+//This function returns true if the data transmitted was successfully acknowledged
+char Wireless_isDataTransmitSuccessful(){
+   char status =  RF_GetStatus();
+   if(status & RF24_STATUS_TX_DS)
+       return true;
+   else
+       return false;
 }
 
 void Wireless_checkDataReceived(void)
