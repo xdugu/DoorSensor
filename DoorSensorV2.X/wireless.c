@@ -80,37 +80,36 @@ char Wireless_determineTransmitPower(char initialise)
     }else{
         // Get data from the previous data transmit
         latestResult = Wireless_isDataTransmitSuccessful();
+        numOfTransmits++;
+        numOfSuccessfulTransmits+= latestResult;
         //check if at current power level, we have a good successful transmission rate
         if(numOfTransmits>=5){
-            if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4){
-             Wireless_changeTransmitPower(--currentTransmitPower);
-            }
+            // 80% sucessful rate or higher? reduce power level on next transmit
+            if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4)
+                Wireless_changeTransmitPower(--currentTransmitPower);          
             //reset transmission quality parameters
              numOfTransmits = 0;
              numOfSuccessfulTransmits = 0;
              if(!latestResult && currentTransmitPower<3){
                  //if transmission was not successful increase power level and 
                  //try again
-               Wireless_changeTransmitPower(++currentTransmitPower);
+               Wireless_changeTransmitPower(++currentTransmitPower);               
                return true;
-             } else
-                 return false;
+             } else return false;
             
         }else{
-            //if data is sent successfully but count not reached
-            if(latestResult){
-               numOfTransmits++;
-               numOfSuccessfulTransmits++;
-            }else if(currentTransmitPower<3){
-                Wireless_changeTransmitPower(++currentTransmitPower);
+            //if count not reached
+            if(!latestResult && currentTransmitPower<3){
+                //if the data was not transmitted successfully but was not sent at max power level
+                Wireless_changeTransmitPower(++currentTransmitPower);               
                 return true;//it is required to resend data
             } else 
                 return false;//we transmitted at max power level so its not
-            //required to retransmit the data;
+            //required to retransmit the data;            
         }
     }
-    
-    
+    //latestResult contains state of whether data was sucessfully transmitted or not. If we get here in the code
+    //we will return the opposite of this variable to tell the data transmission whether to/not to resend the data
     return !latestResult;
 }
 void Wireless_changeTransmitPower(char power){
@@ -118,7 +117,10 @@ void Wireless_changeTransmitPower(char power){
      choose power level between 0 and 3 - 3 is the highest power level*/
     u8 val;
     
+    //Ensure that rogue function does not send an invalid value
+    power = limit(power, 0, 3);
     RF_ReadRegisterData(RF24_RF_SETUP, &val, 1);
+    //Clearing bits we want to write to
     val &= 0b11111001;
     val |= (power <<1);
     RF_WriteRegister(RF24_RF_SETUP, val);
