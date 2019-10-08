@@ -3318,6 +3318,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 86: BMP_init();
 "86
 [e ( _BMP_init ..  ]
+[; ;main.c: 91: setSleepTime(10000/1000);
+"91
+[e ( _setSleepTime (1 -> / -> 10000 `i -> 1000 `i `us ]
 [; ;main.c: 93: setSleepTime(10000/1000);
 "93
 [e ( _setSleepTime (1 -> / -> 10000 `i -> 1000 `i `us ]

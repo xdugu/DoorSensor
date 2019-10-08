@@ -4552,7 +4552,7 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 7 "wireless.c"
+# 9 "wireless.c"
 extern char doorOpenAngle;
 extern char doorClosedAngle;
 extern long sensorUpdatePeriod;
@@ -4567,11 +4567,10 @@ char Wireless_isDataTransmitSuccessful();
 void Wireless_init(void)
 {
 
-# 28
-static const uint8_t TADDR[5] = "20001";
+# 26
+static const uint8_t TADDR[5] = "10001";
 
-
-
+# 34
 _delay((unsigned long)((100)*(8000000/4000.0)));
 
 RF_Init();
@@ -4604,7 +4603,7 @@ char Wireless_determineTransmitPower(char initialise)
 {
 char testPayload = 0xFF;
 char latestResult;
-static char numOfTransmits =0;
+static char numOfTransmits = 0;
 static char numOfSuccessfulTransmits = 0;
 
 if(initialise){
@@ -4623,28 +4622,27 @@ currentTransmitPower = limit( currentTransmitPower, 0, 3);
 }else{
 
 latestResult = Wireless_isDataTransmitSuccessful();
+numOfTransmits++;
+numOfSuccessfulTransmits+= latestResult;
 
 if(numOfTransmits>=5){
-if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4){
+
+if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4)
 Wireless_changeTransmitPower(--currentTransmitPower);
-}
 
 numOfTransmits = 0;
 numOfSuccessfulTransmits = 0;
-if(!latestResult && currentTransmitPower<3){
+if(!latestResult && currentTransmitPower < 3){
 
 
 Wireless_changeTransmitPower(++currentTransmitPower);
 return 1;
-} else
-return 0;
+} else return 0;
 
 }else{
 
-if(latestResult){
-numOfTransmits++;
-numOfSuccessfulTransmits++;
-}else if(currentTransmitPower<3){
+if(!latestResult && currentTransmitPower < 3){
+
 Wireless_changeTransmitPower(++currentTransmitPower);
 return 1;
 } else
@@ -4658,10 +4656,13 @@ return !latestResult;
 }
 void Wireless_changeTransmitPower(char power){
 
-# 119
+# 120
 u8 val;
 
+
+power = limit(power, 0, 3);
 RF_ReadRegisterData(0x06, &val, 1);
+
 val &= 0b11111001;
 val |= (power <<1);
 RF_WriteRegister(0x06, val);
@@ -4679,7 +4680,7 @@ RF_TxPayload(payload, length);
 void Wireless_packageData(DOOR status,char openTime, float tempC)
 {
 
-# 146
+# 150
 tempC+=50;
 tempC*=10;
 
@@ -4740,7 +4741,7 @@ return 0;
 void Wireless_checkDataReceived(void)
 {
 
-# 210
+# 214
 char channel;
 char data[4];
 do

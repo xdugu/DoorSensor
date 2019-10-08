@@ -19,7 +19,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S112 . . ]
 "2198
 [v _LATCbits `VS112 ~T0 @X0 0 e@270 ]
-"14 wireless.c
+"16 wireless.c
 [v _Wireless_changeTransmitPower `(v ~T0 @X0 0 ef1`uc ]
 "89 common.h
 [v _Wireless_sendData `(v ~T0 @X0 0 ef2`*uc`uc ]
@@ -31,7 +31,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S32 . . ]
 "533
 [v _PORTCbits `VS32 ~T0 @X0 0 e@14 ]
-"15 wireless.c
+"17 wireless.c
 [v _Wireless_isDataTransmitSuccessful `(uc ~T0 @X0 0 ef ]
 "110 common.h
 [v _limit `(i ~T0 @X0 0 ef3`i`i`i ]
@@ -41,7 +41,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RF_GetStatus `(uc ~T0 @X0 0 ef ]
 "305
 [v _RF_TxPayload `(v ~T0 @X0 0 ef2`*uc`uc ]
-"137 wireless.c
+"141 wireless.c
 [c E3332 1 0 2 .. ]
 [n E3332 . DOOR_OPEN DOOR_CLOSED DOOR_ERROR  ]
 "19 diagnostics.h
@@ -56,11 +56,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RF_RxPayload `(v ~T0 @X0 0 ef2`*uc`uc ]
 "83 common.h
 [v _DOOR_update `(v ~T0 @X0 0 ef2`uc`uc ]
-"7 wireless.c
+"9 wireless.c
 [v _doorOpenAngle `uc ~T0 @X0 0 e ]
-"8
+"10
 [v _doorClosedAngle `uc ~T0 @X0 0 e ]
-"9
+"11
 [v _sensorUpdatePeriod `l ~T0 @X0 0 e ]
 "85 common.h
 [v _DOOR_resetPos `(E3332 ~T0 @X0 0 ef ]
@@ -3297,26 +3297,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;wireless.c: 7: extern char doorOpenAngle;
-[; ;wireless.c: 8: extern char doorClosedAngle;
-[; ;wireless.c: 9: extern long sensorUpdatePeriod;
-"11 wireless.c
+[; ;wireless.c: 9: extern char doorOpenAngle;
+[; ;wireless.c: 10: extern char doorClosedAngle;
+[; ;wireless.c: 11: extern long sensorUpdatePeriod;
+"13 wireless.c
 [v _currentTransmitPower `uc ~T0 @X0 1 e ]
 [i _currentTransmitPower
 -> -> 0 `i `uc
 ]
-[; ;wireless.c: 11: char currentTransmitPower = 0;
-[; ;wireless.c: 14: void Wireless_changeTransmitPower(char power);
-[; ;wireless.c: 15: char Wireless_isDataTransmitSuccessful();
-"18
+[; ;wireless.c: 13: char currentTransmitPower = 0;
+[; ;wireless.c: 16: void Wireless_changeTransmitPower(char power);
+[; ;wireless.c: 17: char Wireless_isDataTransmitSuccessful();
+"20
 [v _Wireless_init `(v ~T0 @X0 1 ef ]
-"19
+"21
 {
-[; ;wireless.c: 18: void Wireless_init(void)
-[; ;wireless.c: 19: {
+[; ;wireless.c: 20: void Wireless_init(void)
+[; ;wireless.c: 21: {
 [e :U _Wireless_init ]
 [f ]
-"24
+"26
 [v F3517 `Cuc ~T0 @X0 -> 5 `i s TADDR ]
 [i F3517
 :U ..
@@ -3327,560 +3327,549 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 49 `c
 ..
 ]
-[; ;wireless.c: 24: static const uint8_t TADDR[5] = "10001";
-[; ;wireless.c: 32: _delay((unsigned long)((100)*(8000000/4000.0)));
-"32
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;wireless.c: 34: RF_Init();
+[; ;wireless.c: 26: static const uint8_t TADDR[5] = "10001";
+[; ;wireless.c: 34: _delay((unsigned long)((100)*(8000000/4000.0)));
 "34
-[e ( _RF_Init ..  ]
-[; ;wireless.c: 36: RF_WriteRegister(0x06, 0x06|0x20);
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;wireless.c: 36: RF_Init();
 "36
-[e ( _RF_WriteRegister (2 , -> -> 6 `i `uc -> | -> 6 `i -> 32 `i `uc ]
-[; ;wireless.c: 37: RF_WriteRegister(0x11, 6);
-"37
-[e ( _RF_WriteRegister (2 , -> -> 17 `i `uc -> -> 6 `i `uc ]
-[; ;wireless.c: 38: RF_WriteRegister(0x05, 2);
+[e ( _RF_Init ..  ]
+[; ;wireless.c: 38: RF_WriteRegister(0x06, 0x06|0x20);
 "38
+[e ( _RF_WriteRegister (2 , -> -> 6 `i `uc -> | -> 6 `i -> 32 `i `uc ]
+[; ;wireless.c: 39: RF_WriteRegister(0x11, 6);
+"39
+[e ( _RF_WriteRegister (2 , -> -> 17 `i `uc -> -> 6 `i `uc ]
+[; ;wireless.c: 40: RF_WriteRegister(0x05, 2);
+"40
 [e ( _RF_WriteRegister (2 , -> -> 5 `i `uc -> -> 2 `i `uc ]
-[; ;wireless.c: 41: RF_WriteRegisterData(0x0A, (uint8_t*)TADDR, sizeof(TADDR));
-"41
+[; ;wireless.c: 43: RF_WriteRegisterData(0x0A, (uint8_t*)TADDR, sizeof(TADDR));
+"43
 [e ( _RF_WriteRegisterData (3 , , -> -> 10 `i `uc -> &U F3517 `*uc -> -> # F3517 `ui `uc ]
-[; ;wireless.c: 42: RF_WriteRegisterData(0x10, (uint8_t*)TADDR, sizeof(TADDR));
-"42
+[; ;wireless.c: 44: RF_WriteRegisterData(0x10, (uint8_t*)TADDR, sizeof(TADDR));
+"44
 [e ( _RF_WriteRegisterData (3 , , -> -> 16 `i `uc -> &U F3517 `*uc -> -> # F3517 `ui `uc ]
-[; ;wireless.c: 45: RF_WriteRegister(0x02, 0x01);
-"45
+[; ;wireless.c: 47: RF_WriteRegister(0x02, 0x01);
+"47
 [e ( _RF_WriteRegister (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;wireless.c: 48: RF_ResetStatusIRQ(0x40|0x20|0x10);
-"48
-[e ( _RF_ResetStatusIRQ (1 -> | | -> 64 `i -> 32 `i -> 16 `i `uc ]
-[; ;wireless.c: 50: RF_WriteRegister(0x01, 0x01);
+[; ;wireless.c: 50: RF_ResetStatusIRQ(0x40|0x20|0x10);
 "50
-[e ( _RF_WriteRegister (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-[; ;wireless.c: 51: RF_WriteRegister(0x04, 0xF0|0x01);
-"51
-[e ( _RF_WriteRegister (2 , -> -> 4 `i `uc -> | -> 240 `i -> 1 `i `uc ]
-[; ;wireless.c: 52: RF_WriteRegister(0x00, (1<<3)|(1<<2)|(1<<1)|(0));
+[e ( _RF_ResetStatusIRQ (1 -> | | -> 64 `i -> 32 `i -> 16 `i `uc ]
+[; ;wireless.c: 52: RF_WriteRegister(0x01, 0x01);
 "52
-[e ( _RF_WriteRegister (2 , -> -> 0 `i `uc -> | | | << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i -> 0 `i `uc ]
-[; ;wireless.c: 53: RF_WriteRegister(0x1D, (1<<2) | (1<<1));
+[e ( _RF_WriteRegister (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;wireless.c: 53: RF_WriteRegister(0x04, 0xF0|0x01);
 "53
-[e ( _RF_WriteRegister (2 , -> -> 29 `i `uc -> | << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
-[; ;wireless.c: 54: RF_WriteRegister(0x1C, (1<<0));
+[e ( _RF_WriteRegister (2 , -> -> 4 `i `uc -> | -> 240 `i -> 1 `i `uc ]
+[; ;wireless.c: 54: RF_WriteRegister(0x00, (1<<3)|(1<<2)|(1<<1)|(0));
 "54
-[e ( _RF_WriteRegister (2 , -> -> 28 `i `uc -> << -> 1 `i -> 0 `i `uc ]
-[; ;wireless.c: 55: do { LATCbits.LATC2 = 0; } while(0);
+[e ( _RF_WriteRegister (2 , -> -> 0 `i `uc -> | | | << -> 1 `i -> 3 `i << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i -> 0 `i `uc ]
+[; ;wireless.c: 55: RF_WriteRegister(0x1D, (1<<2) | (1<<1));
 "55
+[e ( _RF_WriteRegister (2 , -> -> 29 `i `uc -> | << -> 1 `i -> 2 `i << -> 1 `i -> 1 `i `uc ]
+[; ;wireless.c: 56: RF_WriteRegister(0x1C, (1<<0));
+"56
+[e ( _RF_WriteRegister (2 , -> -> 28 `i `uc -> << -> 1 `i -> 0 `i `uc ]
+[; ;wireless.c: 57: do { LATCbits.LATC2 = 0; } while(0);
+"57
 [e :U 383 ]
 {
 [e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
 }
 [e :U 382 ]
-[; ;wireless.c: 56: }
-"56
+[; ;wireless.c: 58: }
+"58
 [e :UE 380 ]
 }
-"60
-[v _Wireless_determineTransmitPower `(uc ~T0 @X0 1 ef1`uc ]
-"61
-{
-[; ;wireless.c: 60: char Wireless_determineTransmitPower(char initialise)
-[; ;wireless.c: 61: {
-[e :U _Wireless_determineTransmitPower ]
-"60
-[v _initialise `uc ~T0 @X0 1 r1 ]
-"61
-[f ]
 "62
-[v _testPayload `uc ~T0 @X0 1 a ]
-[; ;wireless.c: 62: char testPayload = 0xFF;
-[e = _testPayload -> -> 255 `i `uc ]
+[v _Wireless_determineTransmitPower `(uc ~T0 @X0 1 ef1`uc ]
 "63
-[v _latestResult `uc ~T0 @X0 1 a ]
+{
+[; ;wireless.c: 62: char Wireless_determineTransmitPower(char initialise)
+[; ;wireless.c: 63: {
+[e :U _Wireless_determineTransmitPower ]
+"62
+[v _initialise `uc ~T0 @X0 1 r1 ]
+"63
+[f ]
 "64
+[v _testPayload `uc ~T0 @X0 1 a ]
+[; ;wireless.c: 64: char testPayload = 0xFF;
+[e = _testPayload -> -> 255 `i `uc ]
+"65
+[v _latestResult `uc ~T0 @X0 1 a ]
+"66
 [v F3524 `uc ~T0 @X0 1 s numOfTransmits ]
 [i F3524
 -> -> 0 `i `uc
 ]
-"65
+"67
 [v F3525 `uc ~T0 @X0 1 s numOfSuccessfulTransmits ]
 [i F3525
 -> -> 0 `i `uc
 ]
-[; ;wireless.c: 63: char latestResult;
-[; ;wireless.c: 64: static char numOfTransmits =0;
-[; ;wireless.c: 65: static char numOfSuccessfulTransmits = 0;
-[; ;wireless.c: 67: if(initialise){
-"67
+[; ;wireless.c: 65: char latestResult;
+[; ;wireless.c: 66: static char numOfTransmits = 0;
+[; ;wireless.c: 67: static char numOfSuccessfulTransmits = 0;
+[; ;wireless.c: 69: if(initialise){
+"69
 [e $ ! != -> _initialise `i -> -> -> 0 `i `uc `i 385  ]
 {
-[; ;wireless.c: 68: currentTransmitPower = 0;
-"68
+[; ;wireless.c: 70: currentTransmitPower = 0;
+"70
 [e = _currentTransmitPower -> -> 0 `i `uc ]
-[; ;wireless.c: 71: for(;currentTransmitPower <= 3; currentTransmitPower++){
-"71
+[; ;wireless.c: 73: for(;currentTransmitPower <= 3; currentTransmitPower++){
+"73
 {
 [e $U 389  ]
 [e :U 386 ]
 {
-[; ;wireless.c: 72: Wireless_changeTransmitPower(currentTransmitPower);
-"72
-[e ( _Wireless_changeTransmitPower (1 _currentTransmitPower ]
-[; ;wireless.c: 73: Wireless_sendData(&testPayload, 1);
-"73
-[e ( _Wireless_sendData (2 , &U _testPayload -> -> 1 `i `uc ]
-[; ;wireless.c: 74: while(PORTCbits.RC3);
+[; ;wireless.c: 74: Wireless_changeTransmitPower(currentTransmitPower);
 "74
+[e ( _Wireless_changeTransmitPower (1 _currentTransmitPower ]
+[; ;wireless.c: 75: Wireless_sendData(&testPayload, 1);
+"75
+[e ( _Wireless_sendData (2 , &U _testPayload -> -> 1 `i `uc ]
+[; ;wireless.c: 76: while(PORTCbits.RC3);
+"76
 [e $U 390  ]
 [e :U 391 ]
 [e :U 390 ]
 [e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 391  ]
 [e :U 392 ]
-[; ;wireless.c: 76: if(Wireless_isDataTransmitSuccessful())
-"76
+[; ;wireless.c: 78: if(Wireless_isDataTransmitSuccessful())
+"78
 [e $ ! != -> ( _Wireless_isDataTransmitSuccessful ..  `i -> -> -> 0 `i `uc `i 393  ]
-[; ;wireless.c: 77: break;
-"77
+[; ;wireless.c: 79: break;
+"79
 [e $U 387  ]
 [e :U 393 ]
-"78
+"80
 }
-"71
+"73
 [e ++ _currentTransmitPower -> -> 1 `i `uc ]
 [e :U 389 ]
 [e $ <= -> _currentTransmitPower `i -> 3 `i 386  ]
 [e :U 387 ]
-"78
-}
-[; ;wireless.c: 78: }
-[; ;wireless.c: 79: currentTransmitPower = limit( currentTransmitPower, 0, 3);
-"79
-[e = _currentTransmitPower -> ( _limit (3 , , -> _currentTransmitPower `i -> 0 `i -> 3 `i `uc ]
 "80
 }
-[; ;wireless.c: 80: }else{
+[; ;wireless.c: 80: }
+[; ;wireless.c: 81: currentTransmitPower = limit( currentTransmitPower, 0, 3);
+"81
+[e = _currentTransmitPower -> ( _limit (3 , , -> _currentTransmitPower `i -> 0 `i -> 3 `i `uc ]
+"82
+}
+[; ;wireless.c: 82: }else{
 [e $U 394  ]
 [e :U 385 ]
 {
-[; ;wireless.c: 82: latestResult = Wireless_isDataTransmitSuccessful();
-"82
-[e = _latestResult ( _Wireless_isDataTransmitSuccessful ..  ]
-[; ;wireless.c: 84: if(numOfTransmits>=5){
+[; ;wireless.c: 84: latestResult = Wireless_isDataTransmitSuccessful();
 "84
+[e = _latestResult ( _Wireless_isDataTransmitSuccessful ..  ]
+[; ;wireless.c: 85: numOfTransmits++;
+"85
+[e ++ F3524 -> -> 1 `i `uc ]
+[; ;wireless.c: 86: numOfSuccessfulTransmits+= latestResult;
+"86
+[e =+ F3525 _latestResult ]
+[; ;wireless.c: 88: if(numOfTransmits>=5){
+"88
 [e $ ! >= -> F3524 `i -> 5 `i 395  ]
 {
-[; ;wireless.c: 85: if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4){
-"85
-[e $ ! && && > -> _currentTransmitPower `i -> 0 `i != -> _latestResult `i -> -> -> 0 `i `uc `i >= -> F3525 `i -> 4 `i 396  ]
-{
-[; ;wireless.c: 86: Wireless_changeTransmitPower(--currentTransmitPower);
-"86
-[e ( _Wireless_changeTransmitPower (1 =- _currentTransmitPower -> -> 1 `i `uc ]
-"87
-}
-[e :U 396 ]
-[; ;wireless.c: 87: }
-[; ;wireless.c: 89: numOfTransmits = 0;
-"89
-[e = F3524 -> -> 0 `i `uc ]
-[; ;wireless.c: 90: numOfSuccessfulTransmits = 0;
+[; ;wireless.c: 90: if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4)
 "90
-[e = F3525 -> -> 0 `i `uc ]
-[; ;wireless.c: 91: if(!latestResult && currentTransmitPower<3){
+[e $ ! && && > -> _currentTransmitPower `i -> 0 `i != -> _latestResult `i -> -> -> 0 `i `uc `i >= -> F3525 `i -> 4 `i 396  ]
+[; ;wireless.c: 91: Wireless_changeTransmitPower(--currentTransmitPower);
 "91
+[e ( _Wireless_changeTransmitPower (1 =- _currentTransmitPower -> -> 1 `i `uc ]
+[e :U 396 ]
+[; ;wireless.c: 93: numOfTransmits = 0;
+"93
+[e = F3524 -> -> 0 `i `uc ]
+[; ;wireless.c: 94: numOfSuccessfulTransmits = 0;
+"94
+[e = F3525 -> -> 0 `i `uc ]
+[; ;wireless.c: 95: if(!latestResult && currentTransmitPower < 3){
+"95
 [e $ ! && ! != -> _latestResult `i -> -> -> 0 `i `uc `i < -> _currentTransmitPower `i -> 3 `i 397  ]
 {
-[; ;wireless.c: 94: Wireless_changeTransmitPower(++currentTransmitPower);
-"94
+[; ;wireless.c: 98: Wireless_changeTransmitPower(++currentTransmitPower);
+"98
 [e ( _Wireless_changeTransmitPower (1 =+ _currentTransmitPower -> -> 1 `i `uc ]
-[; ;wireless.c: 95: return 1;
-"95
+[; ;wireless.c: 99: return 1;
+"99
 [e ) -> -> 1 `i `uc ]
 [e $UE 384  ]
-"96
+"100
 }
-[; ;wireless.c: 96: } else
+[; ;wireless.c: 100: } else return 0;
 [e $U 398  ]
 [e :U 397 ]
-[; ;wireless.c: 97: return 0;
-"97
 [e ) -> -> 0 `i `uc ]
 [e $UE 384  ]
 [e :U 398 ]
-"99
+"102
 }
-[; ;wireless.c: 99: }else{
+[; ;wireless.c: 102: }else{
 [e $U 399  ]
 [e :U 395 ]
 {
-[; ;wireless.c: 101: if(latestResult){
-"101
-[e $ ! != -> _latestResult `i -> -> -> 0 `i `uc `i 400  ]
-{
-[; ;wireless.c: 102: numOfTransmits++;
-"102
-[e ++ F3524 -> -> 1 `i `uc ]
-[; ;wireless.c: 103: numOfSuccessfulTransmits++;
-"103
-[e ++ F3525 -> -> 1 `i `uc ]
+[; ;wireless.c: 104: if(!latestResult && currentTransmitPower < 3){
 "104
-}
-[; ;wireless.c: 104: }else if(currentTransmitPower<3){
-[e $U 401  ]
-[e :U 400 ]
-[e $ ! < -> _currentTransmitPower `i -> 3 `i 402  ]
+[e $ ! && ! != -> _latestResult `i -> -> -> 0 `i `uc `i < -> _currentTransmitPower `i -> 3 `i 400  ]
 {
-[; ;wireless.c: 105: Wireless_changeTransmitPower(++currentTransmitPower);
-"105
-[e ( _Wireless_changeTransmitPower (1 =+ _currentTransmitPower -> -> 1 `i `uc ]
-[; ;wireless.c: 106: return 1;
+[; ;wireless.c: 106: Wireless_changeTransmitPower(++currentTransmitPower);
 "106
+[e ( _Wireless_changeTransmitPower (1 =+ _currentTransmitPower -> -> 1 `i `uc ]
+[; ;wireless.c: 107: return 1;
+"107
 [e ) -> -> 1 `i `uc ]
 [e $UE 384  ]
-"107
-}
-[; ;wireless.c: 107: } else
-[e $U 403  ]
-[e :U 402 ]
-[; ;wireless.c: 108: return 0;
 "108
+}
+[; ;wireless.c: 108: } else
+[e $U 401  ]
+[e :U 400 ]
+[; ;wireless.c: 109: return 0;
+"109
 [e ) -> -> 0 `i `uc ]
 [e $UE 384  ]
-[e :U 403 ]
 [e :U 401 ]
-"110
-}
-[e :U 399 ]
 "111
 }
+[e :U 399 ]
+"112
+}
 [e :U 394 ]
-[; ;wireless.c: 110: }
 [; ;wireless.c: 111: }
-[; ;wireless.c: 114: return !latestResult;
-"114
+[; ;wireless.c: 112: }
+[; ;wireless.c: 115: return !latestResult;
+"115
 [e ) -> -> ! != -> _latestResult `i -> -> -> 0 `i `uc `i `i `uc ]
 [e $UE 384  ]
-[; ;wireless.c: 115: }
-"115
+[; ;wireless.c: 116: }
+"116
 [e :UE 384 ]
 }
-"116
+"117
 [v _Wireless_changeTransmitPower `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;wireless.c: 116: void Wireless_changeTransmitPower(char power){
+[; ;wireless.c: 117: void Wireless_changeTransmitPower(char power){
 [e :U _Wireless_changeTransmitPower ]
 [v _power `uc ~T0 @X0 1 r1 ]
 [f ]
-"119
+"120
 [v _val `uc ~T0 @X0 1 a ]
-[; ;wireless.c: 119: u8 val;
-[; ;wireless.c: 121: RF_ReadRegisterData(0x06, &val, 1);
-"121
-[e ( _RF_ReadRegisterData (3 , , -> -> 6 `i `uc &U _val -> -> 1 `i `uc ]
-[; ;wireless.c: 122: val &= 0b11111001;
-"122
-[e =& _val -> -> 249 `i `uc ]
-[; ;wireless.c: 123: val |= (power <<1);
+[; ;wireless.c: 120: u8 val;
+[; ;wireless.c: 123: power = limit(power, 0, 3);
 "123
-[e =| _val -> << -> _power `i -> 1 `i `uc ]
-[; ;wireless.c: 124: RF_WriteRegister(0x06, val);
+[e = _power -> ( _limit (3 , , -> _power `i -> 0 `i -> 3 `i `uc ]
+[; ;wireless.c: 124: RF_ReadRegisterData(0x06, &val, 1);
 "124
-[e ( _RF_WriteRegister (2 , -> -> 6 `i `uc _val ]
-[; ;wireless.c: 125: }
-"125
-[e :UE 404 ]
-}
+[e ( _RF_ReadRegisterData (3 , , -> -> 6 `i `uc &U _val -> -> 1 `i `uc ]
+[; ;wireless.c: 126: val &= 0b11111001;
 "126
-[v _Wireless_sendData `(v ~T0 @X0 1 ef2`*uc`uc ]
+[e =& _val -> -> 249 `i `uc ]
+[; ;wireless.c: 127: val |= (power <<1);
 "127
+[e =| _val -> << -> _power `i -> 1 `i `uc ]
+[; ;wireless.c: 128: RF_WriteRegister(0x06, val);
+"128
+[e ( _RF_WriteRegister (2 , -> -> 6 `i `uc _val ]
+[; ;wireless.c: 129: }
+"129
+[e :UE 402 ]
+}
+"130
+[v _Wireless_sendData `(v ~T0 @X0 1 ef2`*uc`uc ]
+"131
 {
-[; ;wireless.c: 126: void Wireless_sendData(char* payload, char length)
-[; ;wireless.c: 127: {
+[; ;wireless.c: 130: void Wireless_sendData(char* payload, char length)
+[; ;wireless.c: 131: {
 [e :U _Wireless_sendData ]
-"126
+"130
 [v _payload `*uc ~T0 @X0 1 r1 ]
 [v _length `uc ~T0 @X0 1 r2 ]
-"127
-[f ]
-"128
-[v _status `uc ~T0 @X0 1 a ]
-[; ;wireless.c: 128: char status;
-[; ;wireless.c: 130: RF_ResetStatusIRQ(0x40|0x20|0x10);
-"130
-[e ( _RF_ResetStatusIRQ (1 -> | | -> 64 `i -> 32 `i -> 16 `i `uc ]
-[; ;wireless.c: 131: status = RF_GetStatus();
 "131
-[e = _status ( _RF_GetStatus ..  ]
-[; ;wireless.c: 132: RF_TxPayload(payload, length);
+[f ]
 "132
+[v _status `uc ~T0 @X0 1 a ]
+[; ;wireless.c: 132: char status;
+[; ;wireless.c: 134: RF_ResetStatusIRQ(0x40|0x20|0x10);
+"134
+[e ( _RF_ResetStatusIRQ (1 -> | | -> 64 `i -> 32 `i -> 16 `i `uc ]
+[; ;wireless.c: 135: status = RF_GetStatus();
+"135
+[e = _status ( _RF_GetStatus ..  ]
+[; ;wireless.c: 136: RF_TxPayload(payload, length);
+"136
 [e ( _RF_TxPayload (2 , _payload _length ]
-[; ;wireless.c: 133: }
-"133
-[e :UE 405 ]
-}
-"136
-[v _Wireless_packageData `(v ~T0 @X0 1 ef3`E3332`uc`f ]
+[; ;wireless.c: 137: }
 "137
+[e :UE 403 ]
+}
+"140
+[v _Wireless_packageData `(v ~T0 @X0 1 ef3`E3332`uc`f ]
+"141
 {
-[; ;wireless.c: 136: void Wireless_packageData(DOOR status,char openTime, float tempC)
-[; ;wireless.c: 137: {
+[; ;wireless.c: 140: void Wireless_packageData(DOOR status,char openTime, float tempC)
+[; ;wireless.c: 141: {
 [e :U _Wireless_packageData ]
-"136
+"140
 [v _status `E3332 ~T0 @X0 1 r1 ]
 [v _openTime `uc ~T0 @X0 1 r2 ]
 [v _tempC `f ~T0 @X0 1 r3 ]
-"137
+"141
 [f ]
-[; ;wireless.c: 146: tempC+=50;
-"146
-[e =+ _tempC -> -> 50 `i `f ]
-[; ;wireless.c: 147: tempC*=10;
-"147
-[e =* _tempC -> -> 10 `i `f ]
-"149
-[v _t1 `ui ~T0 @X0 1 a ]
-[; ;wireless.c: 149: unsigned int t1 = tempC;
-[e = _t1 -> _tempC `ui ]
+[; ;wireless.c: 150: tempC+=50;
 "150
-[v _var `uc ~T0 @X0 1 a ]
+[e =+ _tempC -> -> 50 `i `f ]
+[; ;wireless.c: 151: tempC*=10;
 "151
-[v _data `uc ~T0 @X0 -> 6 `i a ]
-[; ;wireless.c: 150: char var;
-[; ;wireless.c: 151: char data[6];
-[; ;wireless.c: 153: status<<=4;
+[e =* _tempC -> -> 10 `i `f ]
 "153
-[e =<< _status -> 4 `i ]
-[; ;wireless.c: 154: var=Diag_getSensorHealth();
+[v _t1 `ui ~T0 @X0 1 a ]
+[; ;wireless.c: 153: unsigned int t1 = tempC;
+[e = _t1 -> _tempC `ui ]
 "154
-[e = _var ( _Diag_getSensorHealth ..  ]
-[; ;wireless.c: 155: status|=var;
+[v _var `uc ~T0 @X0 1 a ]
 "155
-[e =| _status -> _var `E3332 ]
-[; ;wireless.c: 158: data[0]=status;
+[v _data `uc ~T0 @X0 -> 6 `i a ]
+[; ;wireless.c: 154: char var;
+[; ;wireless.c: 155: char data[6];
+[; ;wireless.c: 157: status<<=4;
+"157
+[e =<< _status -> 4 `i ]
+[; ;wireless.c: 158: var=Diag_getSensorHealth();
 "158
-[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> _status `uc ]
-[; ;wireless.c: 159: data[1]=openTime;
+[e = _var ( _Diag_getSensorHealth ..  ]
+[; ;wireless.c: 159: status|=var;
 "159
-[e = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux _openTime ]
-[; ;wireless.c: 160: data[2]=t1>>8;
-"160
-[e = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux -> >> _t1 -> 8 `i `uc ]
-[; ;wireless.c: 161: data[3]= t1 & 0xFF;
-"161
-[e = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux -> & _t1 -> -> 255 `i `ui `uc ]
-[; ;wireless.c: 162: t1=(float)(Sensor_getSupplyVoltage()-1)*100;
+[e =| _status -> _var `E3332 ]
+[; ;wireless.c: 162: data[0]=status;
 "162
-[e = _t1 -> * - ( _Sensor_getSupplyVoltage ..  -> -> 1 `i `f -> -> 100 `i `f `ui ]
-[; ;wireless.c: 163: data[4]=t1;
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> _status `uc ]
+[; ;wireless.c: 163: data[1]=openTime;
 "163
-[e = *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux -> _t1 `uc ]
-[; ;wireless.c: 164: data[5] = currentTransmitPower;
+[e = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux _openTime ]
+[; ;wireless.c: 164: data[2]=t1>>8;
 "164
-[e = *U + &U _data * -> -> -> 5 `i `ui `ux -> -> # *U &U _data `ui `ux _currentTransmitPower ]
-[; ;wireless.c: 165: do{
+[e = *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux -> >> _t1 -> 8 `i `uc ]
+[; ;wireless.c: 165: data[3]= t1 & 0xFF;
 "165
-[e :U 409 ]
-{
-[; ;wireless.c: 166: Wireless_sendData(data, 6);
+[e = *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux -> & _t1 -> -> 255 `i `ui `uc ]
+[; ;wireless.c: 166: t1=(float)(Sensor_getSupplyVoltage()-1)*100;
 "166
-[e ( _Wireless_sendData (2 , &U _data -> -> 6 `i `uc ]
-[; ;wireless.c: 167: while(PORTCbits.RC3);
+[e = _t1 -> * - ( _Sensor_getSupplyVoltage ..  -> -> 1 `i `f -> -> 100 `i `f `ui ]
+[; ;wireless.c: 167: data[4]=t1;
 "167
-[e $U 410  ]
-[e :U 411 ]
-[e :U 410 ]
-[e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 411  ]
-[e :U 412 ]
+[e = *U + &U _data * -> -> -> 4 `i `ui `ux -> -> # *U &U _data `ui `ux -> _t1 `uc ]
+[; ;wireless.c: 168: data[5] = currentTransmitPower;
 "168
-}
-[; ;wireless.c: 168: }
-[; ;wireless.c: 169: while(Wireless_determineTransmitPower(0));
+[e = *U + &U _data * -> -> -> 5 `i `ui `ux -> -> # *U &U _data `ui `ux _currentTransmitPower ]
+[; ;wireless.c: 169: do{
 "169
-[e $ != -> ( _Wireless_determineTransmitPower (1 -> -> 0 `i `uc `i -> -> -> 0 `i `uc `i 409  ]
-[e :U 408 ]
-[; ;wireless.c: 170: Wireless_checkDataReceived();
-"170
-[e ( _Wireless_checkDataReceived ..  ]
-[; ;wireless.c: 171: }
-"171
-[e :UE 406 ]
-}
-"174
-[v _Wireless_sleep `(v ~T0 @X0 1 ef ]
-"175
+[e :U 407 ]
 {
-[; ;wireless.c: 174: void Wireless_sleep()
-[; ;wireless.c: 175: {
+[; ;wireless.c: 170: Wireless_sendData(data, 6);
+"170
+[e ( _Wireless_sendData (2 , &U _data -> -> 6 `i `uc ]
+[; ;wireless.c: 171: while(PORTCbits.RC3);
+"171
+[e $U 408  ]
+[e :U 409 ]
+[e :U 408 ]
+[e $ != -> . . _PORTCbits 0 3 `i -> -> -> 0 `i `Vuc `i 409  ]
+[e :U 410 ]
+"172
+}
+[; ;wireless.c: 172: }
+[; ;wireless.c: 173: while(Wireless_determineTransmitPower(0));
+"173
+[e $ != -> ( _Wireless_determineTransmitPower (1 -> -> 0 `i `uc `i -> -> -> 0 `i `uc `i 407  ]
+[e :U 406 ]
+[; ;wireless.c: 174: Wireless_checkDataReceived();
+"174
+[e ( _Wireless_checkDataReceived ..  ]
+[; ;wireless.c: 175: }
+"175
+[e :UE 404 ]
+}
+"178
+[v _Wireless_sleep `(v ~T0 @X0 1 ef ]
+"179
+{
+[; ;wireless.c: 178: void Wireless_sleep()
+[; ;wireless.c: 179: {
 [e :U _Wireless_sleep ]
 [f ]
-"176
-[v _reg `uc ~T0 @X0 1 a ]
-[; ;wireless.c: 176: u8 reg;
-[; ;wireless.c: 178: RF_ReadRegisterData(0x00 , &reg, 1);
-"178
-[e ( _RF_ReadRegisterData (3 , , -> -> 0 `i `uc &U _reg -> -> 1 `i `uc ]
-[; ;wireless.c: 179: reg&=0b11111101;
-"179
-[e =& _reg -> -> 253 `i `uc ]
-[; ;wireless.c: 180: RF_WriteRegister(0x00,reg);
 "180
-[e ( _RF_WriteRegister (2 , -> -> 0 `i `uc _reg ]
-[; ;wireless.c: 182: }
+[v _reg `uc ~T0 @X0 1 a ]
+[; ;wireless.c: 180: u8 reg;
+[; ;wireless.c: 182: RF_ReadRegisterData(0x00 , &reg, 1);
 "182
-[e :UE 413 ]
-}
+[e ( _RF_ReadRegisterData (3 , , -> -> 0 `i `uc &U _reg -> -> 1 `i `uc ]
+[; ;wireless.c: 183: reg&=0b11111101;
+"183
+[e =& _reg -> -> 253 `i `uc ]
+[; ;wireless.c: 184: RF_WriteRegister(0x00,reg);
 "184
+[e ( _RF_WriteRegister (2 , -> -> 0 `i `uc _reg ]
+[; ;wireless.c: 186: }
+"186
+[e :UE 411 ]
+}
+"188
 [v _Wireless_wake `(v ~T0 @X0 1 ef ]
-"185
+"189
 {
-[; ;wireless.c: 184: void Wireless_wake()
-[; ;wireless.c: 185: {
+[; ;wireless.c: 188: void Wireless_wake()
+[; ;wireless.c: 189: {
 [e :U _Wireless_wake ]
 [f ]
-"186
-[v _reg `uc ~T0 @X0 1 a ]
-[; ;wireless.c: 186: u8 reg;
-[; ;wireless.c: 188: RF_ReadRegisterData(0x00 , &reg, 1);
-"188
-[e ( _RF_ReadRegisterData (3 , , -> -> 0 `i `uc &U _reg -> -> 1 `i `uc ]
-[; ;wireless.c: 189: reg|=0b00000010;
-"189
-[e =| _reg -> -> 2 `i `uc ]
-[; ;wireless.c: 190: RF_WriteRegister(0x00,reg);
 "190
-[e ( _RF_WriteRegister (2 , -> -> 0 `i `uc _reg ]
-[; ;wireless.c: 191: _delay((unsigned long)((2)*(8000000/4000.0)));
-"191
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;wireless.c: 192: }
+[v _reg `uc ~T0 @X0 1 a ]
+[; ;wireless.c: 190: u8 reg;
+[; ;wireless.c: 192: RF_ReadRegisterData(0x00 , &reg, 1);
 "192
-[e :UE 414 ]
-}
+[e ( _RF_ReadRegisterData (3 , , -> -> 0 `i `uc &U _reg -> -> 1 `i `uc ]
+[; ;wireless.c: 193: reg|=0b00000010;
+"193
+[e =| _reg -> -> 2 `i `uc ]
+[; ;wireless.c: 194: RF_WriteRegister(0x00,reg);
+"194
+[e ( _RF_WriteRegister (2 , -> -> 0 `i `uc _reg ]
+[; ;wireless.c: 195: _delay((unsigned long)((2)*(8000000/4000.0)));
 "195
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;wireless.c: 196: }
+"196
+[e :UE 412 ]
+}
+"199
 [v _Wireless_isDataTransmitSuccessful `(uc ~T0 @X0 1 ef ]
 {
-[; ;wireless.c: 195: char Wireless_isDataTransmitSuccessful(){
+[; ;wireless.c: 199: char Wireless_isDataTransmitSuccessful(){
 [e :U _Wireless_isDataTransmitSuccessful ]
 [f ]
-"196
-[v _status `uc ~T0 @X0 1 a ]
-[; ;wireless.c: 196: char status = RF_GetStatus();
-[e = _status ( _RF_GetStatus ..  ]
-[; ;wireless.c: 197: if(status & 0x20)
-"197
-[e $ ! != & -> _status `i -> 32 `i -> 0 `i 416  ]
-[; ;wireless.c: 198: return 1;
-"198
-[e ) -> -> 1 `i `uc ]
-[e $UE 415  ]
-[e $U 417  ]
-"199
-[e :U 416 ]
-[; ;wireless.c: 199: else
-[; ;wireless.c: 200: return 0;
 "200
-[e ) -> -> 0 `i `uc ]
-[e $UE 415  ]
-[e :U 417 ]
-[; ;wireless.c: 201: }
+[v _status `uc ~T0 @X0 1 a ]
+[; ;wireless.c: 200: char status = RF_GetStatus();
+[e = _status ( _RF_GetStatus ..  ]
+[; ;wireless.c: 201: if(status & 0x20)
 "201
-[e :UE 415 ]
-}
+[e $ ! != & -> _status `i -> 32 `i -> 0 `i 414  ]
+[; ;wireless.c: 202: return 1;
+"202
+[e ) -> -> 1 `i `uc ]
+[e $UE 413  ]
+[e $U 415  ]
 "203
-[v _Wireless_checkDataReceived `(v ~T0 @X0 1 ef ]
+[e :U 414 ]
+[; ;wireless.c: 203: else
+[; ;wireless.c: 204: return 0;
 "204
+[e ) -> -> 0 `i `uc ]
+[e $UE 413  ]
+[e :U 415 ]
+[; ;wireless.c: 205: }
+"205
+[e :UE 413 ]
+}
+"207
+[v _Wireless_checkDataReceived `(v ~T0 @X0 1 ef ]
+"208
 {
-[; ;wireless.c: 203: void Wireless_checkDataReceived(void)
-[; ;wireless.c: 204: {
+[; ;wireless.c: 207: void Wireless_checkDataReceived(void)
+[; ;wireless.c: 208: {
 [e :U _Wireless_checkDataReceived ]
 [f ]
-"210
-[v _channel `uc ~T0 @X0 1 a ]
-"211
-[v _data `uc ~T0 @X0 -> 4 `i a ]
-[; ;wireless.c: 210: char channel;
-[; ;wireless.c: 211: char data[4];
-[; ;wireless.c: 212: do
-"212
-[e :U 421 ]
-[; ;wireless.c: 213: {
-"213
-{
-[; ;wireless.c: 214: if(RF_DataIsReady(&channel))
 "214
-[e $ ! != -> ( _RF_DataIsReady (1 &U _channel `i -> -> -> 0 `i `uc `i 422  ]
-[; ;wireless.c: 215: {
+[v _channel `uc ~T0 @X0 1 a ]
 "215
-{
-[; ;wireless.c: 216: RF_RxPayload(data, 4);
+[v _data `uc ~T0 @X0 -> 4 `i a ]
+[; ;wireless.c: 214: char channel;
+[; ;wireless.c: 215: char data[4];
+[; ;wireless.c: 216: do
 "216
-[e ( _RF_RxPayload (2 , &U _data -> -> 4 `i `uc ]
-[; ;wireless.c: 217: if(data[0] & 0x01)
+[e :U 419 ]
+[; ;wireless.c: 217: {
 "217
-[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 1 `i -> 0 `i 423  ]
-[; ;wireless.c: 218: {
-"218
 {
-[; ;wireless.c: 219: DOOR_update(doorOpenAngle,data[1]);
+[; ;wireless.c: 218: if(RF_DataIsReady(&channel))
+"218
+[e $ ! != -> ( _RF_DataIsReady (1 &U _channel `i -> -> -> 0 `i `uc `i 420  ]
+[; ;wireless.c: 219: {
 "219
-[e ( _DOOR_update (2 , _doorOpenAngle *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux ]
+{
+[; ;wireless.c: 220: RF_RxPayload(data, 4);
 "220
-}
-[e :U 423 ]
-[; ;wireless.c: 220: }
-[; ;wireless.c: 221: if(data[0] & 0x02)
+[e ( _RF_RxPayload (2 , &U _data -> -> 4 `i `uc ]
+[; ;wireless.c: 221: if(data[0] & 0x01)
 "221
-[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 2 `i -> 0 `i 424  ]
+[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 1 `i -> 0 `i 421  ]
 [; ;wireless.c: 222: {
 "222
 {
-[; ;wireless.c: 223: DOOR_update(data[2],doorClosedAngle);
+[; ;wireless.c: 223: DOOR_update(doorOpenAngle,data[1]);
 "223
-[e ( _DOOR_update (2 , *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux _doorClosedAngle ]
+[e ( _DOOR_update (2 , _doorOpenAngle *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux ]
 "224
 }
-[e :U 424 ]
+[e :U 421 ]
 [; ;wireless.c: 224: }
-[; ;wireless.c: 225: if(data[0] & 0x04)
+[; ;wireless.c: 225: if(data[0] & 0x02)
 "225
-[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 4 `i -> 0 `i 425  ]
+[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 2 `i -> 0 `i 422  ]
 [; ;wireless.c: 226: {
 "226
 {
-[; ;wireless.c: 227: sensorUpdatePeriod=data[3];
+[; ;wireless.c: 227: DOOR_update(data[2],doorClosedAngle);
 "227
-[e = _sensorUpdatePeriod -> *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux `l ]
-[; ;wireless.c: 228: sensorUpdatePeriod*=1000;
+[e ( _DOOR_update (2 , *U + &U _data * -> -> -> 2 `i `ui `ux -> -> # *U &U _data `ui `ux _doorClosedAngle ]
 "228
-[e =* _sensorUpdatePeriod -> -> 1000 `i `l ]
-"229
-}
-[e :U 425 ]
-[; ;wireless.c: 229: }
-[; ;wireless.c: 230: if(data[0] & 0x08)
-"230
-[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 8 `i -> 0 `i 426  ]
-[; ;wireless.c: 231: {
-"231
-{
-[; ;wireless.c: 232: DOOR_resetPos();
-"232
-[e ( _DOOR_resetPos ..  ]
-"233
-}
-[e :U 426 ]
-"237
 }
 [e :U 422 ]
-"238
+[; ;wireless.c: 228: }
+[; ;wireless.c: 229: if(data[0] & 0x04)
+"229
+[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 4 `i -> 0 `i 423  ]
+[; ;wireless.c: 230: {
+"230
+{
+[; ;wireless.c: 231: sensorUpdatePeriod=data[3];
+"231
+[e = _sensorUpdatePeriod -> *U + &U _data * -> -> -> 3 `i `ui `ux -> -> # *U &U _data `ui `ux `l ]
+[; ;wireless.c: 232: sensorUpdatePeriod*=1000;
+"232
+[e =* _sensorUpdatePeriod -> -> 1000 `i `l ]
+"233
 }
+[e :U 423 ]
 [; ;wireless.c: 233: }
-[; ;wireless.c: 237: }
-[; ;wireless.c: 238: }while(RF_DataIsReady(&channel));
-[e $ != -> ( _RF_DataIsReady (1 &U _channel `i -> -> -> 0 `i `uc `i 421  ]
-[e :U 420 ]
-[; ;wireless.c: 241: }
+[; ;wireless.c: 234: if(data[0] & 0x08)
+"234
+[e $ ! != & -> *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux `i -> 8 `i -> 0 `i 424  ]
+[; ;wireless.c: 235: {
+"235
+{
+[; ;wireless.c: 236: DOOR_resetPos();
+"236
+[e ( _DOOR_resetPos ..  ]
+"237
+}
+[e :U 424 ]
 "241
-[e :UE 418 ]
+}
+[e :U 420 ]
+"242
+}
+[; ;wireless.c: 237: }
+[; ;wireless.c: 241: }
+[; ;wireless.c: 242: }while(RF_DataIsReady(&channel));
+[e $ != -> ( _RF_DataIsReady (1 &U _channel `i -> -> -> 0 `i `uc `i 419  ]
+[e :U 418 ]
+[; ;wireless.c: 245: }
+"245
+[e :UE 416 ]
 }

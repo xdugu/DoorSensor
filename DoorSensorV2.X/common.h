@@ -30,9 +30,9 @@ extern "C" {
 #define ENABLED  1
 #define DISABLED 0
     
-//#define OUT_TEMP_SENSOR   
+#define OUT_TEMP_SENSOR   
 //#define DOOR_SENSOR
-#define INDOOR_TEMP_SENSOR
+//#define INDOOR_TEMP_SENSOR
     
 #ifdef DOOR_SENSOR
 #define WAKE_UP_PERIOD_MS 10000
