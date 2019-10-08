@@ -3,6 +3,8 @@
 
 #define PAYLOAD_SIZE 6
 #define CHANNEL_NO 2
+#define MAX_TRANSMIT_POWER_LEVEL 3
+#define MIN_TRANSMIT_POWER_LEVEL 0
 
 extern char doorOpenAngle;
 extern char doorClosedAngle;
@@ -61,14 +63,14 @@ char Wireless_determineTransmitPower(char initialise)
 {
     char testPayload = 0xFF;
     char latestResult;
-    static char numOfTransmits =0;
+    static char numOfTransmits = 0;
     static char numOfSuccessfulTransmits = 0;
     
     if(initialise){
         currentTransmitPower = 0;
         //We will loop and send data at increasing power level to check the optimum
         //transmit power
-        for(;currentTransmitPower <= 3; currentTransmitPower++){
+        for(;currentTransmitPower <= MAX_TRANSMIT_POWER_LEVEL; currentTransmitPower++){
             Wireless_changeTransmitPower(currentTransmitPower);           
             Wireless_sendData(&testPayload, 1);
             while(NRF_IRQ_GetValue()); //wait to get results
@@ -76,7 +78,7 @@ char Wireless_determineTransmitPower(char initialise)
             if(Wireless_isDataTransmitSuccessful())
                 break;
         }  
-        currentTransmitPower = limit( currentTransmitPower, 0, 3);
+        currentTransmitPower = limit( currentTransmitPower, MIN_TRANSMIT_POWER_LEVEL, MAX_TRANSMIT_POWER_LEVEL);
     }else{
         // Get data from the previous data transmit
         latestResult = Wireless_isDataTransmitSuccessful();
@@ -85,12 +87,12 @@ char Wireless_determineTransmitPower(char initialise)
         //check if at current power level, we have a good successful transmission rate
         if(numOfTransmits>=5){
             // 80% sucessful rate or higher? reduce power level on next transmit
-            if(currentTransmitPower > 0 && latestResult && numOfSuccessfulTransmits >=4)
+            if(currentTransmitPower > MIN_TRANSMIT_POWER_LEVEL && latestResult && numOfSuccessfulTransmits >=4)
                 Wireless_changeTransmitPower(--currentTransmitPower);          
             //reset transmission quality parameters
              numOfTransmits = 0;
              numOfSuccessfulTransmits = 0;
-             if(!latestResult && currentTransmitPower<3){
+             if(!latestResult && currentTransmitPower < MAX_TRANSMIT_POWER_LEVEL){
                  //if transmission was not successful increase power level and 
                  //try again
                Wireless_changeTransmitPower(++currentTransmitPower);               
@@ -99,7 +101,7 @@ char Wireless_determineTransmitPower(char initialise)
             
         }else{
             //if count not reached
-            if(!latestResult && currentTransmitPower<3){
+            if(!latestResult && currentTransmitPower < MAX_TRANSMIT_POWER_LEVEL){
                 //if the data was not transmitted successfully but was not sent at max power level
                 Wireless_changeTransmitPower(++currentTransmitPower);               
                 return true;//it is required to resend data
