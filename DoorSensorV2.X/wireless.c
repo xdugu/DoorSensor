@@ -1,7 +1,7 @@
 #include "common.h"
 #include <stdlib.h>
 
-#define PAYLOAD_SIZE 6
+#define PAYLOAD_SIZE 7
 #define CHANNEL_NO 2
 #define MAX_TRANSMIT_POWER_LEVEL 3
 #define MIN_TRANSMIT_POWER_LEVEL 0
@@ -140,7 +140,7 @@ void Wireless_sendData(char* payload, char length)
 void Wireless_packageData(DOOR status,char openTime, float tempC)
 {
     /* Packet contents
-     * Byte 0 - B7-4 - door status B1 - compass Health B0 - temp sensor health
+     * Byte 0 - B5-4 - door status B3-2 - Power level B1 - compass Health B0 - temp sensor health
      * Byte 1 - Door OpenTime
      * Byte 2 - Temperature above decimal
      * Byte 3 - Temperature below decimal (1 dp)
@@ -157,6 +157,7 @@ void Wireless_packageData(DOOR status,char openTime, float tempC)
     status<<=4;
     var=Diag_getSensorHealth();
     status|=var;
+    status| = (currentTransmitPower<<2);
     
     
     data[0]=status;
@@ -165,7 +166,10 @@ void Wireless_packageData(DOOR status,char openTime, float tempC)
     data[3]= t1 & 0xFF; 
     t1=(float)(Sensor_getSupplyVoltage()-1)*100;
     data[4]=t1;
-    data[5] = currentTransmitPower;
+    t1 = sensorUpdatePeriod/1000;
+    //preparing to send next time data to be expected
+    data[5] = t1 >>8;
+    data[6] = t1 & 0xFF;
     do{
         Wireless_sendData(data, PAYLOAD_SIZE);
         while(NRF_IRQ_GetValue());//wait until data is sent - Active Low
@@ -212,29 +216,16 @@ void Wireless_checkDataReceived(void)
      Byte 3 - B7 - 0 - Open Time
      Byte 4 - B7 - 0 - update period*/
     char channel;
-    char data[4];
+    char data[2];
     do
     {    
         if(RF_DataIsReady(&channel))
         {
-          RF_RxPayload(data, 4);
-          if(data[0] & 0x01)
-          {
-           DOOR_update(doorOpenAngle,data[1]);
-          }
-          if(data[0] & 0x02)
-          {
-           DOOR_update(data[2],doorClosedAngle);
-          }
-          if(data[0] & 0x04)
-          {
-           sensorUpdatePeriod=data[3];
-           sensorUpdatePeriod*=1000;//converting to milliseconds
-          }
-          if(data[0] & 0x08)
-          {
-            DOOR_resetPos();
-          }
+          RF_RxPayload(data, 2);
+          sensorUpdatePeriod = data[0];
+          sensorUpdatePeriod << = 8;
+          sensorUpdatePeriod |= data[1];
+          sensorUpdatePeriod *=1000;//converting to milliseconds
        
           //RF_TxPayload(data,sizeof(data));//send an acknowledgement of change  
           //while(NRF_IRQ_GetValue());//wait until data is sent - Active Low

@@ -128,12 +128,8 @@ I2C2_LOST_STATE 6
 [v _Diag_getSensorHealth Diag_getSensorHealth `(uc  1 e 1 0 ]
 "10 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\doorlogic.c
 [v _DOOR_init DOOR_init `(v  1 e 1 0 ]
-"16
-[v _DOOR_update DOOR_update `(v  1 e 1 0 ]
 "23
 [v _DOOR_run DOOR_run `(E3332  1 e 1 0 ]
-"94
-[v _DOOR_resetPos DOOR_resetPos `(E3332  1 e 1 0 ]
 "88 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\hmc5883l.c
 [v _HMC5883L_WakeUp HMC5883L_WakeUp `(v  1 e 1 0 ]
 "221
@@ -320,13 +316,13 @@ I2C2_LOST_STATE 6
 [v _Wireless_sendData Wireless_sendData `(v  1 e 1 0 ]
 "140
 [v _Wireless_packageData Wireless_packageData `(v  1 e 1 0 ]
-"178
+"182
 [v _Wireless_sleep Wireless_sleep `(v  1 e 1 0 ]
-"188
+"192
 [v _Wireless_wake Wireless_wake `(v  1 e 1 0 ]
-"199
+"203
 [v _Wireless_isDataTransmitSuccessful Wireless_isDataTransmitSuccessful `(uc  1 e 1 0 ]
-"207
+"211
 [v _Wireless_checkDataReceived Wireless_checkDataReceived `(v  1 e 1 0 ]
 "10 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\bmp280.c
 [v _b1 b1 `[24]uc  1 e 24 0 ]
@@ -710,9 +706,9 @@ I2C2_LOST_STATE 6
 ]
 [u S118 . 1 `S109 1 . 1 0 `S116 1 . 1 0 ]
 [v _IOCAFbits IOCAFbits `VES118  1 e 1 @915 ]
-[s S1969 . 2 `uc 1 tempSensorHealth 1 0 `uc 1 compassHealth 1 1 ]
+[s S1957 . 2 `uc 1 tempSensorHealth 1 0 `uc 1 compassHealth 1 1 ]
 "13 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\diagnostics.c
-[v _sensorHealth sensorHealth `S1969  1 e 2 0 ]
+[v _sensorHealth sensorHealth `S1957  1 e 2 0 ]
 "4 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\doorlogic.c
 [v _doorOpenAngle doorOpenAngle `uc  1 e 1 0 ]
 "5
@@ -808,37 +804,37 @@ I2C2_LOST_STATE 6
 [v ___lldiv@dividend dividend `ul  1 p 4 5 ]
 "31
 } 0
-"188 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\wireless.c
+"192 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\wireless.c
 [v _Wireless_wake Wireless_wake `(v  1 e 1 0 ]
 {
-"190
+"194
 [v Wireless_wake@reg reg `uc  1 a 1 16 ]
-"196
+"200
 } 0
-"178
+"182
 [v _Wireless_sleep Wireless_sleep `(v  1 e 1 0 ]
 {
-"180
+"184
 [v Wireless_sleep@reg reg `uc  1 a 1 16 ]
-"186
+"190
 } 0
 "140
 [v _Wireless_packageData Wireless_packageData `(v  1 e 1 0 ]
 {
 [v Wireless_packageData@status status `E3332  1 a 1 wreg ]
 "155
-[v Wireless_packageData@data data `[6]uc  1 a 6 30 ]
+[v Wireless_packageData@data data `[7]uc  1 a 7 32 ]
 "153
-[v Wireless_packageData@t1 t1 `ui  1 a 2 38 ]
+[v Wireless_packageData@t1 t1 `ui  1 a 2 41 ]
 "154
-[v Wireless_packageData@var var `uc  1 a 1 36 ]
+[v Wireless_packageData@var var `uc  1 a 1 39 ]
 "140
 [v Wireless_packageData@status status `E3332  1 a 1 wreg ]
 [v Wireless_packageData@openTime openTime `uc  1 p 1 26 ]
 [v Wireless_packageData@tempC tempC `f  1 p 3 27 ]
 "150
-[v Wireless_packageData@status status `E3332  1 a 1 37 ]
-"175
+[v Wireless_packageData@status status `E3332  1 a 1 40 ]
+"179
 } 0
 "62
 [v _Wireless_determineTransmitPower Wireless_determineTransmitPower `(uc  1 e 1 0 ]
@@ -888,12 +884,12 @@ I2C2_LOST_STATE 6
 [v RF_Write@val val `uc  1 a 1 3 ]
 "144
 } 0
-"199 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\wireless.c
+"203 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\wireless.c
 [v _Wireless_isDataTransmitSuccessful Wireless_isDataTransmitSuccessful `(uc  1 e 1 0 ]
 {
-"200
+"204
 [v Wireless_isDataTransmitSuccessful@status status `uc  1 a 1 6 ]
-"205
+"209
 } 0
 "150 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\nrf24.c
 [v _RF_GetStatus RF_GetStatus `(uc  1 e 1 0 ]
@@ -928,14 +924,14 @@ I2C2_LOST_STATE 6
 [v limit@max max `i  1 p 2 5 ]
 "18
 } 0
-"207 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\wireless.c
+"211 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\wireless.c
 [v _Wireless_checkDataReceived Wireless_checkDataReceived `(v  1 e 1 0 ]
 {
-"215
-[v Wireless_checkDataReceived@data data `[4]uc  1 a 4 23 ]
-"214
-[v Wireless_checkDataReceived@channel channel `uc  1 a 1 27 ]
-"245
+"219
+[v Wireless_checkDataReceived@data data `[2]uc  1 a 2 23 ]
+"218
+[v Wireless_checkDataReceived@channel channel `uc  1 a 1 25 ]
+"236
 } 0
 "186 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\nrf24.c
 [v _RF_RxPayload RF_RxPayload `(v  1 e 1 0 ]
@@ -993,44 +989,6 @@ I2C2_LOST_STATE 6
 "85
 [v RF_ReadRegister@reg reg `uc  1 a 1 4 ]
 "91
-} 0
-"16 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\doorlogic.c
-[v _DOOR_update DOOR_update `(v  1 e 1 0 ]
-{
-[v DOOR_update@openAngle openAngle `uc  1 a 1 wreg ]
-[v DOOR_update@openAngle openAngle `uc  1 a 1 wreg ]
-[v DOOR_update@closedAngle closedAngle `uc  1 p 1 7 ]
-"18
-[v DOOR_update@openAngle openAngle `uc  1 a 1 9 ]
-"21
-} 0
-"30 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\storage.c
-[v _Storage_save Storage_save `(v  1 e 1 0 ]
-{
-[v Storage_save@openAngle openAngle `uc  1 a 1 wreg ]
-[v Storage_save@openAngle openAngle `uc  1 a 1 wreg ]
-[v Storage_save@closeAngle closeAngle `uc  1 p 1 4 ]
-"32
-[v Storage_save@openAngle openAngle `uc  1 a 1 6 ]
-"35
-} 0
-"186 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\mcc_generated_files/memory.c
-[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
-{
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
-"188
-[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 3 ]
-"186
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
-[v DATAEE_WriteByte@bData bData `uc  1 p 1 1 ]
-"188
-[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 2 ]
-"208
-} 0
-"94 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\doorlogic.c
-[v _DOOR_resetPos DOOR_resetPos `(E3332  1 e 1 0 ]
-{
-"98
 } 0
 "6 C:\Users\Yayra Adugu\Documents\GitHub\DoorSensor\DoorSensorV2.X\sensors.c
 [v _Sensor_getSupplyVoltage Sensor_getSupplyVoltage `(f  1 e 3 0 ]

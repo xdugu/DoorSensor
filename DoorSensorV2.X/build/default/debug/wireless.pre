@@ -4576,7 +4576,7 @@ _delay((unsigned long)((100)*(8000000/4000.0)));
 RF_Init();
 
 RF_WriteRegister(0x06, 0x06|0x20);
-RF_WriteRegister(0x11, 6);
+RF_WriteRegister(0x11, 7);
 RF_WriteRegister(0x05, 2);
 
 
@@ -4686,11 +4686,12 @@ tempC*=10;
 
 unsigned int t1 = tempC;
 char var;
-char data[6];
+char data[7];
 
 status<<=4;
 var=Diag_getSensorHealth();
 status|=var;
+status| = (currentTransmitPower<<2);
 
 
 data[0]=status;
@@ -4699,9 +4700,12 @@ data[2]=t1>>8;
 data[3]= t1 & 0xFF;
 t1=(float)(Sensor_getSupplyVoltage()-1)*100;
 data[4]=t1;
-data[5] = currentTransmitPower;
+t1 = sensorUpdatePeriod/1000;
+
+data[5] = t1 >>8;
+data[6] = t1 & 0xFF;
 do{
-Wireless_sendData(data, 6);
+Wireless_sendData(data, 7);
 while(PORTCbits.RC3);
 }
 while(Wireless_determineTransmitPower(0));
@@ -4741,31 +4745,18 @@ return 0;
 void Wireless_checkDataReceived(void)
 {
 
-# 214
+# 218
 char channel;
-char data[4];
+char data[2];
 do
 {
 if(RF_DataIsReady(&channel))
 {
-RF_RxPayload(data, 4);
-if(data[0] & 0x01)
-{
-DOOR_update(doorOpenAngle,data[1]);
-}
-if(data[0] & 0x02)
-{
-DOOR_update(data[2],doorClosedAngle);
-}
-if(data[0] & 0x04)
-{
-sensorUpdatePeriod=data[3];
-sensorUpdatePeriod*=1000;
-}
-if(data[0] & 0x08)
-{
-DOOR_resetPos();
-}
+RF_RxPayload(data, 2);
+sensorUpdatePeriod = data[0];
+sensorUpdatePeriod << = 8;
+sensorUpdatePeriod |= data[1];
+sensorUpdatePeriod *=1000;
 
 
 

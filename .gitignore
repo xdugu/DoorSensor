@@ -1,3 +1,14 @@
 
 *.pre
 *.cmf
+*.p1
+*.pre
+*.elf
+*.cmf
+*.hxl
+*.lst
+*.map
+*.mum
+*.obj
+*.rlf
+*.sdb
